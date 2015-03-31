@@ -6,6 +6,7 @@ public class IlMain {
 		// TODO Auto-generated method stub
 
 		System.out.println("Prova SVN ");
+		System.out.println(" ScrumBoy ON ");
 	}
 
 }
