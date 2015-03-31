@@ -10,6 +10,7 @@ public class IlMain {
 		System.out.println(" ScrumBoy ON ");
 		System.out.println(" ghia16 ON ");
 		System.out.println(" bipavesi ON ");
+		System.out.println("edoardo OFF");
 	}
 
 }
