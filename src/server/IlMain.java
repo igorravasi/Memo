@@ -1,15 +1,7 @@
 package server;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.charset.Charset;
-import java.util.LinkedList;
-import server.ServerParameters;
 
 public class IlMain {
 
@@ -26,53 +18,18 @@ public class IlMain {
 //		System.out.println("edoardo OFF");
 		
 		try {
+			@SuppressWarnings("resource")
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			
-			Socket clientSocket = socket.accept();
 			
-			BufferedReader in = new BufferedReader(
-				new InputStreamReader(
-						clientSocket.getInputStream()
-				)	
-			);
 			
-			String line = in.readLine();
+			ThreadForSingleClientConnection singleClientConnection = new ThreadForSingleClientConnection();
 			
-			LinkedList<String> lines=new LinkedList<String>();
-			while(line!=null){
-				System.out.println(line);
-				lines.add(line);
-				line = in.readLine();
-				if(line.length()==0){
-					line=null;
-				}
+			while (true) {
+				singleClientConnection.setClientSocket(socket.accept()).run();
 			}
-
-			//in.close();
 			
-			OutputStreamWriter out = new 
-				OutputStreamWriter(
-						clientSocket.getOutputStream(),
-						Charset.forName("UTF-8").newEncoder()
-				);
-		
-			out.write("HTTP/1.1 200 OK\n");
-			out.write("Date: Tue, 17 Mar 2014 14:47:00\n");
-			out.write("Content-Type: text/html; charset=utf-8\n");
-			out.write("\n");
-				BufferedReader fileReader=new BufferedReader(
-					new FileReader("web/index01.html")
-				);
-				String fileLine=fileReader.readLine();
-				while(fileLine!=null){
-					out.write(fileLine+"\n");
-					fileLine=fileReader.readLine();
-				}
-			out.write("\n");
-			
-			out.close();
-			clientSocket.close();
-			socket.close();
+			//socket.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
