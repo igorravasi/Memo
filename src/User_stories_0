@@ -1,0 +1,10 @@
+Ex. User Stories
+
+Il concetto del gioco è di riuscire a riportare correttamente una serie di cifre mostrate all'utente dal computer per un tempo limitato prefissato. 
+
+1 Come utente che ha scaricato il gioco sul suo personal computer voglio poter avviare l'applicazione in modo da iniziare una partita e giocare.
+2 Come utente che ha avviato l'applicazione voglio poter vedere un menu di avvio con un pulsante per iniziare a giocare.
+3 Come utente che ha avviato l'applicazione voglio poter individuare nel menu principale un pulsante per uscire dal gioco.
+4 Come utente che sceglie di iniziare la partita voglio poter giocare vedendo e reinserendo la serie di cifre.
+5 Come utente che gioca la prima partita (che mostra 3 cifre) voglio poter tornare al menu di avvio in caso di inserimento sbagliato o passare al round successivo se la serie è inserita correttamente.
+6 Come utente che gioca la seconda partita (che mostra 5 cifre) voglio poter tornare al menu di avvio in entrambi i casi di vincita o sconfitta.
