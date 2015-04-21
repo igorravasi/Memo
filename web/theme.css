@@ -2,7 +2,14 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
-
+.imagewrapper {
+  width: 100%; /* Or whatever width you want */
+}
+.imagewrapper img {
+  max-width: 100%;
+  height: auto;
+  width: auto; /* For IE8 */
+}
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;

@@ -1092,6 +1092,14 @@ body {
   color: #333;
   background-color: #fff;
 }
+.imagewrapper {
+  width: 100%; /* Or whatever width you want */
+}
+.imagewrapper img {
+  max-width: 100%;
+  height: auto;
+  width: auto; /* For IE8 */
+}
 input,
 button,
 select,
