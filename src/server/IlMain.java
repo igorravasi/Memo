@@ -18,7 +18,6 @@ public class IlMain {
 //		System.out.println("edoardo OFF");
 		
 		try {
-			@SuppressWarnings("resource")
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			
 			
