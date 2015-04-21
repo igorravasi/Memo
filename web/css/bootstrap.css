@@ -4863,6 +4863,14 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+.imagewrapper {
+  width: 100%; /* Or whatever width you want */
+}
+.imagewrapper img {
+  max-width: 100%;
+  height: auto;
+  width: auto; /* For IE8 */
+}
 .jumbotron {
   padding: 30px 15px;
   margin-bottom: 30px;
