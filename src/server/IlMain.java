@@ -2,6 +2,7 @@ package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class IlMain {
 
@@ -21,11 +22,9 @@ public class IlMain {
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			
 			
-			
-			ThreadForSingleClientConnection singleClientConnection = new ThreadForSingleClientConnection();
-			
 			while (true) {
-				singleClientConnection.setClientSocket(socket.accept()).run();
+				Socket clientSocket = socket.accept();
+				new ThreadForSingleClientConnection().setClientSocket(clientSocket).run();
 			}
 			
 			//socket.close();
