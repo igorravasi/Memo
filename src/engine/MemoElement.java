@@ -1,6 +1,5 @@
 package engine;
 
-import java.util.Date;
 import java.util.Random;
 
 public class MemoElement {
@@ -21,7 +20,8 @@ public class MemoElement {
 	public MemoElement() {
 		super();
 		
-		Random randomizer = new Random(new Date().getTime());
+		Random randomizer = new Random();
+		
 		setNumber(randomizer.nextInt(10));
 		setColourCode(randomizer.nextInt(MAX_INT_CODE + 1));
 	}
