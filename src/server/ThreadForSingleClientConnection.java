@@ -6,16 +6,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 
 public class ThreadForSingleClientConnection extends Thread implements Runnable{
 
-	Socket clientSocket;
-	
+	private Socket clientSocket;
+	private ServerSocket socket;
 
 	
+
 	@Override
 	public void run() {
 
@@ -95,7 +97,11 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		return this;
 	}
 
-		
+	public ThreadForSingleClientConnection setSocket(ServerSocket socket) {
+		this.socket = socket;
+		return this;
+	}
+
 }
 
 

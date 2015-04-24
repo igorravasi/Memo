@@ -17,7 +17,7 @@ public class ServerLife {
 			
 			while (true) {
 				clientSocket = socket.accept();
-				new ThreadForSingleClientConnection().setClientSocket(clientSocket).run();
+				new ThreadForSingleClientConnection().setClientSocket(clientSocket).setSocket(socket).run();
 			}
 			
 			//socket.close();
