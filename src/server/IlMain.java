@@ -20,10 +20,10 @@ public class IlMain {
 		
 		try {
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
-			
+			Socket clientSocket = null;
 			
 			while (true) {
-				Socket clientSocket = socket.accept();
+				clientSocket = socket.accept();
 				new ThreadForSingleClientConnection().setClientSocket(clientSocket).run();
 			}
 			
