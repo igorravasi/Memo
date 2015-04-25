@@ -8,33 +8,33 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
+
+import engine.SinglePlayerGame;
+
+//TODO: pesante refactoring. Questa classe è assolutamente troppo lunga e poco coesa!
 
 public class ThreadForSingleClientConnection extends Thread implements Runnable{
 
+
+
 	private Socket clientSocket;
-	private Integer id;
+	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	
 	@SuppressWarnings("serial")
-	
 	private class BadStringException extends Exception{
 
 	}
 	
-	public ThreadForSingleClientConnection(Socket clientSocket) {
+
+	public ThreadForSingleClientConnection(Socket clientSocket,
+			Map<Integer, SinglePlayerGame> singleGames) {
 		super();
 		this.clientSocket = clientSocket;
-		
+		this.singleGames = singleGames;
 	}
-
-
-	public ThreadForSingleClientConnection(Socket clientSocket, Integer threadId) {
-		super();
-		this.clientSocket = clientSocket;
-		this.id = threadId;
-		
-	}
-
 
 	@Override
 	public void run() {
@@ -44,11 +44,7 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 			
 			String inputRequest = getRequestLines();
 			
-			//Riga di debug
-			System.out.println(id +  "--> \n" + inputRequest);
-			
 			handleRequest(inputRequest);
-			
 			clientSocket.close();
 			
 		} catch (FileNotFoundException e) {
@@ -56,12 +52,9 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (BadStringException e) {
-//			Non fare niente e continua (chiude il thread) senza fermare l'esecuzione del programma
-		}
-
-		
+			//Non fare niente e continua (chiude il thread) senza fermare l'esecuzione del programma
+		}	
 	}
-
 
 	private String getRequestLines() throws IOException, BadStringException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -80,7 +73,7 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		return inputRequest;
 	}
 
-// TODO: gestire richieste di file non html (esempio immagini)
+// TODO: gestire richieste di file non html (esempio immagini) o usare un server http free, come apache
 	
 	private void handleRequest(String inputRequest)throws FileNotFoundException, IOException {
 		
@@ -96,23 +89,37 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		
 		
 		if (page.compareToIgnoreCase("/singleplayer") == 0) {
-			writeSequence();
+			startSinglePlayerGame();
 		} else if (page.compareToIgnoreCase("/error") == 0) {
 			writeOutputMessage("Si è verificato un errore");
 		
-		} else {
+		} else if (page.indexOf("/singleplayer") == 0) {
+			Integer playId = Integer.parseInt(page.substring("/singleplayer".length()+1));
+			SinglePlayerGame game = singleGames.get(playId);
+			if (game == null) {
+				writeOutputMessage("Partita non esistente, spiacenti. Forse hai impiegato troppo tempo");
+				return;
+			}
+			writeOutputMessage(game.readRequest(inputRequest));
+			
+		}else {
 			writeOutputFromFile(page);
 		}
 		
 	}
 	
-	private void writeSequence() throws FileNotFoundException, IOException{
+	private void startSinglePlayerGame() throws IOException{
+	
+		Integer playId = singleGames.size();
+		singleGames.put(playId, new SinglePlayerGame());
 		
-		writeOutputMessage("sequenza");
+		String body="<div>L'id partita è:"
+						+ "<span id='playId'>" + playId + "</span><br/>"
+				+ "<a href='/singleplayer/" + playId + "'>Gioca</a>";
+		writeOutputMessage(body);
 		
 	}
 		
-	
 	private void writeOutputMessage(String bodyMessage) throws IOException{
 		OutputStreamWriter out = initializeOutput();
 		out.write(bodyMessage);
@@ -120,18 +127,6 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		out.close();;
 	}
 	
-	
-	public void setClientSocket(Socket clientSocket) {
-		this.clientSocket = clientSocket;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-		
-	}
-
-
 	private void writeOutputFromFile(String path) throws FileNotFoundException, IOException {
 		
 		BufferedReader fileReader;
@@ -170,9 +165,5 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		
 		return out;
 	}
-
-
 	
 }
-
-

@@ -15,7 +15,7 @@ public class ServerLife {
 	public static void main(String[] args) {
 		
 		Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
-
+		//TODO: Aggiungere un observer che osservi le notifiche dello status delle partite, che dovranno essere observable
 		
 		try {
 			
