@@ -12,12 +12,16 @@ public class ServerLife {
 
 		
 		try {
+			
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			Socket clientSocket = null;
 			
+			Integer threadId = 0;
+			
 			while (true) {
 				clientSocket = socket.accept();
-				new ThreadForSingleClientConnection().setClientSocket(clientSocket).setSocket(socket).run();
+				new ThreadForSingleClientConnection(clientSocket, threadId).run();
+				threadId++;
 			}
 			
 			//socket.close();
