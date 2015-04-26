@@ -122,9 +122,10 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		
 	private void writeOutputMessage(String bodyMessage) throws IOException{
 		OutputStreamWriter out = initializeOutput();
+//		OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream(),Charset.forName("UTF-8").newEncoder());
 		out.write(bodyMessage);
 		out.write("\n");
-		out.close();;
+		out.close();
 	}
 	
 	private void writeOutputFromFile(String path) throws FileNotFoundException, IOException {
