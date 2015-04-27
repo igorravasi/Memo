@@ -10,9 +10,12 @@ public class test001 {
 		
 		System.out.println(myMemoSequence);
 	
-		myMemoSequence.secondRound();
-		
-		System.out.println(myMemoSequence);
+		for (int i = 0; i < 5; i++) {
+			myMemoSequence.secondRound();
+			
+			System.out.println(myMemoSequence);
+
+		}
 	}
 
 }
