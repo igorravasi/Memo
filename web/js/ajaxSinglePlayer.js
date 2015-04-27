@@ -38,7 +38,7 @@ function loadPlayId(){
 	    	playId = null;
 		}
 	}		     
-	httpGet("http://127.0.0.1:4444/singleplayer",cfunc);
+	httpGet("singleplayer",cfunc);
 }
 
 
@@ -78,6 +78,6 @@ function loadSequence() {
 	    	sequence = null;
 		}
 	}		     
-	httpGet("http://127.0.0.1:4444/singleplayer/"+playId,cfunc);
+	httpGet("singleplayer/"+playId,cfunc);
 	return sequence;
 }
