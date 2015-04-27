@@ -87,20 +87,27 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 			page = "/error";
 		}
 		
-		
+		//TODO Ancihè l'if-else sarebbe opportuno usare ad esempio una mappa, con chiavi gli url e valore la classe gestore
 		if (page.compareToIgnoreCase("/singleplayer") == 0) {
 			startSinglePlayerGame();
 		} else if (page.compareToIgnoreCase("/error") == 0) {
 			writeOutputMessage("Si è verificato un errore");
 		
 		} else if (page.indexOf("/singleplayer") == 0) {
-			Integer playId = Integer.parseInt(page.substring("/singleplayer".length()+1));
-			SinglePlayerGame game = singleGames.get(playId);
-			if (game == null) {
-				writeOutputMessage("Partita non esistente, spiacenti. Forse hai impiegato troppo tempo");
-				return;
+			Integer playId;
+			try {
+				playId = Integer.parseInt(page.substring("/singleplayer".length()+1));
+				SinglePlayerGame game = singleGames.get(playId);
+				if (game == null) {
+					writeOutputMessage("Partita non esistente, spiacenti. Forse hai impiegato troppo tempo");
+					return;
+				}
+				writeOutputMessage(game.readRequest(inputRequest));
+			} catch (NumberFormatException e) {
+				
+				e.printStackTrace();
 			}
-			writeOutputMessage(game.readRequest(inputRequest));
+			
 			
 		}else {
 			writeOutputFromFile(page);
@@ -112,11 +119,7 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 	
 		Integer playId = singleGames.size();
 		singleGames.put(playId, new SinglePlayerGame());
-		
-		String body="<div>L'id partita è:"
-						+ "<span id='playId'>" + playId + "</span><br/>"
-				+ "<a href='/singleplayer/" + playId + "'>Gioca</a>";
-		writeOutputMessage(body);
+		writeOutputMessage(playId+"");
 		
 	}
 		
