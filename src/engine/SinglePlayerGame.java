@@ -40,8 +40,8 @@ public class SinglePlayerGame {
 			return round;
 		}else {
 			
-			//TODO elimina istanze successivamente
-			return LOOSER;
+			round = LOOSER;
+			return round;
 		}
 		
 		
@@ -49,7 +49,17 @@ public class SinglePlayerGame {
 	
 	public String readRequest(String request){
 		
-		return "ohyeah";
+		if (round == 0) {
+			return "sequenza: "+ getSequence();
+		} else {
+			switch (playerMoved(request)) {
+			case LOOSER:
+				return "Hai perso! Continua ad allentarti e non demordere. Nonostante tutto hai completato ben " + round + " round";
+							 
+			default:
+				return "Good, sequence: " + getSequence();
+			}
+		}
 		
 	}
 	

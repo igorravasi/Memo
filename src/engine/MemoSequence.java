@@ -29,7 +29,7 @@ public class MemoSequence {
 	}
 	
 	
-//	Solo a fini di test
+
 	@Override
 	public String toString() {
 
@@ -37,7 +37,7 @@ public class MemoSequence {
 		
 		for (int i = 0; i < counter; i++) {
 			MemoElement tmpMemoElement = sequenza.get(i);
-			tmpString += i +":" + tmpMemoElement.getNumber() + tmpMemoElement.getColourCode() + " ";
+			tmpString += tmpMemoElement.getNumber().toString()  + tmpMemoElement.getColourCode() + " ";
 		}
 		
 		return tmpString;
