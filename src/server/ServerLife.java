@@ -6,8 +6,6 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.print.attribute.HashAttributeSet;
-
 import engine.SinglePlayerGame;
 
 public class ServerLife {
