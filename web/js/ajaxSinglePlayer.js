@@ -9,31 +9,39 @@ var contentContainer = document.getElementById("game");
 
 function start(){
 	loadPlayId();
+	response = loadServerResponse();
+	command = getCommand(response);
+	message = getMessage(response);
 	
-	getCommand();
-	
-	showSequence(loadSequence());
+	showSequence(message);
 	
 	
 }
 
+
+function getMessage(response) {
+	
+	return response.substring(response.indexOf(":")+1);
+}
+
 function getCommand(response) {
 	
-	response.substring(response.indexOf(":"));
+	return response.substring(0,response.indexOf(":"));
 }
 
 function showSequence(sequence) {
 	document.getElementById("game").innerHTML="" +
 	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>";
 
-	document.getElementById("sequence").innerHTML=loadSequence();
+	document.getElementById("sequence").innerHTML=sequence;
 	timer = setInterval(function() {
 	time = document.getElementById("countDown");
-	if (time.innerHTML > 0) {
+	if (time.innerHTML > 1) {
 		time.innerHTML = time.innerHTML -1;
 	}else {
 		window.clearInterval(timer);
 		document.getElementById("sequence").innerHTML="";
+		time.innerHTML = 0;
 	}
 	},1000);
 }
@@ -64,28 +72,35 @@ function httpGet(theUrl)
 	xmlHttp.onreadystatechange=cfunc;
     xmlHttp.open( "GET", theUrl, false );
     xmlHttp.send( null );
-//    if (xmlHttp.readyState==4 && xmlHttp.status==200){
-//	    return xmlHttp.responseText;   
-//    }else{
-//    	return null;
-//    	}
-//    
-    
-    
+  
     
     
 }
 
 
-function loadSequence() {
+function loadServerResponse() {
 	sequence = null;
 	cfunc = function(){
 		if (xmlHttp.readyState==4 && xmlHttp.status==200){
-	    	 sequence = xmlHttp.responseText;   
+	    	 response = xmlHttp.responseText;   
 	    }else{
-	    	sequence = null;
+	    	response = null;
 		}
 	}		     
 	httpGet("singleplayer/"+playId,cfunc);
-	return sequence;
+	return response;
 }
+
+
+//function loadSequence() {
+//	sequence = null;
+//	cfunc = function(){
+//		if (xmlHttp.readyState==4 && xmlHttp.status==200){
+//	    	 sequence = xmlHttp.responseText;   
+//	    }else{
+//	    	sequence = null;
+//		}
+//	}		     
+//	httpGet("singleplayer/"+playId,cfunc);
+//	return sequence;
+//}

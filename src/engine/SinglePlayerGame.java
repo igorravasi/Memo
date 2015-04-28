@@ -50,7 +50,7 @@ public class SinglePlayerGame {
 	public String readRequest(String request){
 		
 		if (round == 0) {
-			return "sequenza: "+ getSequence();
+			return "S:"+ getSequence();
 		} else {
 			switch (playerMoved(request)) {
 			case LOOSER:
