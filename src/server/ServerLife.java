@@ -17,6 +17,7 @@ public class ServerLife {
 		
 		try {
 			
+			@SuppressWarnings("resource")
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			Socket clientSocket = null;
 			
