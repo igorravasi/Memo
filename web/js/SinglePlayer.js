@@ -1,21 +1,49 @@
-/**
- * 
- */
 
 var playId = null;
 var xmlHttp = null;
-var contentContainer = document.getElementById("game");
+
 
 
 function start(){
 	loadPlayId();
-	response = loadServerResponse();
-	command = getCommand(response);
-	message = getMessage(response);
+	var response = loadServerResponse("");
+	var command = getCommand(response);
+	var message = getMessage(response);
 	
-	showSequence(message);
+	doTheRightThing(command,message);
+}
+
+
+function showLoser(message){
+	if (message == 1) {
+		writeTheGame("Hai perso al primo colpo. Sembra che per te sia importante allenare la memoria, continua a giocare!");
+	} else if (message == 2) {
+		writeTheGame("La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria");
+	} else {
+		writeTheGame("Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!");
+	}
 	
-	
+}
+
+function showError(message) {
+	writeTheGame("Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.");
+}
+
+function doTheRightThing(command,message) {
+
+
+	switch (command) {
+	case "S":
+		showSequence(message);
+		break;
+	case "L":
+		showLoser(message);
+		break;
+	case "E":
+	default:
+		showError(message);
+		break;
+	}
 }
 
 
@@ -30,27 +58,46 @@ function getCommand(response) {
 }
 
 function showSequence(sequence) {
-	document.getElementById("game").innerHTML="" +
-	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>";
+	writeTheGame("" +
+	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>");
 
 	document.getElementById("sequence").innerHTML=sequence;
-	timer = setInterval(function() {
-	time = document.getElementById("countDown");
+	var timer = setInterval(function() {
+	var time = document.getElementById("countDown");
 	if (time.innerHTML > 1) {
 		time.innerHTML = time.innerHTML -1;
 	}else {
 		window.clearInterval(timer);
 		document.getElementById("sequence").innerHTML="";
 		time.innerHTML = 0;
-		document.getElementById("startButton").innerHTML = "Restart";
+		document.getElementById("startButton").innerHTML = "Riprova";
 		readSequence();
 		
 	}
 	},1000);
 }
 
+function validate(){
+	
+	
+	writtenSequence = document.getElementById("sequenza").value;
+	writtenSequence = replaceAll(" ","+",writtenSequence);
+	writtenSequence = "?S=" + writtenSequence;
+	var response = loadServerResponse(writtenSequence);
+	var command = getCommand(response);
+	var message = getMessage(response);
+	
+	doTheRightThing(command, message);
+	
+	
+}
+
 function readSequence(){
-	document.getElementById("game").innerHTML = '<form id="send" name="sequenza" method="get" action="singleplayer/'+playId+'"><input type="text" id="sequenza" name="S" value=""><br><input type="submit" value="Invia"></form>';
+	writeTheGame('<input type="text" id="sequenza" name="S" value=""><br/><br/><input type="button" class="btn" value="Controlla" onClick="validate()">');
+
+	var timer = setInterval(function() {
+		showError("Tempo scaduto");
+	},1000*60*2)
 }
 
 function loadPlayId(){
@@ -73,42 +120,38 @@ function httpGet(theUrl)
     xmlHttp = new XMLHttpRequest();
     
 	if (xmlHttp == null || xmlHttp == undefined)
-	  {// code for IE6, IE5
+	  {//IE6
 	  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
 	  }
     
 	xmlHttp.onreadystatechange=cfunc;
     xmlHttp.open( "GET", theUrl, false );
-    xmlHttp.send( null );
-  
-    
-    
+    xmlHttp.send( null );  
+ 
 }
 
 
-function loadServerResponse() {
-	sequence = null;
+function loadServerResponse(parameters) {
+	
 	cfunc = function(){
 		if (xmlHttp.readyState==4 && xmlHttp.status==200){
 	    	 response = xmlHttp.responseText;   
 	    }else{
 	    	response = null;
 		}
-	}		     
-	httpGet("singleplayer/"+playId,cfunc);
+	}		 
+
+	httpGet("singleplayer/"+playId+parameters,cfunc);
 	return response;
 }
 
+function trim(str){
+	return str.replace(/^\s+|\s+$/g,'');
+}
+function replaceAll(find, replace, str) {
+	  return str.replace(new RegExp(find, 'g'), replace);
+	}
 
-//function loadSequence() {
-//	sequence = null;
-//	cfunc = function(){
-//		if (xmlHttp.readyState==4 && xmlHttp.status==200){
-//	    	 sequence = xmlHttp.responseText;   
-//	    }else{
-//	    	sequence = null;
-//		}
-//	}		     
-//	httpGet("singleplayer/"+playId,cfunc);
-//	return sequence;
-//}
+function writeTheGame(content) {
+	document.getElementById("game").innerHTML=content;
+}
