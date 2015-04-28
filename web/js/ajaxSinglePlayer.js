@@ -9,9 +9,17 @@ var contentContainer = document.getElementById("game");
 
 function start(){
 	loadPlayId();
+	
+	getCommand();
+	
 	showSequence(loadSequence());
 	
 	
+}
+
+function getCommand(response) {
+	
+	response.substring(response.indexOf(":"));
 }
 
 function showSequence(sequence) {
