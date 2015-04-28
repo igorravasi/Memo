@@ -1,5 +1,6 @@
 package engine;
 
+import java.nio.charset.Charset;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,16 +33,21 @@ public class SinglePlayerGame {
 			}
 		}, 1000*60*3);
 	}
-	public int playerMoved(String playerSequence){
+	private int playerMoved(String playerSequence){
 		keepAlive();
-		if (playerSequence.equalsIgnoreCase(sequence.toString())) {
+		playerSequence = playerSequence.substring(playerSequence.indexOf("?S=")+"?S=".length());
+		playerSequence = playerSequence.replace("+", " ");
+		playerSequence = playerSequence.trim();
+		
+		String actualSequence = getSequence().trim();
+		
+		if (playerSequence.equalsIgnoreCase(actualSequence)) {
 			round++;
 			sequence.secondRound();
 			return round;
 		}else {
 			
-			round = LOOSER;
-			return round;
+			return LOOSER;
 		}
 		
 		
@@ -50,18 +56,32 @@ public class SinglePlayerGame {
 	public String readRequest(String request){
 		
 		if (round == 0) {
+			round++;
 			return "S:"+ getSequence();
 		} else {
-			switch (playerMoved(request)) {
-			case LOOSER:
-				return "Hai perso! Continua ad allentarti e non demordere. Nonostante tutto hai completato ben " + round + " round";
-							 
-			default:
-				return "Good, sequence: " + getSequence();
-			}
+			
+			if (request.indexOf("?S=") >= 0) {
+				
+				return getTheResult(playerMoved(request));
+			} else {
+				return "E: Malformed request, Reload the page";
+			}	
 		}
 		
 	}
+	
+	private String getTheResult(int roundResult){
+		
+		if (roundResult == LOOSER) {
+			
+			return "L: "+ round;
+		} else {
+			return "S:"+ getSequence();
+		}
+		
+		
+	}
+	
 	
 	
 	public String getSequence(){
