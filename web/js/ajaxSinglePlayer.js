@@ -42,9 +42,17 @@ function showSequence(sequence) {
 		window.clearInterval(timer);
 		document.getElementById("sequence").innerHTML="";
 		time.innerHTML = 0;
+		document.getElementById("startButton").innerHTML = "Restart";
+		readSequence();
+		
 	}
 	},1000);
 }
+
+function readSequence(){
+	document.getElementById("game").innerHTML = '<form id="send" name="sequenza" method="get" action="singleplayer/'+playId+'"><input type="text" id="sequenza" name="S" value=""><br><input type="submit" value="Invia"></form>';
+}
+
 function loadPlayId(){
 	
 	cfunc = function(){
