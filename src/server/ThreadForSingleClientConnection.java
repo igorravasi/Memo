@@ -96,15 +96,22 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		} else if (page.indexOf("/singleplayer") == 0) {
 			Integer playId;
 			try {
-				playId = Integer.parseInt(page.substring("/singleplayer".length()+1));
+				int endOfPlayId = page.indexOf('?');
+				if (endOfPlayId>0) {
+										
+					playId = Integer.parseInt(page.substring("/singleplayer".length()+1,endOfPlayId));
+				}else {
+					playId = Integer.parseInt(page.substring("/singleplayer".length()+1));
+				}
+				
 				SinglePlayerGame game = singleGames.get(playId);
 				if (game == null) {
-					writeOutputMessage("Partita non esistente, spiacenti. Forse hai impiegato troppo tempo");
+					writeOutputMessage("E: No game Id");
 					return;
 				}
-				writeOutputMessage(game.readRequest(inputRequest));
+				writeOutputMessage(game.readRequest(page));
 			} catch (NumberFormatException e) {
-				
+				writeOutputMessage("E: Error on parsing Game Id");
 				e.printStackTrace();
 			}
 			
