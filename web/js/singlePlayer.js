@@ -70,7 +70,7 @@ function showSequence(sequence) {
 		window.clearInterval(timer);
 		document.getElementById("sequence").innerHTML="";
 		time.innerHTML = 0;
-		document.getElementById("startButton").innerHTML = "Riprova";
+		document.getElementById("stringStart").innerHTML = "Riprova";
 		readSequence();
 		
 	}
