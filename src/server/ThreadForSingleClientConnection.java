@@ -43,7 +43,7 @@ public class ThreadForSingleClientConnection extends Thread implements Runnable{
 		try {
 			
 			String inputRequest = getRequestLines();
-			System.out.println(inputRequest);
+			System.out.println(inputRequest.substring(0, inputRequest.indexOf("\n")).split(" ")[1]);
 			handleRequest(inputRequest);
 			clientSocket.close();
 			
