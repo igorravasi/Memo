@@ -59,7 +59,7 @@ function getCommand(response) {
 
 function showSequence(sequence) {
 	writeTheGame("" +
-	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>");
+	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! <br/><span id='sequence'></span>");
 
 	document.getElementById("sequence").innerHTML=sequence;
 	var timer = setInterval(function() {
