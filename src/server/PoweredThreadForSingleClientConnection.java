@@ -119,10 +119,10 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			
 			
 		}else {
-			if (page.indexOf("/resources")>=0 || page.indexOf("/font")>= 0) {
+			if (page.endsWith(".jpeg")||page.endsWith(".jpg")||page.endsWith(".png")||page.endsWith(".ico")) {
 				writeOutputFromBinaryFile(page);
 			} else {
-				writeOutputFromFile(page);
+				writeOutputFromTextFile(page);
 			}
 			
 		}
@@ -144,13 +144,13 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 		out.close();
 	}
 	
-	private void writeOutputFromFile(String path) throws FileNotFoundException, IOException {
+	private void writeOutputFromTextFile(String path) throws FileNotFoundException, IOException {
 		
 		BufferedReader fileReader;
 		try {
 			File file = new File("web"+path);
 			fileReader = new BufferedReader(new FileReader(file));
-			String contentLength = file.length() + "";
+			String contentLength = null;
 			
 			String contentType = "text/html"+" ; charset=utf-8";
 			
@@ -160,14 +160,8 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			if (path.endsWith(".css")) {
 				contentType = "text/css";
 			} else if (path.endsWith(".js")) {
-				contentType = "";
-			} else if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
-				contentType = "image/jpeg";
-			} else if (path.endsWith(".png")) {
-				contentType = "image/png";
-			} else if (path.endsWith(".bmp")) {
-				contentType = "image/bmp";
-			}
+				contentType = "text/javascript";
+			} 
 			
 			OutputStreamWriter out = initializeOutput(contentType,contentLength);
 
@@ -184,7 +178,6 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			
 		} catch (FileNotFoundException e) {
 //			TODO: error
-			
 			writeOutputMessage("file non trovato");
 			return;
 		}
@@ -200,16 +193,12 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			File file = new File("web"+path);
 			String contentLength = file.length() +"";
 			
-			String contentType = "text/html"+" ; charset=utf-8";
+			String contentType = "image/ico";
 			
 			
-			//TODO: Refactoring!!! Introduco questa gestione del contenttyoe solo epr verificare che funzionino  i css. Da rifare in altro modo!
+			//TODO: Refactoring!!! Introduco questa gestione del contenttype solo per verificare che funzionino  i css. Da rifare in altro modo!
 			
-			if (path.endsWith(".css")) {
-				contentType = "text/css";
-			} else if (path.endsWith(".js")) {
-				contentType = "";
-			} else if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
+			if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
 				contentType = "image/jpeg";
 			} else if (path.endsWith(".png")) {
 				contentType = "image/png";
