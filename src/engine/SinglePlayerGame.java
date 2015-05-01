@@ -77,10 +77,8 @@ public class SinglePlayerGame {
 		} else {
 			return "S:"+ getSequence();
 		}
-		
-		
+			
 	}
-	
 	
 	
 	public String getSequence(){
