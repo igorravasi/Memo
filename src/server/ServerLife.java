@@ -21,12 +21,12 @@ public class ServerLife {
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			Socket clientSocket = null;
 			
-			Integer threadId = 0;
+//			Integer threadId = 0;
 			
 			while (true) {
 				clientSocket = socket.accept();
 				new ServerThread(clientSocket,singleGames).run();
-				threadId++;
+//				threadId++;
 			}
 			
 			//socket.close();
