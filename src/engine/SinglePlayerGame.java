@@ -70,7 +70,6 @@ public class SinglePlayerGame {
 	private String getTheResult(int roundResult){
 		
 		if (roundResult == LOOSER) {
-			
 			return "L: "+ round;
 		} else {
 			return "S:"+ getSequence();
@@ -86,4 +85,5 @@ public class SinglePlayerGame {
 	public boolean getStatus(){
 		return status;
 	}
+	
 }

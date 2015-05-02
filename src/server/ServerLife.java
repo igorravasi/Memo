@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.services.TextFileService;
 import engine.SinglePlayerGame;
 
 public class ServerLife {
@@ -21,11 +22,13 @@ public class ServerLife {
 			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
 			Socket clientSocket = null;
 			
+			Map<String, IService> services = new HashMap<String, IService>();
+			services.put("/", new TextFileService());
 //			Integer threadId = 0;
 			
 			while (true) {
 				clientSocket = socket.accept();
-				new ServerThread(clientSocket,singleGames).run();
+				new ServerThread(clientSocket,singleGames, services).run();
 //				threadId++;
 			}
 			
