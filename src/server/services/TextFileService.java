@@ -2,6 +2,7 @@ package server.services;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -21,8 +22,10 @@ public class TextFileService implements IService {
 
 		BufferedReader fileReader;
 		String uri = request.getUri();
-		File file = new File("web"+request.getUri());
-
+		File file = new File("web"+uri);
+		if (!file.exists()) {
+			throw new FileNotFoundException();
+		}
 		fileReader = new BufferedReader(new FileReader(file));
 		String contentType = "text/html"+" ; charset=utf-8";
 		

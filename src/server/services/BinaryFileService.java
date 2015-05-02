@@ -1,6 +1,7 @@
 package server.services;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -17,10 +18,16 @@ public class BinaryFileService implements IService{
 
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request)
-			throws IOException {
+			throws IOException{
+		
 		
 		String uri = request.getUri();
+
 		File file = new File("web"+uri);
+		if (!file.exists()) {
+			throw new FileNotFoundException();
+		}
+
 		String contentLength = file.length() +"";
 		String contentType = null;
 		
@@ -57,12 +64,13 @@ public class BinaryFileService implements IService{
 		
 		out.write("\n");
 		
-		
-		out.flush();
 		Files.copy(file.toPath(), clientSocket.getOutputStream());
 		
 		out.close();
 		
 	}
+	
+	
+	
 
 }
