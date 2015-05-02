@@ -2,12 +2,14 @@ package server.services;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import server.HttpRequest;
 import server.IService;
@@ -38,7 +40,8 @@ public class TextFileService implements IService {
 				);
 
 		out.write("HTTP/1.1 200 OK\n");
-		out.write("Date: Tue, 17 Mar 2014 14:47:00\n");
+		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
+		out.write("Date: " + serverDate + "\n");
 		out.write("Content-Type: "+ contentType + "\n");
 					
 		out.write("\n");

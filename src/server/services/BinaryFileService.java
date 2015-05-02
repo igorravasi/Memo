@@ -6,6 +6,9 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import server.HttpRequest;
 import server.IService;
@@ -40,7 +43,8 @@ public class BinaryFileService implements IService{
 				);
 
 		out.write("HTTP/1.1 200 OK\n");
-		out.write("Date: Tue, 17 Mar 2014 14:47:00\n");
+		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
+		out.write("Date: " + serverDate + "\n");
 		
 		if (contentType != null) {
 			out.write("Content-Type: "+ contentType + "\n");
