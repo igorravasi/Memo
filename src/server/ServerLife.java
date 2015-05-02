@@ -25,7 +25,7 @@ public class ServerLife {
 			
 			while (true) {
 				clientSocket = socket.accept();
-				new PoweredThreadForSingleClientConnection(clientSocket,singleGames).run();
+				new ServerThread(clientSocket,singleGames).run();
 				threadId++;
 			}
 			

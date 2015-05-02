@@ -16,16 +16,12 @@ import engine.SinglePlayerGame;
 
 //TODO: pesante refactoring. Questa classe è assolutamente troppo lunga e poco coesa!
 
-public class PoweredThreadForSingleClientConnection extends Thread implements Runnable{
-
-
+public class ServerThread extends Thread implements Runnable{
 
 	private Socket clientSocket;
 	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	
-
-
-	public PoweredThreadForSingleClientConnection(Socket clientSocket,
+	public ServerThread(Socket clientSocket,
 			Map<Integer, SinglePlayerGame> singleGames) {
 		super();
 		this.clientSocket = clientSocket;
@@ -51,18 +47,8 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 	}
 
 
-
-	
 	private void handleRequest(String page)throws FileNotFoundException, IOException {
-		
-		
-
-		
-		if (page == null) {
-			//TODO: error
-			page = "/error";
-		}
-		
+			
 		//TODO Anzichè l'if-else sarebbe opportuno usare ad esempio una mappa, con chiavi gli url e valore la classe gestore
 		if (page.compareToIgnoreCase("/singleplayer") == 0) {
 			startSinglePlayerGame();

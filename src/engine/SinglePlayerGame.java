@@ -7,7 +7,6 @@ public class SinglePlayerGame {
 
 	private static final int LOOSER = -1;
 	
-	
 	private MemoSequence sequence = new MemoSequence();
 	private Integer round = 0;
 	private boolean status = true;
@@ -16,7 +15,6 @@ public class SinglePlayerGame {
 	public SinglePlayerGame() {
 		super();
 		keepAlive();
-		
 	}
 
 	private void keepAlive(){
