@@ -43,6 +43,7 @@ public class BinaryFileService implements IService{
 				);
 
 		out.write("HTTP/1.1 200 OK\n");
+		
 		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
 		out.write("Date: " + serverDate + "\n");
 		
