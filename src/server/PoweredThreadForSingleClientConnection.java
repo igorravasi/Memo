@@ -5,14 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import engine.SinglePlayerGame;
 
@@ -198,8 +196,8 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			}
 		}
 		
-		
 	}
+	
 	private OutputStreamWriter initializeOutput(String contentType, String contentLength) throws IOException {
 		OutputStreamWriter out = new 
 			OutputStreamWriter(
@@ -209,18 +207,13 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 
 		out.write("HTTP/1.1 200 OK\n");
 		out.write("Date: Tue, 17 Mar 2014 14:47:00\n");
-	
-	
 		out.write("Content-Type: "+ contentType + "\n");
 		
 		if (contentLength != null) {
-			
 			out.write("Content-Length: " + contentLength+"\n");
-			
 		}
 		
 		out.write("\n");
-		
 		return out;
 	}
 	
