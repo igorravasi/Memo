@@ -18,6 +18,7 @@ public class HttpRequest {
 			)	
 		);
 		String line = in.readLine();
+		
 		String[] lineElements=line.split(" ");
 		
 		//L'uri è nella prima riga, al secondo posto.

@@ -12,6 +12,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import server.HttpMessage;
 import server.HttpRequest;
 import server.IService;
 
@@ -36,29 +37,22 @@ public class TextFileService implements IService {
 			contentType = "text/javascript";
 		} 
 		
-		OutputStreamWriter out = new 
-				OutputStreamWriter(
-						clientSocket.getOutputStream(),
-						Charset.forName("UTF-8").newEncoder()
-				);
-
-		out.write("HTTP/1.1 200 OK\n");
-		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
-		out.write("Date: " + serverDate + "\n");
-		out.write("Content-Type: "+ contentType + "\n");
-					
-		out.write("\n");
+		
+		HttpMessage message = new HttpMessage();
+		message.setContentType(contentType);
+		 
+		message.sendResponseHeader(clientSocket);
 
 		String fileLine=fileReader.readLine();
 		while(fileLine != null){
-			out.write(fileLine+"\r\n");
+			message.getOut().write(fileLine+"\r\n");
 			fileLine = fileReader.readLine();
 			
 		}
 		
 		fileReader.close();
 		
-		out.close();
+		message.closeHttpResponse();
 
 	
 		

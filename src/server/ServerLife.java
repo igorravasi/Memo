@@ -27,8 +27,13 @@ public class ServerLife {
 //			Integer threadId = 0;
 			
 			while (true) {
-				clientSocket = socket.accept();
-				new ServerThread(clientSocket,singleGames, services).run();
+				
+				try {
+					clientSocket = socket.accept();
+					new ServerThread(clientSocket,singleGames, services).run();
+				} catch (Exception e) {
+					
+				}
 //				threadId++;
 			}
 			

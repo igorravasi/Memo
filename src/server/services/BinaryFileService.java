@@ -3,14 +3,10 @@ package server.services;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
+import server.HttpMessage;
 import server.HttpRequest;
 import server.IService;
 
@@ -43,30 +39,14 @@ public class BinaryFileService implements IService{
 		}
 		
 
-		OutputStreamWriter out = new 
-				OutputStreamWriter(
-						clientSocket.getOutputStream(),
-						Charset.forName("UTF-8").newEncoder()
-				);
-
-		out.write("HTTP/1.1 200 OK\n");
+		HttpMessage message = new HttpMessage();
+		message.setContentLength(contentLength);
+		message.setContentType(contentType);
+		message.sendResponseHeader(clientSocket);
+				
+		Files.copy(file.toPath(), message.getOutStream());
 		
-		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
-		out.write("Date: " + serverDate + "\n");
-		
-		if (contentType != null) {
-			out.write("Content-Type: "+ contentType + "\n");
-		}
-		
-		if (contentLength != null) {
-			out.write("Content-Length: " + contentLength+"\n");
-		}
-		
-		out.write("\n");
-		
-		Files.copy(file.toPath(), clientSocket.getOutputStream());
-		
-		out.close();
+		message.closeHttpResponse();
 		
 	}
 	
