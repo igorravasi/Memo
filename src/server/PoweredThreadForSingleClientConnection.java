@@ -25,11 +25,7 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 	private Socket clientSocket;
 	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	
-	@SuppressWarnings("serial")
-	private class BadStringException extends Exception{
 
-	}
-	
 
 	public PoweredThreadForSingleClientConnection(Socket clientSocket,
 			Map<Integer, SinglePlayerGame> singleGames) {
@@ -44,45 +40,25 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 	
 		try {
 			
-			String inputRequest = getRequestLines();
-			System.out.println(inputRequest.substring(0, inputRequest.indexOf("\n")).split(" ")[1]);
-			handleRequest(inputRequest);
+			HttpRequest request = new HttpRequest(clientSocket);
+			System.out.println(request.getUri());
+			handleRequest(request.getUri());
 			clientSocket.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (BadStringException e) {
-			//Non fare niente e continua (chiude il thread) senza fermare l'esecuzione del programma
-		}	
+		}
 	}
 
-	private String getRequestLines() throws IOException, BadStringException {
-		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		String inputRequest =  in.readLine();
-		if (inputRequest == null) {
-			throw new BadStringException();
-			
-		}
-		String line = "\n";
-		
-		while(line != null && line.length() != 0){
-			inputRequest += line + "\n";
-			line = in.readLine();
-			
-		}
-		return inputRequest;
-	}
 
-// TODO: gestire richieste di file non html (esempio immagini) o usare un server http free, come apache
+
 	
-	private void handleRequest(String inputRequest)throws FileNotFoundException, IOException {
+	private void handleRequest(String page)throws FileNotFoundException, IOException {
 		
 		
-		StringTokenizer tokenizer = new StringTokenizer(inputRequest);
-		tokenizer.nextToken();
-		String page = tokenizer.nextToken();
+
 		
 		if (page == null) {
 			//TODO: error
@@ -214,7 +190,7 @@ public class PoweredThreadForSingleClientConnection extends Thread implements Ru
 			out.close();
 			
 		} catch (IOException e) {
-			System.err.println("ioexception");
+			System.err.println("ioexception: " + "web"+path);
 			try {
 				writeOutputMessage("error");
 			} catch (IOException e1) {
