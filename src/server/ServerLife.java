@@ -24,7 +24,7 @@ public class ServerLife {
 			
 			Map<String, IService> services = new HashMap<String, IService>();
 			services.put("/", new TextFileService());
-//			Integer threadId = 0;
+			
 			
 			while (true) {
 				
@@ -34,7 +34,7 @@ public class ServerLife {
 				} catch (Exception e) {
 					
 				}
-//				threadId++;
+				
 			}
 			
 			//socket.close();
