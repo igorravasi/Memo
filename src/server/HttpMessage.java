@@ -42,7 +42,6 @@ public class HttpMessage {
 		
 		out.write("\n");
 		
-		
 	}
 	
 	
@@ -67,10 +66,6 @@ public class HttpMessage {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-
-
-	
-	
 
 	
 }
