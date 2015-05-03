@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.basics.HttpRequest;
+
 
 public class ServerThread extends Thread implements Runnable{
 

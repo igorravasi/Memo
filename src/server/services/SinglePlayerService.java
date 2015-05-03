@@ -5,9 +5,9 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-import server.HttpRequest;
-import server.HttpStringMessage;
 import server.IService;
+import server.basics.HttpRequest;
+import server.basics.HttpStringMessage;
 import engine.SinglePlayerGame;
 
 public class SinglePlayerService implements IService {

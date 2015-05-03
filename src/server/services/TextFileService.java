@@ -7,9 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.Socket;
 
-import server.HttpMessage;
-import server.HttpRequest;
 import server.IService;
+import server.basics.HttpMessage;
+import server.basics.HttpRequest;
 
 public class TextFileService implements IService {
 

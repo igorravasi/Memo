@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Files;
 
-import server.HttpMessage;
-import server.HttpRequest;
 import server.IService;
+import server.basics.HttpMessage;
+import server.basics.HttpRequest;
 
 public class BinaryFileService implements IService{
 

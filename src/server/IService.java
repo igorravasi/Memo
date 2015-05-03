@@ -3,6 +3,8 @@ package server;
 import java.io.IOException;
 import java.net.Socket;
 
+import server.basics.HttpRequest;
+
 public interface IService {
 
 	
