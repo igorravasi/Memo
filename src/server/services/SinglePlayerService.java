@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 import server.IService;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import engine.SinglePlayerGame;
 
-public class SinglePlayerService implements IService {
+public class SinglePlayerService implements IService, Observer{
 
 	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	private HttpStringMessage message = new HttpStringMessage();
@@ -56,19 +58,21 @@ public class SinglePlayerService implements IService {
 	}
 	
 	
+	
 	private void initializeGame(Socket clientSocket) throws IOException{
 		
-		
-		//TODO: Aggiungere un observer che osservi le notifiche dello status delle partite, che dovranno essere observable
-		
-		//sostituire singleGames.size() con un numero calcolato appositamente, libero.
 		Integer playId = getFreeIndex();
 		
-		singleGames.put(playId, new SinglePlayerGame());
+		SinglePlayerGame aSingleGame = new SinglePlayerGame(playId);
+		aSingleGame.addObserver(this);
+		
+		singleGames.put(playId, aSingleGame);
+		
 		message.sendMessage(clientSocket, playId+"");
 	}
 	
 	
+	//TODO: Questo metodo porta ad una responsabilità multipla?!
 	private Integer getFreeIndex(){
 
 		if (singleGames.size() <= Integer.MAX_VALUE) {
@@ -79,10 +83,21 @@ public class SinglePlayerService implements IService {
 					return i;
 				}
 			}
+
 		}
 	
-		//TODO: null---> eccezione e gestire
+		//TODO: null---> throw eccezione e gestire
 		return null;
+	}
+
+
+
+	@Override
+	public void update(Observable obs, Object arg1) {
+		
+		Integer playId = ((SinglePlayerGame) obs).getPlayId();
+		singleGames.remove(playId);
+		
 	}
 	
 	

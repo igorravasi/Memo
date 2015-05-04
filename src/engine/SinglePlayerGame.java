@@ -1,19 +1,26 @@
 package engine;
 
+import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SinglePlayerGame {
+public class SinglePlayerGame extends Observable{
 
 	private static final int LOOSER = -1;
 	
 	private MemoSequence sequence = new MemoSequence();
 	private Integer round = 0;
-	private boolean status = true;
+//	private boolean status = true;
 	private Timer isAliveTimer = new Timer();
+	private Integer playId;
 	
-	public SinglePlayerGame() {
+	public Integer getPlayId() {
+		return playId;
+	}
+
+	public SinglePlayerGame(Integer playId) {
 		super();
+		this.playId = playId;
 		keepAlive();
 	}
 
@@ -25,10 +32,10 @@ public class SinglePlayerGame {
 			
 			@Override
 			public void run() {
-				status = false;
-				
+				setChanged();
+				notifyObservers();
 			}
-		}, 1000*60*3);
+		}, 1000*60*2); //Dopo due minuti di inattività notifica l'observer
 	}
 	private int playerMoved(String playerSequence){
 		keepAlive();
@@ -78,12 +85,11 @@ public class SinglePlayerGame {
 	}
 	
 	
+	
+	
 	public String getSequence(){
 		return sequence.toString();
 	}
-	
-	public boolean getStatus(){
-		return status;
-	}
-	
+
+
 }
