@@ -10,7 +10,6 @@ import server.services.TextFileService;
 public class ServerLauncher {
 
 	
-	
 	public static void main(String[] args) {
 		
 		HttpMemoServer server = new HttpMemoServer();
