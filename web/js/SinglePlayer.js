@@ -3,7 +3,6 @@ var playId = null;
 var xmlHttp = null;
 
 
-
 function start(){
 	loadPlayId();
 	var response = loadServerResponse("");
@@ -61,19 +60,31 @@ function showSequence(sequence) {
 	writeTheGame("" +
 	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>");
 
+	
+	
 	document.getElementById("sequence").innerHTML=sequence;
-	var timer = setInterval(function() {
-	var time = document.getElementById("countDown");
-	if (time.innerHTML > 1) {
-		time.innerHTML = time.innerHTML -1;
-	}else {
-		window.clearInterval(timer);
-		document.getElementById("sequence").innerHTML="";
-		time.innerHTML = 0;
-		document.getElementById("startButton").innerHTML = "Riprova";
-		readSequence();
+	intervalTimer = setInterval(function() {
+	var timerText = document.getElementById("countDown");
+	
+	//Per evitare che se si preme su riprova il timer continui a girare
+	if (document.getElementById("countDown")) {
+		if (timerText.innerHTML > 1) {
+			
+			timerText.innerHTML = timerText.innerHTML -1;
+		}else {
+			window.clearInterval(intervalTimer);
+			document.getElementById("sequence").innerHTML="";
+			timerText.innerHTML = 0;
+			
+			document.getElementById("stringStart").innerHTML = "Riprova";
+			readSequence();
+			
+		}
+	} else {
+		window.clearInterval(intervalTimer);
 		
 	}
+	
 	},1000);
 }
 
