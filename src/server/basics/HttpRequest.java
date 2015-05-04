@@ -38,7 +38,5 @@ public class HttpRequest {
 		return uri;
 	}
 	
-	public String getUriParent(){
-		return uri.substring(0, uri.lastIndexOf("/"));
-	}
+
 }
