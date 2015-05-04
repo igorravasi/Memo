@@ -58,10 +58,31 @@ public class SinglePlayerService implements IService {
 	
 	private void initializeGame(Socket clientSocket) throws IOException{
 		
+		
+		//TODO: Aggiungere un observer che osservi le notifiche dello status delle partite, che dovranno essere observable
+		
 		//sostituire singleGames.size() con un numero calcolato appositamente, libero.
-		Integer playId = singleGames.size();
+		Integer playId = getFreeIndex();
+		
 		singleGames.put(playId, new SinglePlayerGame());
 		message.sendMessage(clientSocket, playId+"");
+	}
+	
+	
+	private Integer getFreeIndex(){
+
+		if (singleGames.size() <= Integer.MAX_VALUE) {
+			return singleGames.size();
+		} else {
+			for (int i = 0; i < singleGames.size(); i++) {
+				if (singleGames.get(i) == null) {
+					return i;
+				}
+			}
+		}
+	
+		//TODO: null---> eccezione e gestire
+		return null;
 	}
 	
 	
