@@ -1,6 +1,5 @@
-package test;
+package server;
 
-import server.HttpMemoServer;
 import server.services.BinaryFileService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
