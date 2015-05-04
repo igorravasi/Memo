@@ -76,7 +76,7 @@ function showSequence(sequence) {
 			document.getElementById("sequence").innerHTML="";
 			timerText.innerHTML = 0;
 			
-			document.getElementById("stringStart").innerHTML = "Riprova";
+			document.getElementById("stringStart").innerHTML = "Riparti";
 			readSequence();
 			
 		}
