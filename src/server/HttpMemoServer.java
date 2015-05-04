@@ -10,24 +10,35 @@ import server.services.BinaryFileService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
 
-public class ServerLife {
+public class HttpMemoServer {
 
-	public static void main(String[] args) {
+	
+	private int port;
+	private Map<String, IService> services = new HashMap<String, IService>();
+	
+	
+	
+	public void setPort(int port){
+		this.port = port;
+	}
+	
+	public void addService(String path, IService newService){
+		services.put(path,newService);
+		
+	}
+	
+	
+	public void launch() {
 		
 		//TODO: Aggiungere un observer che osservi le notifiche dello status delle partite, che dovranno essere observable
 		
 		try {
 			
 			@SuppressWarnings("resource")
-			ServerSocket socket=new ServerSocket(ServerParameters.PORT);
+			ServerSocket socket=new ServerSocket(port);
 			Socket clientSocket = null;
+						
 			
-			Map<String, IService> services = new HashMap<String, IService>();
-			services.put("/", new TextFileService());
-			services.put("/css", new TextFileService());
-			services.put("/js", new TextFileService());
-			services.put("/resources", new BinaryFileService());
-			services.put("/singleplayer", new SinglePlayerService());
 			
 			
 			while (true) {

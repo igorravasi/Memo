@@ -61,9 +61,7 @@ public class ServerThread extends Thread implements Runnable{
 		
 		service.sendHttpResponse(clientSocket, request);
 			
-		
-	}
-	
+		}
 	
 	
 }
