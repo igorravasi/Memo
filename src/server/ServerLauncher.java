@@ -16,7 +16,12 @@ public class ServerLauncher {
 		server.addService("/", fileService);
 		server.addService("/css", fileService);
 		server.addService("/js", fileService);
-		server.addService("/resources", new BinaryFileService());
+		
+		BinaryFileService binaryService = new BinaryFileService();
+		
+		server.addService("/resources", binaryService);
+		server.addService("/favicon.ico", binaryService);
+		
 		server.addService("/singleplayer", new SinglePlayerService());
 		
 		server.launch();
