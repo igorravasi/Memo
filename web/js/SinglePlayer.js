@@ -15,17 +15,17 @@ function start(){
 
 function showLoser(message){
 	if (message == 1) {
-		writeTheGame("Hai perso al primo colpo. Sembra che per te sia importante allenare la memoria, continua a giocare!");
+		writeTheGame("<h3>Hai perso al primo colpo. Sembra che per te sia importante allenare la memoria, continua a giocare!</h3>");
 	} else if (message == 2) {
-		writeTheGame("La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria");
+		writeTheGame("<h3>La tua memoria non è delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
 	} else {
-		writeTheGame("Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!");
+		writeTheGame("<h3>Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!</h3>");
 	}
 	
 }
 
 function showError(message) {
-	writeTheGame("Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.");
+	writeTheGame("<h3>Si è verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
 }
 
 function doTheRightThing(command,message) {
@@ -58,7 +58,7 @@ function getCommand(response) {
 
 function showSequence(sequence) {
 	writeTheGame("" +
-	"Dai un'occhiata alla sequenza!, hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span>");
+	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi! -><span id='sequence'></span></h3>");
 
 	
 	
@@ -104,7 +104,7 @@ function validate(){
 }
 
 function readSequence(){
-	writeTheGame('<input type="text" id="sequenza" name="S" value=""><br/><br/><input type="button" class="btn" value="Controlla" onClick="validate()">');
+	writeTheGame('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center><br/><br/><input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
 
 	var timer = setInterval(function() {
 		showError("Tempo scaduto");
