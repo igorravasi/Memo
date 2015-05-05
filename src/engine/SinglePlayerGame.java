@@ -84,8 +84,7 @@ public class SinglePlayerGame extends Observable{
 			
 	}
 	
-	
-	
+
 	
 	public String getSequence(){
 		return sequence.toString();
