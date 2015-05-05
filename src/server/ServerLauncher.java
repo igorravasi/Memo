@@ -41,7 +41,7 @@ public class ServerLauncher {
 	
 	public static void loadContentTypes(Map<String, String> contentTypes){
 		
-		contentTypes.put(".html", "text/html ; charset=utf-8");
+		contentTypes.put(".html", "text/html");
 		contentTypes.put(".css", "text/css");
 		contentTypes.put(".js", "text/javascript");
 		contentTypes.put(".jpg", "image/jpeg");

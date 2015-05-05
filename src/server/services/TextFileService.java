@@ -41,7 +41,7 @@ public class TextFileService implements IService {
 		
 		
 		String extension = uri.substring(uri.lastIndexOf("."), uri.length());	
-		contentType = contentTypes.get(extension);
+		contentType = contentTypes.get(extension) + "; charset=utf-8";
 		
 		HttpMessage message = new HttpMessage();
 		message.setContentType(contentType);

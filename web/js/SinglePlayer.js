@@ -17,7 +17,7 @@ function showLoser(message){
 	if (message == 1) {
 		writeTheGame("<h3>Hai perso al primo colpo. Sembra che per te sia importante allenare la memoria, continua a giocare!</h3>");
 	} else if (message == 2) {
-		writeTheGame("<h3>La tua memoria non è delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
+		writeTheGame("<h3>La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
 	} else {
 		writeTheGame("<h3>Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!</h3>");
 	}
@@ -25,7 +25,7 @@ function showLoser(message){
 }
 
 function showError(message) {
-	writeTheGame("<h3>Si è verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
+	writeTheGame("<h3>Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
 }
 
 function doTheRightThing(command,message) {
