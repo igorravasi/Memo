@@ -3,12 +3,18 @@ package engine;
 import java.nio.charset.Charset;
 import java.util.Random;
 
+
+//TODO: Refactoring della classe, possibili design pattern che migliorerebbero l'architettura e le prestazioni: flyweight e prototype
 public class MemoElement {
 
-	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, (byte)0x81};
+//	byte leftBound = (byte) 0x81;
+//	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
+//	TODO: SCOMMENTARE prima di questo commento dopo ai test fatti con i digit dell'utf-8 anzichè le emoji
+//		e commentare le due righe dopo questo commento
+	byte leftBound = (byte)0x30;
+	byte[] emojBytes = {leftBound};
 	
-//	TODO: Rimpiazzare la logica MAX_INT_CODE e switch-case con un'enumerazione. 
-//	TODO: Refactoring della classe, possibili design pattern che migliorerebbero l'architettura e le prestazioni: flyweight e prototype 
+ 
 	
 	
 //	public MemoElement(byte lastByte) {
@@ -20,9 +26,8 @@ public class MemoElement {
 	public MemoElement() {
 		super();
 		
-		Random randomizer = new Random();
-		randomizer.setSeed(randomizer.nextLong());
-		//setEmoj(randomizer.nextInt(emoj.length()));
+		
+		randomizeLastByte();
 		
 	}
 
@@ -32,6 +37,21 @@ public class MemoElement {
 		return new String(emojBytes, Charset.forName("UTF-8"));
 	}
 
+	
+	private void randomizeLastByte(){
+		Random randomizer = new Random();
+		randomizer.setSeed(randomizer.nextLong());
+		
+		emojBytes[emojBytes.length -1] = (byte) (leftBound + randomizer.nextInt(10));
+
+		for (int i = 0; i < emojBytes.length; i++) {
+			System.err.print(" 0x");
+			System.err.print(Integer.toHexString(emojBytes[i] & 0xFF));
+			
+		}
+		System.err.println();
+	}
+	
 //	public void setEmoj(String emoj) {
 //		this.emoj = emoj;
 //	}
