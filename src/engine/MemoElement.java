@@ -1,20 +1,19 @@
 package engine;
 
+import java.nio.charset.Charset;
 import java.util.Random;
 
 public class MemoElement {
 
-	private Integer number;
-	private Character colourCode;
-	private static final Integer MAX_INT_CODE = 3;	
+	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, (byte)0x81};
+	String emoj = new String(emojBytes, Charset.forName("UTF-8"));
 //	TODO: Rimpiazzare la logica MAX_INT_CODE e switch-case con un'enumerazione. 
 //	TODO: Refactoring della classe, possibili design pattern che migliorerebbero l'architettura e le prestazioni: flyweight e prototype 
 	
 	
-	public MemoElement(Integer number, Integer intColourCode) {
+	public MemoElement(String emoj) {
 		super();
-		this.number = number;
-		setColourCode(intColourCode);
+		this.emoj = emoj;
 	}
 
 	public MemoElement() {
@@ -22,52 +21,18 @@ public class MemoElement {
 		
 		Random randomizer = new Random();
 		randomizer.setSeed(randomizer.nextLong());
-		setNumber(randomizer.nextInt(10));
-		setColourCode(randomizer.nextInt(MAX_INT_CODE + 1));
-	}
-
-	public Integer getNumber() {
-		return number;
-	}
-
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
-
-	public Character getColourCode() {
-		return colourCode;
-	}
-
-	public void setColourCode(Integer intColourCode) {
-
-		Character tmpChar = null;
+		//setEmoj(randomizer.nextInt(emoj.length()));
 		
-		if (intColourCode < 0) {
-			intColourCode = 0;
-		} else if (intColourCode > MAX_INT_CODE) {
-			intColourCode = MAX_INT_CODE;
-		}
-		
-		switch (intColourCode) {
-		case 0:
-			tmpChar = 'r';
-			break;
-		case 1:
-			tmpChar = 'g';
-			break;
-		case 2:
-			tmpChar = 'b';
-			break;
-		case 3:
-			tmpChar = 'y';
-			break;	
-		default:
-			break;
-		}
-		
-		
-		this.colourCode = tmpChar;
 	}
+
 	
+	
+	public String getEmoj() {
+		return emoj;
+	}
+
+	public void setEmoj(String emoj) {
+		this.emoj = emoj;
+	}
 	
 }
