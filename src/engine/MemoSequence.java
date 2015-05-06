@@ -37,7 +37,7 @@ public class MemoSequence {
 		
 		for (int i = 0; i < counter; i++) {
 			MemoElement tmpMemoElement = sequenza.get(i);
-			tmpString += tmpMemoElement.getEmoj().toString();
+			tmpString += tmpMemoElement.getEmoj();
 		}
 		
 		return tmpString;
