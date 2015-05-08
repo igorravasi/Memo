@@ -7,6 +7,7 @@ import java.util.TimerTask;
 public class SinglePlayerGame extends Observable{
 
 	private static final int LOOSER = -1;
+	private static final int ALIVE_TIMER = 1000*60*2; //DUE MINUTI
 	
 	private MemoSequence sequence = new MemoSequence();
 	private Integer round = 0;
@@ -35,7 +36,7 @@ public class SinglePlayerGame extends Observable{
 				setChanged();
 				notifyObservers();
 			}
-		}, 1000*60*2); //Dopo due minuti di inattività notifica l'observer
+		}, ALIVE_TIMER); //Dopo due minuti di inattività notifica l'observer
 	}
 	private int playerMoved(String playerSequence){
 		keepAlive();
