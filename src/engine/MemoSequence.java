@@ -28,6 +28,16 @@ public class MemoSequence {
 		
 	}
 	
+	public String getEscapedString(){
+		
+		String result = new String();
+		for (int i = 0; i < counter; i++) {
+			result += sequenza.get(i).getEscapedBytes();
+		}
+		
+		return result;
+
+	}
 	
 
 	@Override
