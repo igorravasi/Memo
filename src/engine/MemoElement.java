@@ -44,12 +44,7 @@ public class MemoElement {
 		
 		emojBytes[emojBytes.length -1] = (byte) (leftBound + randomizer.nextInt(10));
 
-		for (int i = 0; i < emojBytes.length; i++) {
-			System.err.print(" 0x");
-			System.err.print(Integer.toHexString(emojBytes[i] & 0xFF));
-			
-		}
-		System.err.println();
+
 	}
 	
 //	public void setEmoj(String emoj) {
