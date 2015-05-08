@@ -60,6 +60,7 @@ public class SinglePlayerGame extends Observable{
 	public String readRequest(String request){
 		
 		if (round == 0) {
+			keepAlive();
 			round++;
 			return "S:"+ getSequence();
 		} else {
@@ -86,7 +87,7 @@ public class SinglePlayerGame extends Observable{
 	
 
 	
-	public String getSequence(){
+	private String getSequence(){
 		return sequence.toString();
 	}
 
