@@ -7,12 +7,12 @@ import java.util.Random;
 //TODO: Refactoring della classe, possibili design pattern che migliorerebbero l'architettura e le prestazioni: flyweight e prototype
 public class MemoElement {
 
-//	byte leftBound = (byte) 0x81;
-//	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
+	byte leftBound = (byte) 0x81;
+	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
 //	TODO: SCOMMENTARE prima di questo commento dopo ai test fatti con i digit dell'utf-8 anzichè le emoji
 //		e commentare le due righe dopo questo commento
-	byte leftBound = (byte)0x30;
-	byte[] emojBytes = {leftBound};
+//	byte leftBound = (byte)0x30;
+//	byte[] emojBytes = {leftBound};
 	
  
 	
@@ -38,6 +38,18 @@ public class MemoElement {
 	}
 
 	
+	public String getEscapedBytes(){
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < emojBytes.length; i++) {
+			sb.append("%");
+			sb.append(String.format("%02X", emojBytes[i]));
+		}
+		
+		return sb.toString();
+	}
+	
 	private void randomizeLastByte(){
 		Random randomizer = new Random();
 		randomizer.setSeed(randomizer.nextLong());
@@ -47,8 +59,6 @@ public class MemoElement {
 
 	}
 	
-//	public void setEmoj(String emoj) {
-//		this.emoj = emoj;
-//	}
+
 	
 }
