@@ -1,10 +1,11 @@
 
 var playId = null;
 var xmlHttp = null;
-
+var intervalTimer;
 
 function start(){
 	loadPlayId();
+	window.clearInterval(intervalTimer);
 	var response = loadServerResponse("");
 	var command = getCommand(response);
 	var message = getMessage(response);
@@ -106,9 +107,9 @@ function validate(){
 function readSequence(){
 	writeTheGame('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center><br/><br/><input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
 
-	var timer = setInterval(function() {
-		showError("Tempo scaduto");
-	},1000*60*2)
+//	var timer = setInterval(function() {
+//		showError("Tempo scaduto");
+//	},1000*60*2)
 }
 
 function loadPlayId(){
