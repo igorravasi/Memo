@@ -1,6 +1,5 @@
 package engine;
 
-import java.nio.charset.Charset;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,17 +43,12 @@ public class SinglePlayerGame extends Observable{
 		playerSequence = playerSequence.substring(playerSequence.indexOf("?S=")+"?S=".length());
 		playerSequence = playerSequence.replace("+", " ");
 		playerSequence = playerSequence.trim();
+				
 		
-//		playerSequence = new String(playerSequence.getBytes(Charset.forName("UTF-8")),Charset.forName("UTF-8"));
-		
-		String actualSequence = getSequence().trim();
-
-
-		byte[] actualSequenceBytes = actualSequence.getBytes(Charset.forName("UTF-8"));
-		byte[] playerSequenceBytes = playerSequence.getBytes(Charset.forName("UTF-8"));
+		String actualSequence = getEscapedSequence();
 		
 		
-		if (compareSequencesBytes(actualSequenceBytes, playerSequenceBytes)) {
+		if (actualSequence.equalsIgnoreCase(playerSequence)) {
 			round++;
 			sequence.secondRound();
 			return round;
@@ -93,26 +87,16 @@ public class SinglePlayerGame extends Observable{
 		}
 			
 	}
-	
 
-	private boolean compareSequencesBytes(byte[] sequence1, byte[] sequence2){
-		
-		
-		if (sequence1.length == sequence2.length) {
-			for (int i = 0; i < sequence1.length; i++) {
-				if (!(sequence1[i] == sequence2[i])) {
-					return false;
-				}
-			}
-			return true;
-		}
-		return false;
-	}
-	
-	
+
 	
 	private String getSequence(){
 		return sequence.toString();
+	
+	}
+	
+	private String getEscapedSequence(){
+		return sequence.getEscapedString();
 	}
 
 
