@@ -60,7 +60,7 @@ function getCommand(response) {
 function showSequence(sequence) {
 	writeTheGame("" +
 	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi! <br7><span id='sequence'></span></h3>");
-
+	
 	
 	
 	document.getElementById("sequence").innerHTML=sequence;
@@ -112,6 +112,8 @@ function readSequence(){
 //		showError("Tempo scaduto");
 //	},1000*60*2)
 }
+
+
 
 function loadPlayId(){
 	
@@ -169,7 +171,11 @@ function writeTheGame(content) {
 	document.getElementById("game").innerHTML=content;
 }
 
-function tastiera(emoji,id){
+function keyboard(emoji,id){
 	var element = document.getElementById(id);
 	element.value += emoji;
 	}
+
+function showKeyboard(){
+	writeTheGame('<button onclick="keyboard("😉", "sequenza")">😉</button>');
+}
