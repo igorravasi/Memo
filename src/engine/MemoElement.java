@@ -9,8 +9,8 @@ public class MemoElement {
 
 	byte leftBound = (byte) 0x81;
 	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
-//	TODO: SCOMMENTARE prima di questo commento dopo ai test fatti con i digit dell'utf-8 anzichè le emoji
-//		e commentare le due righe dopo questo commento
+
+//Valori per debug con numeri anzichè emoticon
 //	byte leftBound = (byte)0x30;
 //	byte[] emojBytes = {leftBound};
 	
@@ -25,8 +25,6 @@ public class MemoElement {
 
 	public MemoElement() {
 		super();
-		
-		
 		randomizeLastByte();
 		
 	}
@@ -37,18 +35,6 @@ public class MemoElement {
 		return new String(emojBytes, Charset.forName("UTF-8"));
 	}
 
-	
-	public String getEscapedBytes(){
-		
-		StringBuilder sb = new StringBuilder();
-		
-		for (int i = 0; i < emojBytes.length; i++) {
-			sb.append("%");
-			sb.append(String.format("%02X", emojBytes[i]));
-		}
-		
-		return sb.toString();
-	}
 	
 	private void randomizeLastByte(){
 		Random randomizer = new Random();
