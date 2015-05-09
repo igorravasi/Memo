@@ -1,5 +1,6 @@
 package engine;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,13 +30,17 @@ public class MemoSequence {
 	}
 	
 	public String getEscapedString(){
+			
+		byte[] bytes = toString().getBytes(Charset.forName("UTF-8"));
+		StringBuilder sb = new StringBuilder();
 		
-		String result = new String();
-		for (int i = 0; i < counter; i++) {
-			result += sequenza.get(i).getEscapedBytes();
+		for (int i = 0; i < bytes.length; i++) {
+			sb.append("%");
+			sb.append(String.format("%02X", bytes[i]));
 		}
 		
-		return result;
+		return sb.toString();
+		
 
 	}
 	
