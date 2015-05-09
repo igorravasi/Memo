@@ -160,22 +160,16 @@ function loadServerResponse(parameters) {
 	return response;
 }
 
-function trim(str){
-	return str.replace(/^\s+|\s+$/g,'');
-}
-function replaceAll(find, replace, str) {
-	  return str.replace(new RegExp(find, 'g'), replace);
-	}
+
 
 function writeTheGame(content) {
 	document.getElementById("game").innerHTML=content;
 }
 
-function keyboard(emoji,id){
-	var element = document.getElementById(id);
-	element.value += emoji;
+function keyboard(emoji){
+	document.getElementById("sequenza").value += emoji;
 	}
 
 function showKeyboard(){
-	writeTheGame('<button onclick="keyboard("😉", "sequenza")">😉</button>');
+	writeTheGame('<button onclick="keyboard('😉')">😉</button>');
 }
