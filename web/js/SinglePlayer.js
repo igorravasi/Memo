@@ -106,7 +106,8 @@ function validate(){
 
 function readSequence(){
 	writeTheGame('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center><br/><br/><input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
-
+	
+	
 //	var timer = setInterval(function() {
 //		showError("Tempo scaduto");
 //	},1000*60*2)
@@ -167,3 +168,8 @@ function replaceAll(find, replace, str) {
 function writeTheGame(content) {
 	document.getElementById("game").innerHTML=content;
 }
+
+function tastiera(emoji,id){
+	var element = document.getElementById(id);
+	element.value += emoji;
+	}
