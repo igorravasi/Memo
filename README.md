@@ -1,7 +1,18 @@
 # Memo
 
-Requisiti: JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 è necessario reimplementare la data HTTP senza usare le librerie  di jre1.8
+Progetto di Laboratorio per il corso Fondamenti di Informatica II Gruppo.
 
-Progetto di Laboratorio per il corso Fondamenti di Informatica II Gruppo. @IgorRavasi @BiancaPavesi @EdoardoGullo  @MarcoAntonioGhiani @JacopoMTavaroli
+##Requisiti: 
+	
+	Server
 
-Il Progetto consiste nello sviluppo di una app Java per gestire un gioco di memoria. Il match viene gestito da un server da configurare ad hoc.
+JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 è necessario reimplementare la data HTTP senza usare le librerie  di jre1.8).
+	
+
+	Client
+	
+Browser con supporto alle emoji (chrome non nativamente, safari, firefox, ...) e che le invii nel formato opportuno. (%HEXfirstbyte%second.....)	
+
+@IgorRavasi @BiancaPavesi @MarcoAntonioGhiani @JacopoMTavaroli
+
+
