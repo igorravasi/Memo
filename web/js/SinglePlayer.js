@@ -1,3 +1,6 @@
+/*
+ * 	Motore di gioco lato client, per la modalità SinglePlayer
+ */
 
 var playId = null;
 var xmlHttp = null;
