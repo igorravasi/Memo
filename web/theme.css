@@ -33,6 +33,7 @@ body {
 	border:none; 
 	padding:5px;
 	font-size: 30px;
+	outline: none;
 	-moz-transition:-moz-transform 0.05s ease-in; 
 	-webkit-transition:-webkit-transform 0.05s ease-in; 
 	-o-transition:-o-transform 0.05s ease-in;
@@ -42,4 +43,5 @@ body {
 	-moz-transform:scale(1.5); 
 	-webkit-transform:scale(1.5);
 	-o-transform:scale(1.5);
+	outline: none;
 }
