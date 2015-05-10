@@ -172,7 +172,4 @@ function writeTheGame(content) {
 function keyboard(emoji){
 	document.getElementById("sequenza").value += emoji;
 	}
-//
-//function showKeyboard(){
-//	writeTheGame('<button onclick="keyboard('😉')">😉</button>');
-//}
+
