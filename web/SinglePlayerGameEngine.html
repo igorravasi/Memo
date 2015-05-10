@@ -18,14 +18,14 @@
 	<!-- <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false"> -->
 	<body>
 
- 	<br/><br/><br/><br/>
+ 	<br/><br/>
 	
 	<!-- Bottone Start -->
 	<div class="circle">
 		<div class="borderCircle"></div>
 		<div class="borderCircle2"></div>
 		<div class="borderCircle3"></div>
-		<div id="startButton" class="innerCircle" onclick="start();">
+		<div id="startButton" class="innerCircle" onclick="start();" onload="autoResize("memo-iframe")">
 			<p id="stringStart">Start</p>
 		</div>
 		<div class="outerCirlce"></div>
@@ -37,23 +37,13 @@
 	</div>
 		
 	<br/>
-<div style="text-align:center" id="emojikeyboard">
-	<button class="emoji" onclick="keyboard('😄');">😄</button>
-	<button class="emoji" onclick="keyboard('😆');">😆</button>
-	<button class="emoji" onclick="keyboard('😉');">😉</button>
-	<button class="emoji" onclick="keyboard('😊');">😊</button>
-	<button class="emoji" onclick="keyboard('😃');">😃</button>
-	<button class="emoji" onclick="keyboard('😁');">😁</button>
-	<button class="emoji" onclick="keyboard('😅');">😅</button>
-	<button class="emoji" onclick="keyboard('😂');">😂</button>
-	<button class="emoji" onclick="keyboard('😇');">😇</button>
-	<button class="emoji" onclick="keyboard('😈');">😈</button> 
-</div>
+<div style="text-align:center" id="emojikeyboard"></div>
 
 		<!-- Inizio gli  Script -->
 			
 			<script type="text/javascript" src="js/stringLib.js"></script>
 			<script type="text/javascript" src="js/SinglePlayer.js"></script>
+			<script type="text/javascript" src="js/keyboard.js"></script>
 			<!--  Dizionario per i messaggi utente -->
 			<!-- <script type ="text/javascript" src="js/dictionary.js"></script>	-->
 		<!--  Fine degli script -->
