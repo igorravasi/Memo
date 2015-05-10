@@ -31,6 +31,12 @@ body {
 .emoji{
   background:none;
   border:none; 
-  padding:0;
+  padding:5px;
   font-size: 30px;
+}
+.emoji:hover{
+  background:none;
+  border:none; 
+  padding:5px;
+  font-size:40px;
 }
