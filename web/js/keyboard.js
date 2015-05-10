@@ -12,14 +12,14 @@ function writeTheKeyboard(content) {
 
 function loadKeyboard(){
 	writeTheKeyboard(''+
-	'<button class="emoji" onclick="keyboard("😄");">😄</button>'+
-	'<button class="emoji" onclick="keyboard("😆");">😆</button>'+
-	'<button class="emoji" onclick="keyboard("😉");">😉</button>'+
-	'<button class="emoji" onclick="keyboard("😊");">😊</button>'+
-	'<button class="emoji" onclick="keyboard("😃");">😃</button>'+
-	'<button class="emoji" onclick="keyboard("😁");">😁</button>'+
-	'<button class="emoji" onclick="keyboard("😅");">😅</button>'+
-	'<button class="emoji" onclick="keyboard("😂");">😂</button>'+
-	'<button class="emoji" onclick="keyboard("😇");">😇</button>'+
-	'<button class="emoji" onclick="keyboard("😈");">😈</button>')
+	'<button class="emoji" onclick="keyboard(\'😄\');">😄</button>'+
+	'<button class="emoji" onclick="keyboard(\'😆\');">😆</button>'+
+	'<button class="emoji" onclick="keyboard(\'😉\');">😉</button>'+
+	'<button class="emoji" onclick="keyboard(\'😊\');">😊</button>'+
+	'<button class="emoji" onclick="keyboard(\'😃\');">😃</button>'+
+	'<button class="emoji" onclick="keyboard(\'😁\');">😁</button>'+
+	'<button class="emoji" onclick="keyboard(\'😅\');">😅</button>'+
+	'<button class="emoji" onclick="keyboard(\'😂\');">😂</button>'+
+	'<button class="emoji" onclick="keyboard(\'😇\');">😇</button>'+
+	'<button class="emoji" onclick="keyboard(\'😈\');">😈</button>')
 }
