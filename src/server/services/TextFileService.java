@@ -2,10 +2,12 @@ package server.services;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import java.util.Map;
 
 import server.IService;
@@ -36,21 +38,30 @@ public class TextFileService implements IService {
 		if (!file.exists()) {
 			throw new FileNotFoundException();
 		}
-		fileReader = new BufferedReader(new FileReader(file));
+		
+//		FileReader fr = new FileReader(file);
+//		fileReader = new BufferedReader(fr);
+		
+//		fileReader = new BufferedReader(new FileReader(file));
+		
+		
+		InputStreamReader inreader = new InputStreamReader(new FileInputStream(file),Charset.forName("UTF-8"));
+		fileReader = new BufferedReader(inreader);
+		
 		String contentType = null;
 		
 		
-		String extension = uri.substring(uri.lastIndexOf("."), uri.length());	
+		String extension = uri.substring( uri.lastIndexOf("."), uri.length() );	
 		contentType = contentTypes.get(extension) + "; charset=utf-8";
 		
 		HttpMessage message = new HttpMessage();
-		message.setContentType(contentType);
+		message.setContentType( contentType );
 		 
-		message.sendResponseHeader(clientSocket);
+		message.sendResponseHeader( clientSocket );
 
-		String fileLine=fileReader.readLine();
+		String fileLine = fileReader.readLine();
 		while(fileLine != null){
-			message.getOut().write(fileLine+"\r\n");
+			message.getOut().write(fileLine + "\r\n");
 			fileLine = fileReader.readLine();
 			
 		}

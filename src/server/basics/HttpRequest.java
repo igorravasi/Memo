@@ -25,6 +25,7 @@ public class HttpRequest {
 		String uri=lineElements[1];
 		LinkedList<String> lines=new LinkedList<String>();
 		while(line!=null){
+			
 			lines.add(line);
 			line = in.readLine();
 			if(line.length()==0){
