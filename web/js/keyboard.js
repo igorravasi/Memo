@@ -5,7 +5,8 @@
 window.onload=writeTheKeyboard();
 
 function keyboard(emoji){
-	textArea = document.getElementById("sequenza");
+	
+	textArea = document.getElementById();
 	  if (document.selection) {
 		textArea.focus();
 	    var sel = document.selection.createRange();
@@ -24,6 +25,7 @@ function keyboard(emoji){
 		  textArea.value += emoji;
 		  textArea.focus();
 	  }
+	
 }
 
 function writeTheKeyboard() {
