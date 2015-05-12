@@ -81,6 +81,8 @@ public class SinglePlayerGame extends Observable{
 	private String getTheResult(int roundResult){
 		
 		if (roundResult == LOOSER) {
+			setChanged();
+			notifyObservers();
 			return "L: "+ round;
 		} else {
 			return "S:"+ getSequence();
