@@ -9,7 +9,7 @@ function writeNavMenu(content) {
 function loadNavMenu(){
 	writeNavMenu(''+
 			'<div class="container">'+
-	  '<img class="img-responsive" src="resources/MyMemo.png" alt="MyMemo" />'+
+	  '<img class="img-responsive" src="resources/my2.png" alt="MyMemo" />'+
 	'</div>'+
 		'<div class="container">'+
 		    '<nav class="navbar navbar-default">'+
