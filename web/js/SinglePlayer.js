@@ -103,6 +103,7 @@ function validate(){
 	var command = getCommand(response);
 	var message = getMessage(response);
 	
+	unLoadKeyboard();
 	doTheRightThing(command, message);
 	
 	

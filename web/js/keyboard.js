@@ -2,20 +2,16 @@
  * EmojiKeyboardPrinter
  */
 
+window.onload=writeTheKeyboard();
+
 function keyboard(emoji){
 	//TODO: Posizionare nella posizione del cursore
 	document.getElementById("sequenza").value += emoji;
 	}
 
-function writeTheKeyboard(content) {
-	document.getElementById("emojikeyboard").innerHTML=content;
-}
-
-function loadKeyboard(){
-	
-	//TODO: If (tastiera non c'è ancora) then scrivila altrimenti, se c'è ed è nascosta mostrala.
-	//Nasconderla dopo l'invio
-	writeTheKeyboard(''+
+function writeTheKeyboard() {
+	unLoadKeyboard();
+	document.getElementById("emojikeyboard").innerHTML=''+
 	'<button class="emoji" onclick="keyboard(\'😄\');">😄</button>'+
 	'<button class="emoji" onclick="keyboard(\'😆\');">😆</button>'+
 	'<button class="emoji" onclick="keyboard(\'😉\');">😉</button>'+
@@ -25,6 +21,13 @@ function loadKeyboard(){
 	'<button class="emoji" onclick="keyboard(\'😅\');">😅</button>'+
 	'<button class="emoji" onclick="keyboard(\'😂\');">😂</button>'+
 	'<button class="emoji" onclick="keyboard(\'😇\');">😇</button>'+
-	'<button class="emoji" onclick="keyboard(\'😈\');">😈</button>')
+	'<button class="emoji" onclick="keyboard(\'😈\');">😈</button>';
+}
+function unLoadKeyboard(){
+	document.getElementById("emojikeyboard").style.display= "none";
+}
+function loadKeyboard(){
+	
+	document.getElementById("emojikeyboard").style.display= "block"
 	
 }
