@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import server.IService;
 import server.basics.HttpMessage;
@@ -37,7 +39,24 @@ public class TextFileService implements IService {
 
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
-			message.getOut().write( fileLine + "\r\n" );
+			if (fileLine.trim().matches("#{3}.+#{3}")) {
+				
+				try {
+					String path = new StringTokenizer(fileLine,"###").nextToken();
+					path = "web/include" + path.trim();
+					message.getOut().flush();
+					Files.copy(new File(path).toPath(), message.getOutStream());
+					message.getOutStream().flush();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			} else {
+				message.getOut().write( fileLine );
+				
+			}
+			message.getOut().write("\r\n");
 			fileLine = fileReader.readLine();
 		}
 		
@@ -58,6 +77,7 @@ public class TextFileService implements IService {
 		
 		InputStreamReader inreader = new InputStreamReader( new FileInputStream(file), Charset.forName("UTF-8") );
 		BufferedReader fileReader = new BufferedReader( inreader );
+		
 		return fileReader;
 	}
 
