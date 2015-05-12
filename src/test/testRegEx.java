@@ -32,6 +32,25 @@ public class testRegEx {
 	}
 	
 	
+	for (Iterator<String> iterator = stringhe.iterator(); iterator.hasNext();) {
+		String string = (String) iterator.next();
+		if (string.matches(regEx)) {
+			String resultLine ="";
+			int startPos = string.indexOf("*** include: ");
+			
+			resultLine += string.substring(0, startPos);
+			string = string.substring(startPos + "*** include: ".length());
+			
+			int endPos = string.indexOf(" ***");
+			String filename = "/web/includes/" + string.substring(0, endPos); 
+			resultLine +=filename;
+			resultLine += string.substring(endPos + " ***".length());
+			
+			System.err.println(resultLine);
+		} 
+	}
+	
+	
 	}
 	
 	
