@@ -33,8 +33,7 @@ public class SinglePlayerGame extends Observable{
 			
 			@Override
 			public void run() {
-				setChanged();
-				notifyObservers();
+				changed();
 			}
 		}, ALIVE_TIMER); //Dopo due minuti di inattività notifica l'observer
 	}
@@ -81,8 +80,7 @@ public class SinglePlayerGame extends Observable{
 	private String getTheResult(int roundResult){
 		
 		if (roundResult == LOOSER) {
-			setChanged();
-			notifyObservers();
+			changed();
 			return "L: "+ round;
 		} else {
 			return "S:"+ getSequence();
@@ -91,6 +89,10 @@ public class SinglePlayerGame extends Observable{
 	}
 
 
+	private void changed(){
+		setChanged();
+		notifyObservers();
+	}
 	
 	private String getSequence(){
 		return sequence.toString();
