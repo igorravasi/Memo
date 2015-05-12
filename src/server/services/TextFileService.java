@@ -24,8 +24,6 @@ public class TextFileService implements IService {
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException{
 
-		
-		BufferedReader fileReader;
 		String uri = request.getUri();
 		
 		//TODO: uri = home settata dall'esterno
@@ -33,27 +31,9 @@ public class TextFileService implements IService {
 			uri = "/MyMemo.html";
 		}
 		
-		File file = new File( "web" + uri );
+		BufferedReader fileReader = initializeBufferedFileReader(uri);
 		
-		if ( !file.exists() ) {
-			throw new FileNotFoundException();
-		}
-		
-		
-		InputStreamReader inreader = new InputStreamReader( new FileInputStream(file), Charset.forName("UTF-8") );
-		fileReader = new BufferedReader( inreader );
-		
-		String contentType = null;
-		
-		
-		String extension = uri.substring( uri.lastIndexOf("."), uri.length() );	
-		contentType = contentTypes.get( extension );
-		contentType += "; charset=utf-8";
-		
-		HttpMessage message = new HttpMessage();
-		message.setContentType( contentType );
-		 
-		message.sendResponseHeader( clientSocket );
+		HttpMessage message = initializeMessage(clientSocket, uri);
 
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
@@ -66,6 +46,40 @@ public class TextFileService implements IService {
 
 	}
 
+
+	private BufferedReader initializeBufferedFileReader(String uri)
+			throws FileNotFoundException {
+		File file = new File( "web" + uri );
+		
+		if ( !file.exists() ) {
+			throw new FileNotFoundException();
+		}
+		
+		
+		InputStreamReader inreader = new InputStreamReader( new FileInputStream(file), Charset.forName("UTF-8") );
+		BufferedReader fileReader = new BufferedReader( inreader );
+		return fileReader;
+	}
+
+
+	private HttpMessage initializeMessage(Socket clientSocket, String uri)
+			throws IOException {
+		String contentType = null;
+		
+		
+		String extension = uri.substring( uri.lastIndexOf("."), uri.length() );	
+		contentType = contentTypes.get( extension );
+		contentType += "; charset=utf-8";
+		
+		HttpMessage message = new HttpMessage();
+		message.setContentType( contentType );
+		 
+		message.sendResponseHeader( clientSocket );
+		return message;
+	}
+
+	
+	
 	
 	public void setContentTypeMap(Map<String, String> contentTypes){
 		
