@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="engine.SinglePlayerGame" project="MyMemo" 
-    file="/MyMemo/src/engine/SinglePlayerGame.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="model.engine.SinglePlayerGame" project="MyMemo" 
+    file="/MyMemo/src/model/engine/SinglePlayerGame.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="833" y="316"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="engine.MemoElement" project="MyMemo" file="/MyMemo/src/engine/MemoElement.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="model.engine.MemoElement" project="MyMemo" 
+    file="/MyMemo/src/model/engine/MemoElement.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1140" y="318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="engine.MemoSequence" project="MyMemo" file="/MyMemo/src/engine/MemoSequence.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="model.engine.MemoSequence" project="MyMemo" 
+    file="/MyMemo/src/model/engine/MemoSequence.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="988" y="320"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
