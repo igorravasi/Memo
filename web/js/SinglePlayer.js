@@ -81,7 +81,7 @@ function showSequence(sequence) {
 			document.getElementById("sequence").innerHTML="";
 			timerText.innerHTML = 0;
 			
-			document.getElementById("stringStart").innerHTML = "Riparti";
+			document.getElementById("arcade-button").innerHTML = "Riparti";
 			readSequence();
 			
 		}
