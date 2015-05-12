@@ -20,12 +20,14 @@ public class testRegEx {
 				"casca il mondo",
 				" casca la terra ",
 				"NON PIù SUPPORTATO casca la ### include: terra ### tutti giù per terra",
-				"### memo.txt ###",
+				"### /memo.txt ###",
 				"ahahhaha"
 				);
 		
 	for (Iterator<String> iterator = stringhe.iterator(); iterator.hasNext();) {
 		String string = (String) iterator.next();
+		
+		System.out.println(string.trim());
 		if (string.matches(regEx)) {
 			System.out.print("GOOD: filename is");
 			String path =  new StringTokenizer(string,"###").nextToken();
@@ -33,7 +35,7 @@ public class testRegEx {
 			System.out.println(path);
 			
 		}
-		System.out.println(string.trim());
+		
 		
 	}
 
