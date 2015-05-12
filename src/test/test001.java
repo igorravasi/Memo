@@ -1,6 +1,6 @@
 package test;
 
-import engine.MemoSequence;
+import model.engine.MemoSequence;
 
 public class test001 {
 
