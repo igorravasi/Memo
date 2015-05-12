@@ -13,6 +13,7 @@ function start(){
 	var command = getCommand(response);
 	var message = getMessage(response);
 	
+	
 	doTheRightThing(command,message);
 	
 }
@@ -35,6 +36,7 @@ function showError(message) {
 
 function doTheRightThing(command,message) {
 
+	unLoadKeyboard();
 
 	switch (command) {
 	case "S":
@@ -103,7 +105,6 @@ function validate(){
 	var command = getCommand(response);
 	var message = getMessage(response);
 	
-	unLoadKeyboard();
 	doTheRightThing(command, message);
 	
 	
