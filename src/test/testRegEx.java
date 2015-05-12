@@ -9,7 +9,7 @@ import java.util.List;
 public class testRegEx {
 
 	public static void main(String[] args) {
-		String regEx = "\\*\\*\\* include: \\w+ \\*\\*\\*";
+		String regEx = ".*\\*\\*\\* include: .+ \\*\\*\\*.*";
 		System.out.println("Ecco la regex di prova : " + regEx);
 	
 		List<String> stringhe = new LinkedList<String>();
@@ -17,7 +17,8 @@ public class testRegEx {
 				"giro giro tondo",
 				"casca il mondo",
 				"casca la terra",
-				"tutti giu per *** include: terra ***",
+				"casca la *** include: terra *** tutti giù per terra",
+				"*** include: memo.txt ***",
 				"ahahhaha"
 				);
 		
