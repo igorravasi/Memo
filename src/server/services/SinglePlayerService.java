@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.engine.SinglePlayerGame;
 import server.IService;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
-import engine.SinglePlayerGame;
 
 public class SinglePlayerService implements IService, Observer{
 
