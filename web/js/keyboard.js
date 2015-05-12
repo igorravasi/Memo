@@ -5,7 +5,6 @@
 window.onload=writeTheKeyboard();
 
 function keyboard(emoji){
-	//TODO: Posizionare nella posizione del cursore
 	textArea = document.getElementById("sequenza");
 	  if (document.selection) {
 		textArea.focus();
