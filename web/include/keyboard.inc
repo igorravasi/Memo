@@ -1,0 +1,10 @@
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
+<button class="emoji" onclick="keyboard('😁');">😁</button>
