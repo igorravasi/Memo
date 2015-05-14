@@ -42,7 +42,7 @@ public class TextFileService implements IService {
 			if (fileLine.trim().matches("#{3}.+#{3}")) {
 				
 				try {
-					String path = new StringTokenizer(fileLine,"###").nextToken();
+					String path = new StringTokenizer(fileLine.trim(),"###").nextToken();
 					path = "web/include" + path.trim();
 					message.getOut().flush();
 					Files.copy(new File(path).toPath(), message.getOutStream());

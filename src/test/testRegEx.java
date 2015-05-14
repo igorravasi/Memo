@@ -21,6 +21,7 @@ public class testRegEx {
 				" casca la terra ",
 				"NON PIù SUPPORTATO casca la ### include: terra ### tutti giù per terra",
 				"### /memo.txt ###",
+				"\t ### /memo.txt ###",
 				"ahahhaha"
 				);
 		
