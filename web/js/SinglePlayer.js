@@ -65,7 +65,7 @@ function getCommand(response) {
 
 function showSequence(sequence) {
 	writeTheGame("" +
-	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi! <br7><span id='sequence'></span></h3>");
+	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi!</h3> <br><font size='60'><span id='sequence'></span></font>");
 	
 	
 	
