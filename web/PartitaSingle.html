@@ -1,43 +1,40 @@
 <html lang="it">
-<head>
+	<head>
 
-### /MetaAndRels.inc ###
-	<link rel="stylesheet" href="css/launchButton.css"/>
-    <title>MyMemo - SinglePlayer</title>
+		### /MetaAndRels.inc ###
+		<link rel="stylesheet" href="css/launchButton.css"/>
+    	<title>MyMemo - SinglePlayer</title>
 
-  </head>
+	</head>
 
-  <body role="document">
+	<body>
 
-### /menu.inc ###
+		### /menu.inc ###
 
-    <div class="container">
-      <!-- <h2><font face="Courier" color=666666 >Gioca contro il computer:</font></h2>-->
-     <!-- <iframe src="SinglePlayerGameEngine.html" class="border-radius gameframe"></iframe>-->
-      
-
-      
-      
-      <br/><br/><br/>
-    </div>
+		<br/>
+    	<!-- <div class="container">
+    	<br/><br/><br/>
+    	</div> -->
 
 		<!-- Bottone Start -->
-
 		<button onclick="start();"  id="arcade-button" >Start </button>
-		<p> </p>
+		<br/>
 		
-	<!--  Contenitore dei controlli e dei messaggi di gioco -->
-	<div id="game" style="text-align:center">
-		<!-- Sovrascritto da js -->
-	</div>
+		<!--  Contenitore dei controlli e dei messaggi di gioco -->
+		<div id="game" style="text-align:center">
+			<!-- Sovrascritto da js -->
+		</div>
 		
-	<br/>
-	<div style="text-align:center; display:none" id="emojikeyboard">
-### /keyboard.inc ###
-	</div>
+		<br/>
+		<div style="text-align:center; display:none" id="emojikeyboard">
+			### /keyboard.inc ###
+		</div>
 
-		<!-- Inizio gli  Script -->
-			
+		<br/>
+		<br/>
+		<br/>
+
+		<!-- Inizio gli  Script, a fondo pagina per farla caricare più velocemente -->	
 			<script type="text/javascript" src="js/stringLib.js"></script>
 			<script type="text/javascript" src="js/SinglePlayer.js"></script>
 			<script type="text/javascript" src="js/keyboard.js"></script>
@@ -45,16 +42,14 @@
 			
 			<!--  Dizionario per i messaggi utente -->
 			<!-- <script type ="text/javascript" src="js/dictionary.js"></script>	-->
+			
+			<!-- TODO: rimuovere e integrare in altri .js di nostra mano
+   			================================================== -->
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    		<script src="js/bootstrap.min.js"></script>
+    
 		<!--  Fine degli script -->
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    
-
-
-  
-
-</body></html>
+	
+	</body>
+</html>
