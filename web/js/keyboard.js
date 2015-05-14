@@ -28,20 +28,6 @@ function keyboard(emoji){
 	
 }
 
-function writeTheKeyboard() {
-	unLoadKeyboard();
-	document.getElementById("emojikeyboard").innerHTML=''+
-	'<button class="emoji" onclick="keyboard(\'😄\');">😄</button>'+
-	'<button class="emoji" onclick="keyboard(\'😆\');">😆</button>'+
-	'<button class="emoji" onclick="keyboard(\'😉\');">😉</button>'+
-	'<button class="emoji" onclick="keyboard(\'😊\');">😊</button>'+
-	'<button class="emoji" onclick="keyboard(\'😃\');">😃</button>'+
-	'<button class="emoji" onclick="keyboard(\'😁\');">😁</button>'+
-	'<button class="emoji" onclick="keyboard(\'😅\');">😅</button>'+
-	'<button class="emoji" onclick="keyboard(\'😂\');">😂</button>'+
-	'<button class="emoji" onclick="keyboard(\'😇\');">😇</button>'+
-	'<button class="emoji" onclick="keyboard(\'😈\');">😈</button>';
-}
 
 function unLoadKeyboard(){
 	document.getElementById("emojikeyboard").style.display= "none";
