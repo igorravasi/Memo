@@ -1,8 +1,3 @@
-/*
- * EmojiKeyboardPrinter
- */
-
-window.onload=writeTheKeyboard();
 
 function keyboard(emoji){
 	
