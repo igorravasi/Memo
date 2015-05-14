@@ -37,10 +37,10 @@ public class testKeyboardGenerator {
 				String emoji = new String(emojBytes, Charset.forName("UTF-8"));
 
 				
-				templatePattern = templatePattern.replaceAll("###emoji###", emoji);
+				String line = templatePattern.replaceAll("###emoji###", emoji);
 				
-				System.err.println(templatePattern);
-				writer.write(templatePattern);
+				System.err.println(line);
+				writer.write(line);
 				
 			}
 			
