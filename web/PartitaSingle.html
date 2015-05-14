@@ -2,7 +2,7 @@
 <head>
 
 ### /MetaAndRels.inc ###
-
+	<link rel="stylesheet" href="css/launchButton.css"/>
     <title>MyMemo - SinglePlayer</title>
 
   </head>
@@ -10,13 +10,42 @@
   <body role="document">
 
 ### /menu.inc ###
+
     <div class="container">
       <!-- <h2><font face="Courier" color=666666 >Gioca contro il computer:</font></h2>-->
-      <iframe src="SinglePlayerGameEngine.html" class="border-radius gameframe"></iframe>
+     <!-- <iframe src="SinglePlayerGameEngine.html" class="border-radius gameframe"></iframe>-->
+      
+
+      
+      
       <br/><br/><br/>
     </div>
 
+		<!-- Bottone Start -->
 
+		<button onclick="start();"  id="arcade-button" >Start </button>
+		<p> </p>
+		
+	<!--  Contenitore dei controlli e dei messaggi di gioco -->
+	<div id="game" style="text-align:center">
+		<!-- Sovrascritto da js -->
+	</div>
+		
+	<br/>
+	<div style="text-align:center; display:none" id="emojikeyboard">
+### /keyboard.inc ###
+	</div>
+
+		<!-- Inizio gli  Script -->
+			
+			<script type="text/javascript" src="js/stringLib.js"></script>
+			<script type="text/javascript" src="js/SinglePlayer.js"></script>
+			<script type="text/javascript" src="js/keyboard.js"></script>
+			<script type="text/javascript" src="js/readSequence.js"></script>
+			
+			<!--  Dizionario per i messaggi utente -->
+			<!-- <script type ="text/javascript" src="js/dictionary.js"></script>	-->
+		<!--  Fine degli script -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
