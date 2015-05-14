@@ -33,7 +33,12 @@ public class TextFileService implements IService {
 			uri = "/MyMemo.html";
 		}
 		
-		BufferedReader fileReader = initializeBufferedFileReader(uri);
+		BufferedReader fileReader;
+		try {
+			fileReader = initializeBufferedFileReader(uri);
+		} catch (FileNotFoundException e1) {
+			fileReader = initializeBufferedFileReader("/Errore.html");
+		}
 		
 		HttpMessage message = initializeMessage(clientSocket, uri);
 
