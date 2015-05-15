@@ -136,12 +136,12 @@ function loadPlayId(){
 	    	playId = null;
 		}
 	}		     
-	httpGet("singleplayer",cfunc);
+	httpGet("singleplayer","");
 }
 
 
 
-function httpGet(theUrl)
+function httpGet(theUrl, parameters)
 {
    
     xmlHttp = new XMLHttpRequest();
@@ -152,7 +152,7 @@ function httpGet(theUrl)
 	  }
     
 	xmlHttp.onreadystatechange=cfunc;
-    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.open( "GET", theUrl+parameters, false );
     xmlHttp.send( null );  
  
 }
@@ -168,7 +168,11 @@ function loadServerResponse(parameters) {
 		}
 	}		 
 
-	httpGet("singleplayer/"+playId+parameters,cfunc);
+	var url = "singleplayer";
+	if ( playId!=null ) {
+		url += "/" + playId;
+	}
+	httpGet(url, parameters);
 	return response;
 }
 
