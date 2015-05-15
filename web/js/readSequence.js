@@ -2,28 +2,6 @@
 //Lettura delle sequenze
 //
 
-//function readSequence(sequence){
-//	document.getElementById("game").innerHTML = null;
-//	writeTheReader('<form id="seq">');
-//	for(i=0;i<sequence.length; i++){
-//		writeTheReader('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center>');
-//	}	
-//	writeTheReader('</form>');
-//	writeTheReader('<input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
-//	loadKeyboard();
-//	
-////	var timer = setInterval(function() {
-////		showError("Tempo scaduto");
-////	},1000*60*2)
-//}
-//
-//
-//function writeTheReader(content) {
-//	document.getElementById("game").innerHTML = document.getElementById("game").innerHTML + content;
-//}
-
-
-
 function readSequence(sequence){
 	document.getElementById("game").innerHTML = null;
 	
@@ -34,7 +12,7 @@ function readSequence(sequence){
 	
 	var submit = document.createElement("input");
 	submit.setAttribute('type',"button");
-	submit.setAttribute('value',"Submit");
+	submit.setAttribute('value',"Controlla");
 	submit.setAttribute('onClick',"validate();");
 	submit.setAttribute('class',"btn btn-primary btn-lg");
 	
@@ -42,12 +20,20 @@ function readSequence(sequence){
 		var input = document.createElement("input");
 		input.setAttribute('type',"text");
 		input.setAttribute('class',"input-emoji");
-		input.setAttribute('id', "sequenza"+i);
+		input.setAttribute('id', "sequenza");
+		input.setAttribute('size', "1");
 		form.appendChild(input);
 	}	
-	
-	form.appendChild(submit);
+
 	document.getElementById('game').appendChild(form);
+	document.getElementById('game').appendChild(submit);
 	
 	loadKeyboard();
+}
+
+function limitEmoji(){
+	var textArea = document.getElementsByTagName("input");
+	for(i=0; i<textArea.length; i++){
+		
+	}
 }

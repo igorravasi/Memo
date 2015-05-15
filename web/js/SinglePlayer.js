@@ -65,7 +65,7 @@ function getCommand(response) {
 
 function showSequence(sequence) {
 	writeTheGame("" +
-	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi!</h3> <br><font size='60'><span id='sequence'></span></font>");
+	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>1</span> secondi!</h3> <br><font size='60'><span id='sequence'></span></font>");
 	
 	
 	
@@ -97,9 +97,9 @@ function showSequence(sequence) {
 
 function validate(){
 	
-	for(i=0; i<3; i++){
-	writtenSequence = document.getElementById("sequenza"+i).value;
-	}
+	//for(i=0; i<sequence.length; i++){
+	writtenSequence = document.getElementById("sequenza").value;
+	//}
 	writtenSequence = replaceAll(" ","+",writtenSequence);
 	writtenSequence = "?S=" + writtenSequence;
 	var response = loadServerResponse(writtenSequence);

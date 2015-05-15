@@ -1,8 +1,7 @@
 
 function keyboard(emoji){
-	input = document.getElementsByTagName('input')
 	
-	textArea = document.getElementById(input.onFocus.id);
+	textArea = document.getElementById("sequenza");
 	  if (document.selection) {
 		textArea.focus();
 	    var sel = document.selection.createRange();
@@ -19,7 +18,7 @@ function keyboard(emoji){
 	    textArea.scrollTop = scroll;
 	  } else {
 		  textArea.value += emoji;
-		  textArea.focus();
+		  //textArea.focus();
 	  }
 	
 }
