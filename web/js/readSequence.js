@@ -3,6 +3,10 @@
 //
 
 function readSequence(sequence){
+	
+	var lunghezzaCorrettaDellaLunghezzaEsempioDiComeRicavarla = utf_length(trim(sequence));
+	alert(lunghezzaCorrettaDellaLunghezzaEsempioDiComeRicavarla);
+	
 	document.getElementById("game").innerHTML = null;
 	
 	sequence = sequence.toString();
