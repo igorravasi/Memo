@@ -97,8 +97,9 @@ function showSequence(sequence) {
 
 function validate(){
 	
-	
-	writtenSequence = document.getElementById("sequenza").value;
+	for(i=0; i<3; i++){
+	writtenSequence = document.getElementById("sequenza"+i).value;
+	}
 	writtenSequence = replaceAll(" ","+",writtenSequence);
 	writtenSequence = "?S=" + writtenSequence;
 	var response = loadServerResponse(writtenSequence);

@@ -1,7 +1,8 @@
 
-function keyboard(id, emoji){
+function keyboard(emoji){
+	input = document.getElementsByTagName('input')
 	
-	textArea = document.getElementById(id);
+	textArea = document.getElementById(input.onFocus.id);
 	  if (document.selection) {
 		textArea.focus();
 	    var sel = document.selection.createRange();

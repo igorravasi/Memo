@@ -31,7 +31,7 @@ body {
 .emoji{
 	background:none;
 	border:none; 
-	padding:5px;
+	padding:5px 5px 5px 5px;
 	font-size: 60px;
 	outline: none;
 	-moz-transition:-moz-transform 0.05s ease-in; 
@@ -44,4 +44,59 @@ body {
 	-webkit-transform:scale(1.5);
 	-o-transform:scale(1.5);
 	outline: none;
+}
+
+.input-emoji {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  padding: 10px 10px 10px 10px;
+  font-size: 48px;
+  line-height: 1.42857143;
+  color: #555;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.input-emoji:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.input-emoji::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.input-emoji:-ms-input-placeholder {
+  color: #999;
+}
+.input-emoji::-webkit-input-placeholder {
+  color: #999;
+}
+.input-emoji[disabled],
+.input-emoji[readonly],
+fieldset[disabled] .input-emoji {
+  background-color: #eee;
+  opacity: 1;
+}
+.input-emoji[disabled],
+fieldset[disabled] .form-emoji {
+  cursor: not-allowed;
+}
+
+.form-emoji{
+	position: absolute;
+	padding: 10px;
+	margin: 0;
 }
