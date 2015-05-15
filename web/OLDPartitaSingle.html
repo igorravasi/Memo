@@ -1,0 +1,52 @@
+<html lang="it">
+	<head>
+
+		
+		<link rel="stylesheet" href="css/launchButton.css"/>
+		### /MetaAndRels.inc ###
+    	<title>MyMemo - SinglePlayer</title>
+
+	</head>
+
+	<body>
+
+		### /menu.inc ###
+
+		<br/>
+    	
+
+		<!-- Bottone Start -->
+		<button onclick="start();"  id="arcade-button" >Start </button>
+		<br/>
+		
+		<!--  Contenitore dei controlli e dei messaggi di gioco -->
+		<div id="game" style="text-align:center">
+			<!-- Sovrascritto da js -->
+		</div>
+		
+		
+		<br/><br/><br/>
+		<div style="text-align:center; display:none" id="emojikeyboard">
+			### /keyboard.inc ###
+		</div>
+
+		<br/>
+		<br/>
+		<br/>
+
+		<!-- Inizio gli  Script, a fondo pagina per farla caricare pi� velocemente -->	
+			<script type="text/javascript" src="js/stringLib.js"></script>
+			<script type="text/javascript" src="js/OLDSinglePlayer.js"></script>
+		
+			
+			
+			<!--  Dizionario per i messaggi utente -->
+			<!-- <script type ="text/javascript" src="js/dictionary.js"></script>	-->
+			
+			### /scripts.inc ###
+    
+		<!--  Fine degli script -->
+
+	
+	</body>
+</html>

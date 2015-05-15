@@ -22,6 +22,7 @@
 			        		</ul>		
 			      		<li><a href="Istruzioni.html">Info</a></li>
 			      		<li><a href="Contatti.html">Contatti</a></li>
+			      		<li><a href="OLDPartitaSingle.html">debug x server</a></li>
 			    	</ul>
 			   	</div>
 			</nav>
