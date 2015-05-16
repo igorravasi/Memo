@@ -49,7 +49,7 @@ public class SinglePlayerService implements IService, Observer{
 		SinglePlayerGame game = singleGames.get(playId);
 		String response = "E: No game Id";
 		if (game != null) {
-			System.out.println("Received: " + content);
+			
 			response = game.readRequest(content);
 		}
 		
