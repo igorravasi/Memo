@@ -9,7 +9,7 @@ var intervalTimer;
 function start(){
 	loadPlayId();
 	window.clearInterval(intervalTimer);
-	var response = loadServerResponse("");
+	var response = loadServerResponse( null );
 	var command = getCommand(response);
 	var message = getMessage(response);
 	
@@ -96,7 +96,7 @@ function validate(){
 	
 	unloadKeyboard();
 	writtenSequence = document.getElementById("sequenza").value;
-//	writtenSequence = replaceAll(" ","+",writtenSequence);
+
 	writtenSequence = "S:" + writtenSequence;
 	var response = loadServerResponse(writtenSequence);
 	var command = getCommand(response);
@@ -111,9 +111,7 @@ function readSequence(){
 	writeTheGame('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center><br/><br/><input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
 	loadKeyboard();
 	
-//	var timer = setInterval(function() {
-//		showError("Tempo scaduto");
-//	},1000*60*2)
+
 }
 
 
@@ -151,7 +149,9 @@ function httpGet(theUrl, postContent){
 	  }
     
 	xmlHttp.onreadystatechange=cfunc;
-    xmlHttp.open( "POST", theUrl, false );
+	
+	var method = postContent == null ? "GET" : "POST";
+    xmlHttp.open( method, theUrl, false );
       
     xmlHttp.send( encodeURI(postContent) );
  
