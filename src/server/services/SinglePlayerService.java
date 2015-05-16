@@ -27,14 +27,14 @@ public class SinglePlayerService implements IService, Observer{
 		if (!uri.contains("singleplayer/")) {	
 			initializeGame(clientSocket);
 		}else {
-			play(clientSocket, uri);
+			play(clientSocket, uri, request.getContent());
 		}
 
 	}
 
 	
 	
-	private void play(Socket clientSocket, String uri) throws IOException{
+	private void play(Socket clientSocket, String uri, String content) throws IOException{
 		
 		Integer playId;
 		
@@ -49,7 +49,7 @@ public class SinglePlayerService implements IService, Observer{
 		SinglePlayerGame game = singleGames.get(playId);
 		String response = "E: No game Id";
 		if (game != null) {
-			response = game.readRequest(uri);
+			response = game.readRequest(content);
 		}
 		
 		message.sendMessage(clientSocket, response);

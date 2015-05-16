@@ -59,7 +59,7 @@ public class SinglePlayerGame extends Observable{
 		
 	}
 	
-	public String readRequest(String request){
+	public String readRequest(String content){
 		
 		if (round == 0) {
 			keepAlive();
@@ -67,9 +67,9 @@ public class SinglePlayerGame extends Observable{
 			return "S:"+ getSequence();
 		} else {
 			
-			if (request.indexOf("?S=") >= 0) {
+			if (content.indexOf("?S=") >= 0) {
 				
-				return getTheResult(playerMoved(request));
+				return getTheResult(playerMoved(content));
 			} else {
 				return "E: Malformed request, Reload the page";
 			}	
