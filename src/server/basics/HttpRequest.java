@@ -16,21 +16,19 @@ public class HttpRequest {
 	
 	
 	public HttpRequest(final Socket clientSocket) throws IOException{
+		
 		super();
 		BufferedReader in = new BufferedReader(	new InputStreamReader( clientSocket.getInputStream() ) );
 		
 		String line = in.readLine();
 		String[] lineElements=line.split(" ");
 		
-		
 		//Controllo se il metodo della richiesta è POST
 		boolean isPost = lineElements[0].equalsIgnoreCase("POST") ? true : false;
+		
 		//L'uri è nella prima riga, al secondo posto.
-		String uri=lineElements[1];
+		uri=lineElements[1];
 		
-		
-		//only for debug
-		//headers.put("Request:", line);
 		
 		while(line!=null && line.length() != 0){
 			String[] headerElements = line.split(" ", 2);
@@ -39,29 +37,32 @@ public class HttpRequest {
 			line = in.readLine();
 		}
 		
+		
 		if (isPost) {
-			
-			int contentLength;
-			
-			try {
-				contentLength = Integer.parseInt( headers.get("Content-Length:") );
-			} catch (NumberFormatException e) {
-				contentLength = 0;
-			}
-			
-			int c = 0;
-			content = "";
-			
-			for (int i = 0; i < contentLength; i++) {
-				c = in.read();
-				content += (char) c;
-			}
-			
+			content = readContent(in);
+		}
+
+	}
+	
+	
+	private String readContent(BufferedReader in) throws IOException{
+				
+		int contentLength;
+		try {
+			contentLength = Integer.parseInt( headers.get("Content-Length:") );
+		} catch (NumberFormatException e) {
+			contentLength = 0;
 		}
 		
-		this.uri=uri;
-	
+
+		StringBuilder builder = new StringBuilder();
 		
+		for (int i = 0; i < contentLength; i++) {
+			int c = in.read();
+			builder.append((char) c);
+		}
+	
+		return builder.toString();
 	}
 	
 	public String getUri() {
