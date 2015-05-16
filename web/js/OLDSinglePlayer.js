@@ -136,13 +136,12 @@ function loadPlayId(){
 	    	playId = null;
 		}
 	}		     
-	httpGet("singleplayer","");
+	httpGet("singleplayer", null );
 }
 
 
 
-function httpGet(theUrl, parameters)
-{
+function httpGet(theUrl, parameters){
    
     xmlHttp = new XMLHttpRequest();
     
@@ -152,8 +151,9 @@ function httpGet(theUrl, parameters)
 	  }
     
 	xmlHttp.onreadystatechange=cfunc;
-    xmlHttp.open( "GET", theUrl+parameters, false );
-    xmlHttp.send( null );  
+    xmlHttp.open( "POST", theUrl, false );
+      
+    xmlHttp.send(encodeURI(parameters));
  
 }
 
@@ -184,5 +184,5 @@ function writeTheGame(content) {
 
 function keyboard(emoji){
 	document.getElementById("sequenza").value += emoji;
-	}
+}
 
