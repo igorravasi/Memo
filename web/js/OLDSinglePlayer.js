@@ -96,8 +96,8 @@ function validate(){
 	
 	unloadKeyboard();
 	writtenSequence = document.getElementById("sequenza").value;
-	writtenSequence = replaceAll(" ","+",writtenSequence);
-	writtenSequence = "?S=" + writtenSequence;
+//	writtenSequence = replaceAll(" ","+",writtenSequence);
+	writtenSequence = "S:" + writtenSequence;
 	var response = loadServerResponse(writtenSequence);
 	var command = getCommand(response);
 	var message = getMessage(response);
@@ -141,7 +141,7 @@ function loadPlayId(){
 
 
 
-function httpGet(theUrl, parameters){
+function httpGet(theUrl, postContent){
    
     xmlHttp = new XMLHttpRequest();
     
@@ -153,12 +153,12 @@ function httpGet(theUrl, parameters){
 	xmlHttp.onreadystatechange=cfunc;
     xmlHttp.open( "POST", theUrl, false );
       
-    xmlHttp.send(encodeURI(parameters));
+    xmlHttp.send( encodeURI(postContent) );
  
 }
 
 
-function loadServerResponse(parameters) {
+function loadServerResponse( postContent ) {
 	
 	cfunc = function(){
 		if (xmlHttp.readyState==4 && xmlHttp.status==200){
@@ -172,7 +172,7 @@ function loadServerResponse(parameters) {
 	if ( playId!=null ) {
 		url += "/" + playId;
 	}
-	httpGet(url, parameters);
+	httpGet(url, postContent);
 	return response;
 }
 
