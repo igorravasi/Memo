@@ -82,7 +82,7 @@ public class SinglePlayerGame extends Observable{
 			changed();
 			return "L: "+ round;
 		} else {
-			return "S:"+ getSequence();
+			return SEQUENCE_ID + getSequence();
 		}
 			
 	}
