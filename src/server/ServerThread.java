@@ -32,7 +32,13 @@ public class ServerThread extends Thread implements Runnable{
 		try {
 			
 			HttpRequest request = new HttpRequest(clientSocket);
-			System.out.println(request.getUri());
+			
+			String logLine = request.getUri();
+			if (request.getContent() != null ) {
+				logLine += " POST: " + request.getContent();
+			}
+			System.out.println(logLine);
+			
 			handleRequest(request);
 			clientSocket.close();
 			
