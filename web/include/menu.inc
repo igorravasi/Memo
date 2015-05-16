@@ -1,6 +1,4 @@
-		<div class="container">
-			  <img class="img-responsive" src="resources/mymemo.png" alt="MyMemo" />
-		</div>
+
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
