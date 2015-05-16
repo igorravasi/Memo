@@ -14,6 +14,7 @@ public class HttpRequest {
 	private Map<String, String> headers = new HashMap<String, String>();
 	private String content = null;
 	
+	
 	public HttpRequest(final Socket clientSocket) throws IOException{
 		super();
 		BufferedReader in = new BufferedReader(	new InputStreamReader( clientSocket.getInputStream() ) );
@@ -21,15 +22,15 @@ public class HttpRequest {
 		String line = in.readLine();
 		String[] lineElements=line.split(" ");
 		
-		//L'uri è nella prima riga, al secondo posto.
 		
+		//Controllo se il metodo della richiesta è POST
 		boolean isPost = lineElements[0].equalsIgnoreCase("POST") ? true : false;
-		
+		//L'uri è nella prima riga, al secondo posto.
 		String uri=lineElements[1];
 		
-
-		headers.put("Request:", line);
-
+		
+		//only for debug
+		//headers.put("Request:", line);
 		
 		while(line!=null && line.length() != 0){
 			String[] headerElements = line.split(" ", 2);
