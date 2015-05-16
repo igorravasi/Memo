@@ -8,6 +8,7 @@ var intervalTimer;
 
 function start(){
 	loadPlayId();
+	document.getElementById("start_button").innerHTML="Restart";
 	window.clearInterval(intervalTimer);
 	var response = loadServerResponse( null );
 	var command = getCommand(response);
@@ -80,7 +81,7 @@ function showSequence(sequence) {
 			document.getElementById("sequence").innerHTML="";
 			timerText.innerHTML = 0;
 			
-			document.getElementById("arcade-button").innerHTML = "Riparti";
+			document.getElementById("start_button").innerHTML = "Riparti";
 			readSequence();
 			
 		}
@@ -95,6 +96,7 @@ function showSequence(sequence) {
 function validate(){
 	
 	unloadKeyboard();
+	document.getElementById("controls").style.display="none";
 	writtenSequence = document.getElementById("sequenza").value;
 
 	writtenSequence = "S:" + writtenSequence;
@@ -104,14 +106,11 @@ function validate(){
 	
 	doTheRightThing(command, message);
 	
-	
 }
 
 function readSequence(){
-	writeTheGame('<center><input type="text" class="form-control" style="width: 20%" id="sequenza" name="S" value=""></center><br/><br/><input type="button" class="btn btn-primary btn-lg" value="Controlla" onClick="validate()">');
+	document.getElementById("controls").style.display="block";
 	loadKeyboard();
-	
-
 }
 
 
