@@ -8,6 +8,7 @@ public class SinglePlayerGame extends Observable{
 
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*2; //DUE MINUTI
+	private static final String SEQUENCE_ID ="S:";
 	
 	private MemoSequence sequence = new MemoSequence();
 	private Integer round = 0;
@@ -37,16 +38,14 @@ public class SinglePlayerGame extends Observable{
 			}
 		}, ALIVE_TIMER); //Dopo due minuti di inattività notifica l'observer
 	}
+	
 	private int playerMoved(String playerSequence){
 		keepAlive();
-		playerSequence = playerSequence.substring(playerSequence.indexOf("?S=")+"?S=".length());
-		playerSequence = playerSequence.replace("+", " ");
+		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID)+SEQUENCE_ID.length());
 		playerSequence = playerSequence.trim();
 				
-		
 		String actualSequence = getEscapedSequence();
-		
-		
+			
 		if (actualSequence.equalsIgnoreCase(playerSequence)) {
 			round++;
 			sequence.secondRound();
@@ -67,7 +66,7 @@ public class SinglePlayerGame extends Observable{
 			return "S:"+ getSequence();
 		} else {
 			
-			if (content.indexOf("?S=") >= 0) {
+			if (content.indexOf(SEQUENCE_ID) >= 0) {
 				
 				return getTheResult(playerMoved(content));
 			} else {
