@@ -100,3 +100,13 @@ fieldset[disabled] .form-emoji {
 	margin: 5px;
 	align: center;
 }
+
+
+.centrato{
+	margin:auto;
+}
+
+.vpadded{
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
