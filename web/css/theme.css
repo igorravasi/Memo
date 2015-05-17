@@ -114,3 +114,11 @@ fieldset[disabled] .form-emoji {
 .logo{
 	margin-top:-20px;
 }
+
+.nascosto{
+	display:none;
+}
+
+.visibile{
+	display:block;
+}
