@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import server.IService;
@@ -103,13 +102,6 @@ public class TextFileService implements IService {
 		return message;
 	}
 
-	
-	
-	
-//	public void setContentTypeMap(Map<String, String> contentTypes){
-//		
-//		this.contentTypes = contentTypes;
-//	}
 	
 	
 }

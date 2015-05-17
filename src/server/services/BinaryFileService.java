@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Files;
-import java.util.Map;
 
 import server.IService;
 import server.basics.HttpMessage;
