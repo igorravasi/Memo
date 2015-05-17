@@ -4,8 +4,7 @@
 
 function readSequence(sequence){
 	
-	var lunghezzaCorrettaDellaLunghezzaEsempioDiComeRicavarla = utf_length(trim(sequence));
-	alert(lunghezzaCorrettaDellaLunghezzaEsempioDiComeRicavarla);
+	var sequenceLength = utf_length(trim(sequence));
 	
 	document.getElementById("game").innerHTML = null;
 	
@@ -20,7 +19,7 @@ function readSequence(sequence){
 	submit.setAttribute('onClick',"validate();");
 	submit.setAttribute('class',"btn btn-primary btn-lg");
 	
-	for(var i=0; i<sequence.length; i++){
+	for(var i=0; i<sequenceLength; i++){
 		var input = document.createElement("input");
 		input.setAttribute('type',"text");
 		input.setAttribute('class',"input-emoji");
@@ -35,9 +34,3 @@ function readSequence(sequence){
 	loadKeyboard();
 }
 
-function limitEmoji(){
-	var textArea = document.getElementsByTagName("input");
-	for(i=0; i<textArea.length; i++){
-		
-	}
-}
