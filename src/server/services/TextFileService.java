@@ -15,14 +15,14 @@ import java.util.StringTokenizer;
 import server.IService;
 import server.basics.HttpMessage;
 import server.basics.HttpRequest;
+import server.config.MemoServerConfigurator;
 
 //TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileServici, dovrebbero 
 //derivare da una classe comune FileService!
 
 public class TextFileService implements IService {
 
-	private Map<String, String> contentTypes;
-	
+		
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException{
 
@@ -93,7 +93,7 @@ public class TextFileService implements IService {
 		
 		
 		String extension = uri.substring( uri.lastIndexOf("."), uri.length() );	
-		contentType = contentTypes.get( extension );
+		contentType = MemoServerConfigurator.getInstance().getContentType(extension);
 		contentType += "; charset=utf-8";
 		
 		HttpMessage message = new HttpMessage();
@@ -106,10 +106,10 @@ public class TextFileService implements IService {
 	
 	
 	
-	public void setContentTypeMap(Map<String, String> contentTypes){
-		
-		this.contentTypes = contentTypes;
-	}
+//	public void setContentTypeMap(Map<String, String> contentTypes){
+//		
+//		this.contentTypes = contentTypes;
+//	}
 	
 	
 }

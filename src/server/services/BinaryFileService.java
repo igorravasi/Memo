@@ -10,13 +10,14 @@ import java.util.Map;
 import server.IService;
 import server.basics.HttpMessage;
 import server.basics.HttpRequest;
+import server.config.MemoServerConfigurator;
 
 //TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileServici, dovrebbero 
 //derivate da una classe comuna FileService!
 
 public class BinaryFileService implements IService{
 
-	private Map<String, String> contentTypes;
+	
 	
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request)
@@ -31,12 +32,9 @@ public class BinaryFileService implements IService{
 		}
 
 		String contentLength = file.length() +"";
-		String contentType = null;
-		
 		
 		String extension = uri.substring(uri.lastIndexOf("."), uri.length());	
-		contentType = contentTypes.get(extension);
-	
+		String contentType = MemoServerConfigurator.getInstance().getContentType(extension);
 
 		HttpMessage message = new HttpMessage();
 		message.setContentLength(contentLength);
@@ -49,11 +47,7 @@ public class BinaryFileService implements IService{
 		
 	}
 	
-	
-	public void setContentTypeMap(Map<String, String> contentTypes){
-		
-		this.contentTypes = contentTypes;
-	}
-	
+
+
 
 }
