@@ -3,6 +3,7 @@ package server;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.config.MemoServerConfigurator;
 import server.services.BinaryFileService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
@@ -18,13 +19,10 @@ public class ServerLauncher {
 		TextFileService fileService = new TextFileService();
 		BinaryFileService binaryService = new BinaryFileService();
 		
-		
-		Map<String, String> contentTypes = new HashMap<String, String>();
-		loadContentTypes(contentTypes);
-		
-		fileService.setContentTypeMap(contentTypes);
-		binaryService.setContentTypeMap(contentTypes);
-		
+	
+		addContentTypes();
+
+
 		server.addService("/", fileService);
 		server.addService("/css", fileService);
 		server.addService("/js", fileService);
@@ -48,15 +46,17 @@ public class ServerLauncher {
 //	}
 	
 	
-	public static void loadContentTypes(Map<String, String> contentTypes){
+	public static void addContentTypes(){
 		
-		contentTypes.put(".html", "text/html");
-		contentTypes.put(".css", "text/css");
-		contentTypes.put(".js", "text/javascript");
-		contentTypes.put(".jpg", "image/jpeg");
-		contentTypes.put(".jpeg", "image/jpeg");
-		contentTypes.put(".png", "image/jpeg");
-		contentTypes.put(".bmp", "image/jpeg");
-		contentTypes.put("ico", "image/ico");
+		MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+
+		configurator.addContentType(".html", "text/html");
+		configurator.addContentType(".css", "text/css");
+		configurator.addContentType(".js", "text/javascript");
+		configurator.addContentType(".jpg", "image/jpeg");
+		configurator.addContentType(".jpeg", "image/jpeg");
+		configurator.addContentType(".png", "image/jpeg");
+		configurator.addContentType(".bmp", "image/jpeg");
+		configurator.addContentType("ico", "image/ico");
 	}
 }
