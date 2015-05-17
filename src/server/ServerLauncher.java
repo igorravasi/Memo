@@ -34,9 +34,18 @@ public class ServerLauncher {
 		
 		server.addService("/singleplayer", new SinglePlayerService());
 		
+		
+		
 		server.launch();
 		
 	}
+	
+	
+	
+//	public static void generateKeyboardFile(){
+//	
+//		
+//	}
 	
 	
 	public static void loadContentTypes(Map<String, String> contentTypes){
