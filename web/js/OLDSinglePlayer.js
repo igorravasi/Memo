@@ -135,11 +135,11 @@ function display(elementId, boolDisplay){
 
 
 function unloadKeyboard(){
-	document.getElementById("emojikeyboard").style.display= "none";
+	display("emojikeyboard",false);
 }
 
 function loadKeyboard(){
-	document.getElementById("emojikeyboard").style.display= "block"
+	display("emojikeyboard",true);
 }
 
 function loadPlayId(){
