@@ -20,17 +20,17 @@ function start(){
 
 function showLoser(message){
 	if (message == 1) {
-		writeTheGame("<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria, continua a giocare!</h3>");
+		writeAMessage("<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria, continua a giocare!</h3>");
 	} else if (message == 2) {
-		writeTheGame("<h3>La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
+		writeAMessage("<h3>La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
 	} else {
-		writeTheGame("<h3>Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!</h3>");
+		writeAMessage("<h3>Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!</h3>");
 	}
 	
 }
 
 function showError(message) {
-	writeTheGame("<h3>Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
+	writeAMessage("<h3>Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
 }
 
 function doTheRightThing(command,message) {
@@ -67,6 +67,8 @@ function showSequence(sequence) {
 	
 	document.getElementById("sequence").innerHTML=sequence;
 	display("sequencecontainer",true);
+	display("message",false);
+	
 	var timerText = document.getElementById("countDown");
 	timerText.innerHTML = 7;
 	
@@ -188,8 +190,10 @@ function loadServerResponse( postContent ) {
 
 
 
-function writeTheGame(content) {
-	document.getElementById("game").innerHTML=content;
+function writeAMessage(content) {
+	document.getElementById("message").innerHTML=content;
+	display("sequencecontainer",false);
+	display("message",true);
 }
 
 function keyboard(emoji){
