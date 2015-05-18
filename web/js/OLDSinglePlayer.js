@@ -62,15 +62,16 @@ function getCommand(response) {
 }
 
 function showSequence(sequence) {
-	writeTheGame("" +
-	"<h3>Dai un'occhiata alla sequenza! Hai solo <span id='countDown'>7</span> secondi! <br7><span id='sequence'></span></h3>");
-	
+
 	
 	
 	document.getElementById("sequence").innerHTML=sequence;
-	intervalTimer = setInterval(function() {
+	display("sequencecontainer",true);
 	var timerText = document.getElementById("countDown");
+	timerText.innerHTML = 7;
 	
+	intervalTimer = setInterval(function() {
+
 	//Per evitare che se si preme su riprova il timer continui a girare
 	if (document.getElementById("countDown")) {
 		if (timerText.innerHTML > 1) {
@@ -78,10 +79,7 @@ function showSequence(sequence) {
 			timerText.innerHTML = timerText.innerHTML -1;
 		}else {
 			window.clearInterval(intervalTimer);
-			document.getElementById("sequence").innerHTML="";
-			timerText.innerHTML = 0;
-			
-			document.getElementById("start_button").innerHTML = "Riparti";
+			display("sequencecontainer",false);
 			readSequence();
 			
 		}
