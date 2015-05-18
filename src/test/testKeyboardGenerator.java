@@ -17,7 +17,7 @@ public class testKeyboardGenerator {
 		byte leftBound = (byte) 0x81;
 		byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
 
-		String templatePattern = "<button class=\"emoji\" onclick=\"keyboard('###emoji###');\">###emoji###</button>\r\n";
+		String templatePattern = "<button class=\"emoji\" onclick=\"keyboard(this);\">###emoji###</button>\r\n";
 		
 		
 		try {
