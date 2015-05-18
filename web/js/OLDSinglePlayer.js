@@ -95,8 +95,8 @@ function showSequence(sequence) {
 
 function validate(){
 	
-	unloadKeyboard();
-	document.getElementById("controls").style.display="none";
+	
+	display("controls",false);
 	writtenSequence = document.getElementById("sequenza").value;
 
 	writtenSequence = "S:" + writtenSequence;
@@ -109,8 +109,9 @@ function validate(){
 }
 
 function readSequence(){
-	document.getElementById("controls").style.display="block";
-	loadKeyboard();
+
+	display("controls",true);
+	
 }
 
 
@@ -134,13 +135,7 @@ function display(elementId, boolDisplay){
 
 
 
-function unloadKeyboard(){
-	display("emojikeyboard",false);
-}
 
-function loadKeyboard(){
-	display("emojikeyboard",true);
-}
 
 function loadPlayId(){
 	
