@@ -13,16 +13,16 @@ function start(){
 	document.getElementById("sequence_container").innerHTML = getSequenceHTML();
 	
 	window.clearInterval(intervalTimer);
-	var response = loadServerResponse( null );
-	var command = getCommand(response);
-	var message = getMessage(response);
-	
-	doTheRightThing(command,message);
+		
+	doTheRightThing( loadServerResponse( null ));
 }
 
 
-function doTheRightThing(command,message) {
+function doTheRightThing(response) {
 
+	var command = response.substring(0,response.indexOf(":"));
+	var message = response.substring(response.indexOf(":")+1);
+	
 	switch (command) {
 	case "S":
 		showSequence(message);
@@ -38,15 +38,6 @@ function doTheRightThing(command,message) {
 }
 
 
-function getMessage(response) {
-	
-	return response.substring(response.indexOf(":")+1);
-}
-
-function getCommand(response) {
-	
-	return response.substring(0,response.indexOf(":"));
-}
 
 function showSequence(sequence) {
 
@@ -86,11 +77,9 @@ function validate(){
 	writtenSequence = document.getElementById("sequenza").value;
 
 	writtenSequence = "S:" + writtenSequence;
+
 	var response = loadServerResponse(writtenSequence);
-	var command = getCommand(response);
-	var message = getMessage(response);
-	
-	doTheRightThing(command, message);
+	doTheRightThing(response);
 	
 }
 
@@ -189,7 +178,4 @@ function keyboard(emoji){
 }
 
 
-//function displaySequenceOrControls(boolSequenceVisible){
-//	display("sequence_container",boolSequenceVisible);
-//	display("message",!boolSequenceVisible);
-//}
+
