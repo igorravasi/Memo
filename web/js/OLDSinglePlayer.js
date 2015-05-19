@@ -5,12 +5,15 @@
 var playId = null;
 var xmlHttp = null;
 var intervalTimer;
+var factorySeconds = 7;
+
 
 function start(){
 	loadPlayId();
-	document.getElementById("start_button").innerHTML="Restart";
 	
+	document.getElementById("start_button").innerHTML="Restart";
 	document.getElementById("sequence_container").innerHTML = getSequenceHTML();
+	display("message",false);
 	
 	window.clearInterval(intervalTimer);
 		
@@ -41,32 +44,29 @@ function doTheRightThing(response) {
 
 function showSequence(sequence) {
 
-	
-	
 	document.getElementById("sequence").innerHTML=sequence;
 	display("sequence_container",true);
-	display("message",false);
+	
 	
 	var timerText = document.getElementById("countDown");
-	timerText.innerHTML = 7;
+	timerText.innerHTML = factorySeconds;
 	
 	intervalTimer = setInterval(function() {
 
-	//Per evitare che se si preme su riprova il timer continui a girare
-	if (document.getElementById("countDown")) {
-		if (timerText.innerHTML > 1) {
-			
-			timerText.innerHTML = timerText.innerHTML -1;
-		}else {
+		if (document.getElementById("countDown")) {
+			if (timerText.innerHTML > 1) {
+				
+				timerText.innerHTML = timerText.innerHTML -1;
+			}else {
+				window.clearInterval(intervalTimer);
+				readSequence();
+				
+			}
+		} else {
 			window.clearInterval(intervalTimer);
-			readSequence();
 			
 		}
-	} else {
-		window.clearInterval(intervalTimer);
 		
-	}
-	
 	},1000);
 }
 
@@ -86,7 +86,9 @@ function validate(){
 
 
 function readSequence(){
+
 	display("sequence_container",false);
+	document.getElementById("sequence").innerHTML="";
 	display("controls",true);
 	
 }
@@ -111,9 +113,6 @@ function display(elementId, boolDisplay){
 }
 
 
-
-
-
 function loadPlayId(){
 	
 	cfunc = function(){
@@ -123,12 +122,12 @@ function loadPlayId(){
 	    	playId = null;
 		}
 	}		     
-	httpGet("singleplayer", null );
+	request("singleplayer", null );
 }
 
 
 
-function httpGet(theUrl, postContent){
+function request(theUrl, postContent){
    
     xmlHttp = new XMLHttpRequest();
     
@@ -161,10 +160,9 @@ function loadServerResponse( postContent ) {
 	if ( playId!=null ) {
 		url += "/" + playId;
 	}
-	httpGet(url, postContent);
+	request(url, postContent);
 	return response;
 }
-
 
 
 function writeAMessage(content) {
@@ -176,6 +174,3 @@ function writeAMessage(content) {
 function keyboard(emoji){
 	document.getElementById("sequenza").value += emoji.innerHTML;
 }
-
-
-
