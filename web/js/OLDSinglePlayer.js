@@ -9,6 +9,9 @@ var intervalTimer;
 function start(){
 	loadPlayId();
 	document.getElementById("start_button").innerHTML="Restart";
+	
+	document.getElementById("sequence_container").innerHTML = getSequenceHTML();
+	
 	window.clearInterval(intervalTimer);
 	var response = loadServerResponse( null );
 	var command = getCommand(response);
@@ -61,7 +64,7 @@ function showSequence(sequence) {
 	
 	
 	document.getElementById("sequence").innerHTML=sequence;
-	display("sequencecontainer",true);
+	display("sequence_container",true);
 	display("message",false);
 	
 	var timerText = document.getElementById("countDown");
@@ -105,7 +108,7 @@ function validate(){
 
 
 function readSequence(){
-	display("sequencecontainer",false);
+	display("sequence_container",false);
 	display("controls",true);
 	
 }
@@ -188,7 +191,7 @@ function loadServerResponse( postContent ) {
 
 function writeAMessage(content) {
 	document.getElementById("message").innerHTML=content;
-	display("sequencecontainer",false);
+	display("sequence_container",false);
 	display("message",true);
 }
 
