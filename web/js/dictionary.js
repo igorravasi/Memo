@@ -12,5 +12,18 @@ function getErrorMessage(error){
 
 function getGameOverMessage(round){
 	
-	return "";
+	if (round > 2) {
+		var head = "<h3>Congratulazioni! hai superato ";
+		var tail = " round, riprova e supera te stesso!</h3>";
+		
+		return head + (round.trim() -1) + tail;
+		
+	} else if (round == 2) {
+		
+		return "<h3>La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>";
+		
+	} else if (round == 1){
+		
+		return "<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria, continua a giocare!</h3>";
+	}
 }

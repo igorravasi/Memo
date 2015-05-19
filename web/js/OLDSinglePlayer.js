@@ -19,13 +19,8 @@ function start(){
 
 
 function showLoser(message){
-	if (message == 1) {
-		writeAMessage("<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria, continua a giocare!</h3>");
-	} else if (message == 2) {
-		writeAMessage("<h3>La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Dai, riprova e diventa un maestro della memoria</h3>");
-	} else {
-		writeAMessage("<h3>Congratulazioni! hai superato " + (message.trim()-1) + " round, riprova e supera te stesso!</h3>");
-	}
+	
+	writeAMessage(getGameOverMessage(message));
 	
 }
 
@@ -81,7 +76,6 @@ function showSequence(sequence) {
 			timerText.innerHTML = timerText.innerHTML -1;
 		}else {
 			window.clearInterval(intervalTimer);
-			display("sequencecontainer",false);
 			readSequence();
 			
 		}
@@ -108,8 +102,10 @@ function validate(){
 	
 }
 
-function readSequence(){
 
+
+function readSequence(){
+	display("sequencecontainer",false);
 	display("controls",true);
 	
 }
