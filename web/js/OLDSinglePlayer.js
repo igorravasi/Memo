@@ -21,29 +21,18 @@ function start(){
 }
 
 
-function showLoser(message){
-	
-	writeAMessage(getGameOverMessage(message));
-	
-}
-
-function showError(message) {
-	writeAMessage(getErrorMessage(message));
-}
-
 function doTheRightThing(command,message) {
-
 
 	switch (command) {
 	case "S":
 		showSequence(message);
 		break;
 	case "L":
-		showLoser(message);
+		writeAMessage(getGameOverMessage(message));
 		break;
 	case "E":
 	default:
-		showError(message);
+		writeAMessage(getErrorMessage(message));
 		break;
 	}
 }
@@ -200,4 +189,7 @@ function keyboard(emoji){
 }
 
 
-
+//function displaySequenceOrControls(boolSequenceVisible){
+//	display("sequence_container",boolSequenceVisible);
+//	display("message",!boolSequenceVisible);
+//}
