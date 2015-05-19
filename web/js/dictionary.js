@@ -2,6 +2,17 @@
  * 
  */
 
+
+function getSequenceHTML(){
+	
+	var head = "<h3> Dai un'occhiata alla sequenza! Hai solo "; 
+	var central = " secondi!";
+	var tail = "</h3>";
+	
+	return head + "<span id='countDown'></span>" + central + "<br/><br/><span id='sequence'></span>" + tail; 
+	
+}
+
 function getErrorMessage(error){
 	
 	var head = "<h3>Si &egrave; verificato il seguente errore: <br/>";
