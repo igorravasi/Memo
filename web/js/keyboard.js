@@ -29,5 +29,5 @@ function unLoadKeyboard(){
 }
 
 function loadKeyboard(){
-	document.getElementById("emojikeyboard").style.display= "block"
+	document.getElementById("emojikeyboard").style.display= "block";
 }
