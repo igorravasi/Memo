@@ -59,7 +59,8 @@ function showSequence(sequence) {
 				timerText.innerHTML = timerText.innerHTML -1;
 			}else {
 				window.clearInterval(intervalTimer);
-				readSequence();
+				var numberOfChars = utf_length( trim(sequence) );
+				readSequence(numberOfChars);
 				
 			}
 		} else {
@@ -85,13 +86,47 @@ function validate(){
 
 
 
-function readSequence(){
+function readSequence(numberOfChars){
 
 	display("sequence_container",false);
 	document.getElementById("sequence").innerHTML="";
+	
+	generateBoxes(numberOfChars);
+	
 	display("controls",true);
 	
 }
+
+
+
+function generateBoxes(n){
+	
+	
+	if (document.getElementById("box_container")) {
+
+		document.getElementById("box_container").parentNode.removeChild(document.getElementById("box_container"));
+	}
+	
+	
+	var boxContainer = document.createElement("div");
+	var controls = document.getElementById("controls");
+	boxContainer.setAttribute("id","box_container");
+	
+	controls.insertBefore(boxContainer,controls.childNodes[0]);
+	
+	for (var i = 0; i < n; i++) {
+		
+		var box = document.createElement("span");
+		boxContainer.setAttribute("id","box["+i+"]");
+		boxContainer.setAttribute("onclick","setFocusedBox(this)");
+			
+		box.innerHTML = "prova"+i;
+		boxContainer.appendChild(box);
+		
+	}
+	
+}
+
 
 
 function loadPlayId(){
