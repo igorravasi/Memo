@@ -3,7 +3,7 @@
 //
 
 function readSequence(sequence){
-	
+	idCasella=0;
 	var sequenceLength = utf_length(trim(sequence));
 	
 	document.getElementById("game").innerHTML = null;
@@ -23,7 +23,7 @@ function readSequence(sequence){
 		var input = document.createElement("input");
 		input.setAttribute('type',"text");
 		input.setAttribute('class',"input-emoji");
-		input.setAttribute('id', "sequenza");
+		input.setAttribute('id', "sequenza"+i);
 		input.setAttribute('size', "1");
 		form.appendChild(input);
 	}	

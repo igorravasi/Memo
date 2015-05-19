@@ -1,7 +1,9 @@
 
+var idCasella=0;
 function keyboard(emoji){
 	
-	textArea = document.getElementById("sequenza");
+	textArea = document.getElementById("sequenza"+idCasella);
+	idCasella++;
 	  if (document.selection) {
 		textArea.focus();
 	    var sel = document.selection.createRange();
@@ -18,7 +20,7 @@ function keyboard(emoji){
 	    textArea.scrollTop = scroll;
 	  } else {
 		  textArea.value += emoji;
-		  //textArea.focus();
+		  textArea.focus();
 	  }
 	
 }
