@@ -30,7 +30,7 @@ function showLoser(message){
 }
 
 function showError(message) {
-	writeAMessage("<h3>Si &egrave; verificato il seguente errore: <br/>" + message + "<br/> Per favore riprova a giocare.</h3>");
+	writeAMessage(getErrorMessage(message));
 }
 
 function doTheRightThing(command,message) {
