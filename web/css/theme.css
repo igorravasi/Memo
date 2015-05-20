@@ -32,20 +32,28 @@ body {
  	border-color: #42fff6
 }
 
+#emojikeyboard {
+	width: 80%;
+	background: rgba(102, 175, 233,0.2);
+	margin: 1em auto;
+	padding: 0.1em;
+}
 
-
-.emoji{
+.emoji, #sequence {
 	background:none;
 	border:none; 
-	padding:5px 5px 5px 5px;
-	font-size: 60px;
+	padding:0.1em;
+	font-size: 4em;
 	outline: none;
-	-moz-transition:-moz-transform 0.05s ease-in; 
-	-webkit-transition:-webkit-transform 0.05s ease-in; 
-	-o-transition:-o-transform 0.05s ease-in;
+}
+	
+.emoji {
+	-moz-transition:-moz-transform 0.1s ease-in; 
+	-webkit-transition:-webkit-transform 0.1s ease-in; 
+	-o-transition:-o-transform 0.1s ease-in;
   
 }
-.emoji:hover{
+.emoji:hover {
 	-moz-transform:scale(1.5); 
 	-webkit-transform:scale(1.5);
 	-o-transform:scale(1.5);
@@ -74,7 +82,7 @@ body {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.input-emoji:focus {
+.input-emoji:focus , #emojikeyboard{
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
