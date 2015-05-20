@@ -202,10 +202,13 @@ function keyboard(emoji){
 	
 	var char = emoji.innerHTML;
 	var box = document.getElementById("box"+lastBox);
-	lastBox++;
+	
 	box.value = emoji.innerHTML;
-	var nextBox = document.getElementById("box"+lastBox);
-	nextBox.focus();
+	var nextBox = document.getElementById("box"+(lastBox + 1));
+	if (nextBox) {
+		lastBox++;
+		nextBox.focus();
+	}
 }
 
 
