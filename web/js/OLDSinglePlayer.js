@@ -75,7 +75,13 @@ function validate(){
 	
 	
 	display("controls",false);
-	writtenSequence = document.getElementById("sequenza").value;
+	writtenSequence = "";
+	
+	var boxes = document.getElementById("box_container").childNodes;
+	
+	for (var i = 0; i < boxes.length; i++) {
+		writtenSequence += boxes[i].value;
+	}
 
 	writtenSequence = "S:" + writtenSequence;
 
