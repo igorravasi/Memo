@@ -6,7 +6,7 @@ var playId = null;
 var xmlHttp = null;
 var intervalTimer;
 var factorySeconds = 7;
-
+var lastBox = 0;
 
 function start(){
 	loadPlayId();
@@ -113,17 +113,22 @@ function generateBoxes(n){
 	boxContainer.setAttribute("id","box_container");
 	
 	controls.insertBefore(boxContainer,controls.childNodes[0]);
+
 	
 	for (var i = 0; i < n; i++) {
 		
-		var box = document.createElement("span");
-		boxContainer.setAttribute("id","box["+i+"]");
-		boxContainer.setAttribute("onclick","setFocusedBox(this)");
-			
-		box.innerHTML = "prova"+i;
-		boxContainer.appendChild(box);
+		var input = document.createElement("input");
+		input.setAttribute('type',"text");
+		input.setAttribute('class',"input-emoji");
+		input.setAttribute('id', "box"+i);
+		input.setAttribute('size', "1");
+		input.setAttribute('readonly',"readonly");
+		input.setAttribute('onclick',"lastBox="+i);
+		boxContainer.appendChild(input);
 		
 	}
+	
+	lastBox = 0;
 	
 }
 
@@ -188,7 +193,13 @@ function writeAMessage(content) {
 }
 
 function keyboard(emoji){
-	document.getElementById("sequenza").value += emoji.innerHTML;
+	
+	var char = emoji.innerHTML;
+	var box = document.getElementById("box"+lastBox);
+	lastBox++;
+	box.value = emoji.innerHTML;
+	var nextBox = document.getElementById("box"+lastBox);
+	nextBox.focus();
 }
 
 
