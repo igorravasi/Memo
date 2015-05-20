@@ -11,6 +11,7 @@ var lastBox = 0;
 function start(){
 	loadPlayId();
 	
+	display("controls",false);
 	document.getElementById("start_button").innerHTML="Restart";
 	document.getElementById("sequence_container").innerHTML = getSequenceHTML();
 	display("message",false);
@@ -43,7 +44,7 @@ function doTheRightThing(response) {
 
 
 function showSequence(sequence) {
-
+	
 	document.getElementById("sequence").innerHTML=sequence;
 	display("sequence_container",true);
 	
