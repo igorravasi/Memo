@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class HttpRequest {
 
@@ -71,6 +74,21 @@ public class HttpRequest {
 	
 	public String getContent(){
 		return content;
+	}
+	
+	public List<String> getCookies(){
+		
+		String cookies = headers.get("Cookie: ");
+			
+		List<String> cookiesList = new LinkedList<String>();
+		StringTokenizer tokenizer = new StringTokenizer(cookies, "; ");
+
+		while (tokenizer.hasMoreTokens()) {
+			String cookie = tokenizer.nextToken();
+			cookiesList.add(cookie);
+		}
+		
+		return cookiesList;
 	}
 
 }
