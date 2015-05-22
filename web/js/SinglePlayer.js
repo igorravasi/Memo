@@ -5,8 +5,11 @@
 var playId = null;
 var xmlHttp = null;
 var intervalTimer;
+var timeoutTimer = null;
 var factorySeconds = 7;
+var timeoutMilliSeconds = 2*60*1000 - 2*1000;  //Sottraggo 2 secondi perchè per ritardi sulla linea e sui buffer di I/O il timer sul server potrebbe essere già scaduto
 var lastBox = 0;
+
 
 function start(){
 	loadPlayId();
@@ -27,9 +30,17 @@ function doTheRightThing(response) {
 	var command = response.substring(0,response.indexOf(":"));
 	var message = response.substring(response.indexOf(":")+1);
 	
+	if (timeoutTimer != null) {
+		window.clearInterval(timeoutTimer);
+	}
+	
 	switch (command) {
 	case "S":
+		timeoutTimer = setInterval(function (){
+			writeAMessage(getErrorMessage("Tempo scaduto"));
+		}, timeoutMilliSeconds);
 		showSequence(message);
+		
 		break;
 	case "L":
 		writeAMessage(getGameOverMessage(message));
@@ -196,6 +207,7 @@ function loadServerResponse( postContent ) {
 function writeAMessage(content) {
 	document.getElementById("message").innerHTML=content;
 	display("sequence_container",false);
+	display("controls", false)
 	display("message",true);
 }
 
