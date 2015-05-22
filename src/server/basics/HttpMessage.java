@@ -8,6 +8,9 @@ import java.nio.charset.Charset;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class HttpMessage {
 	
@@ -17,6 +20,7 @@ public class HttpMessage {
 	private OutputStreamWriter out;
 	private String contentLength = null;
 	private String contentType = null;
+	private List<String> cookies = null;
 	
 	public HttpMessage() {
 		super();
@@ -33,11 +37,19 @@ public class HttpMessage {
 		out.write("HTTP/1.1 200 OK\n");
 		out.write("Date: " + serverDate + "\n");
 		
+		//TODO: refactoring
 		if (contentType != null) {
 			out.write("Content-Type: " + contentType +"\n");
 		}
 		if (contentLength != null) {
 			out.write("Content-Length: " + contentLength+"\n");
+		}
+		if (cookies != null) {
+			for (Iterator<String> iterator = cookies.iterator(); iterator.hasNext();) {
+				String singleCookie = (String) iterator.next();
+				out.write("Set-cookie: " + singleCookie + "\n");
+			}
+			
 		}
 		
 		out.write("\n");
@@ -59,12 +71,23 @@ public class HttpMessage {
 	}
 	
 	
+	
+	
 	public void setContentLength(String contentLength) {
 		this.contentLength = contentLength;
 	}
 
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
+	}
+	
+	public void setCookie (String cookie){
+		
+		if (this.cookies == null) {
+			this.cookies = new LinkedList<String>();
+		}
+		
+		this.cookies.add(cookie);
 	}
 
 	
