@@ -34,6 +34,7 @@ public class HttpRequest {
 		
 		
 		while(line!=null && line.length() != 0){
+			//System.err.println(line);
 			String[] headerElements = line.split(" ", 2);
 			headers.put(headerElements[0], headerElements[1]);
 			
@@ -78,7 +79,7 @@ public class HttpRequest {
 	
 	public List<String> getCookies(){
 		
-		String cookies = headers.get("Cookie: ");
+		String cookies = headers.get("Cookie:");
 			
 		System.err.println(cookies);
 		List<String> cookiesList = new LinkedList<String>();
