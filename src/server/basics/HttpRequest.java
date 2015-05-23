@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -77,25 +75,32 @@ public class HttpRequest {
 		return content;
 	}
 	
-	public List<String> getCookies(){
+	public Map<String,String> getCookies(){
 		
 		String cookies = headers.get("Cookie:");
 			
 		
-		List<String> cookiesList = new LinkedList<String>();
+		
+		Map<String, String> cookieMap = new HashMap<String, String>();
+		
 		
 		if (cookies != null) {
 			StringTokenizer tokenizer = new StringTokenizer(cookies, "; ");
 
 			while (tokenizer.hasMoreTokens()) {
 				String cookie = tokenizer.nextToken();
-				cookiesList.add(cookie);
+				
+				StringTokenizer tokenizer2 = new StringTokenizer(cookie,"=");
+				String cookieName = tokenizer2.nextToken();
+				String cookieValue = tokenizer2.nextToken();
+				
+				cookieMap.put(cookieName, cookieValue);
 			}
 		}
 		
 		
 		
-		return cookiesList;
+		return cookieMap;
 	}
 
 }

@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import server.basics.HttpRequest;
 
@@ -34,22 +34,8 @@ public class ServerThread extends Thread implements Runnable{
 		try {
 			
 			HttpRequest request = new HttpRequest(clientSocket);
-			
-			String logLine = request.getUri();
-			if (request.getContent() != null ) {
-				logLine += "\n\tPOST:\t" + request.getContent();
-			}
-			
-			
-			List<String> cookies = request.getCookies();
-			
-			//Debug cookie
-			for (Iterator<String> iterator = cookies.iterator(); iterator.hasNext();) {
-				String string = (String) iterator.next();
-				logLine += "\n\tCookie:\t" + string;
-			}
-			
-			System.out.println(logLine);
+		
+			writeLog(request);
 			
 			handleRequest(request);
 			clientSocket.close();
@@ -81,5 +67,25 @@ public class ServerThread extends Thread implements Runnable{
 			
 		}
 	
-	
+	private void writeLog(HttpRequest request){
+		
+		String logLine = request.getUri();
+		if (request.getContent() != null ) {
+			logLine += "\n\tPOST:\t" + request.getContent();
+		}
+		
+		
+		
+		Map<String,String> cookies = request.getCookies();
+		Set<String> keySet = cookies.keySet();
+		
+		for (Iterator<String> iterator = keySet.iterator(); iterator.hasNext();) {
+			String cookieName = (String) iterator.next();
+			
+			logLine += "\n\tCookie:\t" + cookieName + "=" + cookies.get(cookieName);
+		}
+		
+		System.out.println(logLine);
+		
+	}
 }
