@@ -30,4 +30,6 @@ public class MemoServerConfigurator {
 	public String getContentType(String extension){
 		return contentTypes.get(extension);
 	}
+	
+	//TODO: caricare da file di testo (check dell'ultima modifica)
 }
