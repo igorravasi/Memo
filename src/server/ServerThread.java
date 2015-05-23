@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import server.basics.HttpRequest;
@@ -38,6 +40,14 @@ public class ServerThread extends Thread implements Runnable{
 				logLine += " POST: " + request.getContent();
 			}
 			System.out.println(logLine);
+			
+			List<String> cookies = request.getCookies();
+			
+			//Debug cookie
+			for (Iterator<String> iterator = cookies.iterator(); iterator.hasNext();) {
+				String string = (String) iterator.next();
+				System.err.println(string);
+			}
 			
 			handleRequest(request);
 			clientSocket.close();
