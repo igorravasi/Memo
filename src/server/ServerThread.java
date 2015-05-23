@@ -37,17 +37,19 @@ public class ServerThread extends Thread implements Runnable{
 			
 			String logLine = request.getUri();
 			if (request.getContent() != null ) {
-				logLine += " POST: " + request.getContent();
+				logLine += "\n\tPOST:\t" + request.getContent();
 			}
-			System.out.println(logLine);
+			
 			
 			List<String> cookies = request.getCookies();
 			
 			//Debug cookie
 			for (Iterator<String> iterator = cookies.iterator(); iterator.hasNext();) {
 				String string = (String) iterator.next();
-				System.err.println(string);
+				logLine += "\n\tCookie:\t" + string;
 			}
+			
+			System.out.println(logLine);
 			
 			handleRequest(request);
 			clientSocket.close();

@@ -81,7 +81,7 @@ public class HttpRequest {
 		
 		String cookies = headers.get("Cookie:");
 			
-		System.err.println(cookies);
+		
 		List<String> cookiesList = new LinkedList<String>();
 		
 		if (cookies != null) {
