@@ -2,6 +2,7 @@ package server;
 
 import server.config.MemoServerConfigurator;
 import server.services.BinaryFileService;
+import server.services.LoggingService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
 
@@ -28,7 +29,7 @@ public class ServerLauncher {
 		server.addService("/favicon.ico", binaryService);
 		
 		server.addService("/singleplayer", new SinglePlayerService());
-		
+		server.addService("/login", new LoggingService());
 		
 		
 		server.launch();
