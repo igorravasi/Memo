@@ -17,7 +17,15 @@ public class LoggingService implements IService{
 	private static final String userField = "Utente";
 	private static final String sessionField = "Sessione";
 	private static final String passwordField = "Password";
+	private static final String doField = "Do";
+	
+	private static final String logoutValue = "logout";
+	
 	private static final String databaseFile = "db/utenti.txt";
+	
+	private static final String okResponse = "Logged";
+	private static final String badResponse = "Error";
+	
 	
 	
 	
@@ -29,21 +37,43 @@ public class LoggingService implements IService{
 		Map<String, String> contentFields = readPostedContent(request);
 		HttpStringMessage message = new HttpStringMessage();
 		
-		
-		
+		boolean isLogout = isLogout( contentFields.get(doField) );
 		boolean logged = login( contentFields.get(userField), contentFields.get(passwordField) );
-		if ( logged ) {
+		
+		String response = okResponse;
+		
+		if (isLogout) {
+			String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+			
+			message.setCookie(userField + delete);
+			message.setCookie(sessionField + delete);
+			
+		} else if ( logged ){
+			
 			message.setCookie(userField + "=" + contentFields.get(userField) + "; path/");
 			long session = new Random().nextLong();
 			message.setCookie(sessionField + "=" + session + "; path=/");
-			message.sendMessage(clientSocket, "Logged");
+			
 		} else {
-			message.sendMessage(clientSocket, "Error");
+			
+			response = badResponse;
+			
 		}
-		
+				
+		message.sendMessage(clientSocket, response);
 		
 	}
 
+	
+	private boolean isLogout(String command){
+		if (command.equalsIgnoreCase(logoutValue)) {
+			return true;
+		}
+	
+		return false;
+	
+	}
+	
 	
 	private boolean login(String user, String password){
 		
