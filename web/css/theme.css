@@ -144,3 +144,11 @@ fieldset[disabled] .form-emoji {
 .visibile{
 	display:block;
 }
+
+.pannello{
+	width:50%;
+	height:30%;
+	background-color: rgba(102, 175, 233, .2);
+	border-radius:25px;
+	border: 0.1em solid black;
+}
