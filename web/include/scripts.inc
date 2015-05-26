@@ -7,5 +7,6 @@
 						
 			<script type="text/javascript" src="js/stringLib.js"></script>
 			<script type="text/javascript" src="js/netLib.js"></script>
-			
+			<!--  Dizionario per i messaggi -->
+			<script type="text/javascript" src="js/dictionary.js"></script>
 			<script type="text/javascript" src="js/login.js"></script>
