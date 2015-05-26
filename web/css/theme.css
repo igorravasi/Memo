@@ -149,8 +149,13 @@ fieldset[disabled] .form-emoji {
 	display:none;
 }
 
+
 .visibile{
 	display:block;
+}
+
+.destro{
+  float:right;
 }
 
 .pannello{
