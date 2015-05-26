@@ -21,7 +21,7 @@
 			      		<li><a href="Istruzioni.html">Info</a></li>
 			      		<li><a href="Contatti.html">Contatti</a></li>
 			      		<li class="dropdown" style="float: right;">
-							 <a href="" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+							 <a href="" class="dropdown-toggle" data-toggle="dropdown" ><span id="user_name">Login</span> <b class="caret"></b></a>
 							 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 							 	<li>
 							 		<div class="row">

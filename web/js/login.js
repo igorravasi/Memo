@@ -2,7 +2,7 @@
  * 
  */
 
-
+writeLoginName();
 
 function submitLogin(button) {
 	
@@ -30,7 +30,19 @@ function submitLogin(button) {
 function checkLogResponse(response){
 	
 	if (response.contains("Logged")) {
+		writeLoginName();
 		return true;
 	}
 	return false;
+}
+
+
+function writeLoginName(){
+	var username = getCookie("Utente");
+	if (username == "") {
+		username = "Login";
+		
+	}
+	
+	document.getElementById("user_name").innerHTML = username; 
 }
