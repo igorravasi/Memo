@@ -23,18 +23,21 @@ public class SinglePlayerGame extends Observable{
 	public SinglePlayerGame(Integer playId) {
 		super();
 		this.playId = playId;
+//		System.err.println(playId + " started @ " + (System.currentTimeMillis()/1000));
 		keepAlive();
 	}
 
 	private void keepAlive(){
 		isAliveTimer.cancel();
 		isAliveTimer = new Timer();
-		
+//		System.err.println(playId + " restarted @ " + (System.currentTimeMillis()/1000));
 		isAliveTimer.schedule(new TimerTask() {
 			
 			@Override
 			public void run() {
+//				System.err.println(playId + " ended @ " + (System.currentTimeMillis()/1000));
 				changed();
+				
 			}
 		}, ALIVE_TIMER); //Dopo due minuti di inattività notifica l'observer
 	}
