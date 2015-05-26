@@ -160,6 +160,17 @@ fieldset[disabled] .form-emoji {
 	border-radius:25px;
 	border: 0.1em solid black;
 }
+
+
+.testoverde{
+	color: green;
+	
+}
+.testorosso{
+	color:red;
+}
+
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

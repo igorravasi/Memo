@@ -35,3 +35,14 @@ function getGameOverMessage(round){
 		return "<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria, continua a giocare!</h3>";
 	}
 }
+
+
+function getLogMessage(bool){
+	
+	var head = bool ? "<p class='testoverde'>" : "<p class='testorosso'>";
+	var tail = "</p>";
+	
+	var content = bool ? "Ok! Puoi chiudere questo riquadro." :  "Errore, riprova.";
+	
+	return head + content + tail;
+}

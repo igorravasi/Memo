@@ -23,5 +23,14 @@ function submitLogin(button) {
 	
 	var logResponse = request("login", stringToSubmit);
 	
-	alert(logResponse);
+	document.getElementById("login_message").innerHTML = getLogMessage(checkLogResponse(logResponse));
+}
+
+
+function checkLogResponse(response){
+	
+	if (response.contains("Logged")) {
+		return true;
+	}
+	return false;
 }
