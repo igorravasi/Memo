@@ -39,7 +39,7 @@ body {
 }
 
 #emojikeyboard {
-	width: 80%;
+	width: 70%;
 	background: rgba(102, 175, 233,0.2);
 	margin: 1em auto;
 	padding: 0.1em;
@@ -74,12 +74,9 @@ body {
   padding: 10px 10px 10px 10px;
   font-size: 48px;
   line-height: 1.42857143;
-  color: #555;
- 
   text-align: center;
   position: relative;
-  background-color: #fff;
-  background-image: none;
+  background: rgba(102, 175, 233,0.2);
   border: 1px solid #ccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -89,25 +86,26 @@ body {
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .input-emoji:focus , #emojikeyboard{
+  background: rgba(102, 175, 233,0.2);
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .input-emoji::-moz-placeholder {
-  color: #999;
+  background: rgba(102, 175, 233,0.2);
   opacity: 1;
 }
 .input-emoji:-ms-input-placeholder {
-  color: #999;
+  background: rgba(102, 175, 233,0.2);
 }
 .input-emoji::-webkit-input-placeholder {
-  color: #999;
+  background: rgba(102, 175, 233,0.2);
 }
 .input-emoji[disabled],
 .input-emoji[readonly],
 fieldset[disabled] .input-emoji {
-  background-color: #eee;
+  background: rgba(102, 175, 233,0.2);
   opacity: 1;
 }
 .input-emoji[disabled],
