@@ -9,7 +9,7 @@
 			      		<span class="icon-bar"></span>
 			    	</button>
 			    	<a class="navbar-brand" href="MyMemo.html">MyMemo</a>
-				</div>
+				
 			  	<div class="navbar-collapse collapse">
 			    	<ul class="nav navbar-nav">
 			      		<li class="dropdown">
@@ -49,6 +49,7 @@
 							 </ul>
 						</li>
 			    	</ul>
+			   		</div>
 			   	</div>
 			</nav>
 		</div>
