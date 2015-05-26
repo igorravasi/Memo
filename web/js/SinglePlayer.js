@@ -12,7 +12,7 @@ var lastBox = 0;
 
 
 function start(){
-	loadPlayId();
+	playId = request("singleplayer", null );
 	
 	display("controls",false);
 	document.getElementById("start_button").innerHTML="Restart";
@@ -150,60 +150,6 @@ function generateBoxes(n){
 	
 }
 
-
-
-function loadPlayId(){
-	
-//	cfunc = function(){
-//		if (xmlHttp.readyState==4 && xmlHttp.status==200){
-//	    	 playId = xmlHttp.responseText;   
-//	    }else{
-//	    	playId = null;
-//		}
-//	}		     
-	playId = request("singleplayer", null );
-}
-
-
-
-function request(theUrl, postContent){
-   
-    xmlHttp = new XMLHttpRequest();
-    
-	if (xmlHttp == null || xmlHttp == undefined)
-	  {//IE6
-	  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-    
-	//xmlHttp.onreadystatechange=cfunc;
-	
-	var method = postContent == null ? "GET" : "POST";
-    xmlHttp.open( method, theUrl, false );
-      
-    xmlHttp.send( encodeURI(postContent) );
-    
-    return xmlHttp.responseText;
- 
-}
-
-
-function loadServerResponse( postContent ) {
-	
-//	cfunc = function(){
-//		if (xmlHttp.readyState==4 && xmlHttp.status==200){
-//	    	 response = xmlHttp.responseText;   
-//	    }else{
-//	    	response = null;
-//		}
-//	}		 
-
-	var url = "singleplayer";
-	if ( playId!=null ) {
-		url += "/" + playId;
-	}
-	response = request(url, postContent);
-	return response;
-}
 
 
 function writeAMessage(content) {

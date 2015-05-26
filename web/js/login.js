@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 
 
 function submitLogin(button) {
@@ -17,5 +21,7 @@ function submitLogin(button) {
 	}
 	
 	
+	var logResponse = request("login", stringToSubmit);
 	
+	alert(logResponse);
 }
