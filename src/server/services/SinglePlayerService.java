@@ -23,18 +23,21 @@ public class SinglePlayerService implements IService, Observer{
 			throws IOException {
 		
 		String uri = request.getUri();
+		String response;
 		
 		if (!uri.contains("singleplayer/")) {	
-			initializeGame(clientSocket);
+			response = initializeGame(clientSocket);
 		}else {
-			play(clientSocket, uri, request.getContent());
+			response = play(clientSocket, uri, request.getContent());
 		}
 
+		message.sendMessage(clientSocket, response);
+		
 	}
 
 	
 	
-	private void play(Socket clientSocket, String uri, String content) throws IOException{
+	private String play(Socket clientSocket, String uri, String content) throws IOException{
 		
 		Integer playId;
 		
@@ -53,14 +56,14 @@ public class SinglePlayerService implements IService, Observer{
 			response = game.readRequest(content);
 		}
 		
-		message.sendMessage(clientSocket, response);
+		return response;
 		
 		
 	}
 	
 	
 	
-	private void initializeGame(Socket clientSocket) throws IOException{
+	private String initializeGame(Socket clientSocket) throws IOException{
 		
 		Integer playId = getFreeIndex();
 		
@@ -69,16 +72,19 @@ public class SinglePlayerService implements IService, Observer{
 		
 		singleGames.put(playId, aSingleGame);
 		
-		message.sendMessage(clientSocket, playId+"");
+		return playId+"";
 	}
 	
 	
-	//TODO: Questo metodo porta ad una responsabilità multipla?!
+	//TODO: Questo metodo porta ad una responsabilità multipla?! Meglio estendere la map?
 	private Integer getFreeIndex(){
 
+	
 		if (singleGames.size() <= Integer.MAX_VALUE) {
-			return singleGames.size();
+			return singleGames.size();		
+			
 		} else {
+			
 			for (int i = 0; i < singleGames.size(); i++) {
 				if (singleGames.get(i) == null) {
 					return i;
@@ -87,7 +93,7 @@ public class SinglePlayerService implements IService, Observer{
 
 		}
 	
-		//TODO: null---> throw eccezione e gestire
+		
 		return null;
 	}
 
