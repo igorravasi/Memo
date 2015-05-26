@@ -21,13 +21,7 @@
 			      		<li><a href="Istruzioni.html">Info</a></li>
 			      		<li><a href="Contatti.html">Contatti</a></li>
 			      		
-
-			    	</ul>
-			    	<ul class="nav navbar-bar">
-			    		<div id="start_div" class="nascosto">
-			    		<li style="float:right"><button onclick="start();" id="start_button" class="btn btn-primary btn-lg" >Start </button></li>
-			    		</div>
-			    		<li class="dropdown" style="float: right;">
+						<li class="dropdown" style="float: right;">
 							 <a href="" class="dropdown-toggle" data-toggle="dropdown" ><span id="user_name">Login</span> <b class="caret"></b></a>
 							 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 							 	<li>
@@ -58,6 +52,12 @@
 							 	</li>
 							 </ul>
 						</li>
+			    	</ul>
+			    	<ul class="nav navbar-bar">
+			    		<div id="start_div" class="nascosto">
+			    		<li style="float:right"><button onclick="start();" id="start_button" class="btn btn-primary btn-lg" >Start </button></li>
+			    		</div>
+			    		
 									
 
 					</ul>
