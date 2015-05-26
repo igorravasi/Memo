@@ -35,6 +35,9 @@ public class LoggingService implements IService{
 		
 		
 		Map<String, String> contentFields = readPostedContent(request);
+		if (contentFields == null) {
+			contentFields = new HashMap<String, String>();
+		}
 		HttpStringMessage message = new HttpStringMessage();
 		
 		boolean isLogout = isLogout( contentFields.get(doField) );
@@ -66,7 +69,8 @@ public class LoggingService implements IService{
 
 	
 	private boolean isLogout(String command){
-		if (command.equalsIgnoreCase(logoutValue)) {
+		
+		if (command != null && command.equalsIgnoreCase(logoutValue)) {
 			return true;
 		}
 	
