@@ -17,6 +17,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-image: url("../resources/background.png");
+  
 }
 .theme-dropdown .dropdown-menu {
   position: static;
