@@ -10,9 +10,14 @@ import java.util.Observer;
 import model.engine.SinglePlayerGame;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
+import server.config.MemoServerConfigurator;
 
 public class SinglePlayerService implements IService, Observer{
 
+	private static final String noGameIdName = "no_game_id";
+	private static final String noGameIdAvailableName = "no_game_id_available";
+	MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+	
 	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	private HttpStringMessage message = new HttpStringMessage();
 	
@@ -40,18 +45,18 @@ public class SinglePlayerService implements IService, Observer{
 		
 		Integer playId;
 		
-		int endOfPlayId = uri.indexOf('?');
-		if (endOfPlayId>0) {
-								
-			playId = Integer.parseInt(uri.substring("/singleplayer".length()+1,endOfPlayId));
-		}else {
+
+		try {
 			playId = Integer.parseInt(uri.substring("/singleplayer".length()+1));
+		} catch (NumberFormatException e) {
+			playId = null;
 		}
+
 		
 		SinglePlayerGame game = singleGames.get(playId);
-		String response = "E: No game Id";
+		String response = configurator.getValue(noGameIdName);
+		
 		if (game != null) {
-			
 			response = game.readRequest(content);
 		}
 		
@@ -66,12 +71,18 @@ public class SinglePlayerService implements IService, Observer{
 		
 		Integer playId = getFreeIndex();
 		
-		SinglePlayerGame aSingleGame = new SinglePlayerGame(playId);
-		aSingleGame.addObserver(this);
+		if (playId == null) {
+			return configurator.getValue(noGameIdAvailableName);
+		} else {
+			SinglePlayerGame aSingleGame = new SinglePlayerGame(playId);
+			aSingleGame.addObserver(this);
+			
+			singleGames.put(playId, aSingleGame);
+			
+			return playId+"";
+		}
 		
-		singleGames.put(playId, aSingleGame);
-		
-		return playId+"";
+
 	}
 	
 	
@@ -92,7 +103,6 @@ public class SinglePlayerService implements IService, Observer{
 
 		}
 	
-		
 		return null;
 	}
 
