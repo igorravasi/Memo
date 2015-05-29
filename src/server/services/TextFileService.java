@@ -16,8 +16,10 @@ import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;
 
-//TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileServici, dovrebbero 
+//extFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
 //derivare da una classe comune FileService!
+//Update: tuttavia visto che le linee di codice condivise non sono contigue non so se 
+//la presenza di esse giustificherebbe un refactoring del genere.
 
 public class TextFileService implements IService {
 
