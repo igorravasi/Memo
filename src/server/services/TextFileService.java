@@ -11,7 +11,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.StringTokenizer;
 
-import server.IService;
 import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;

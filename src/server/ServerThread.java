@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import server.basics.HttpRequest;
+import server.services.IService;
 
 
 public class ServerThread extends Thread implements Runnable{

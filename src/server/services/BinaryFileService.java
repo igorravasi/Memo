@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Files;
 
-import server.IService;
 import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;

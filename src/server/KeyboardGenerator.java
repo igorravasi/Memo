@@ -1,4 +1,4 @@
-package test;
+package server;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,7 +38,6 @@ public class KeyboardGenerator {
 				
 				String line = templatePattern.replaceAll("###emoji###", emoji);
 				
-				System.err.println(line);
 				writer.write(line);
 				
 			}

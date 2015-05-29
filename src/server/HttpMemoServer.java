@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.services.IService;
+
 public class HttpMemoServer {
 
 	

@@ -31,15 +31,12 @@ public class ServerLauncher {
 		server.addService("/singleplayer", new SinglePlayerService());
 		server.addService("/login", new LoggingService());
 		
+		KeyboardGenerator.main(null);
 		
 		server.launch();
 		
 	}
 	
-	
-//TODO:	
-//	public static void generateKeyboardFile(){
-//		
-//	}
+
 
 }
