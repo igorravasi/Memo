@@ -15,21 +15,26 @@ import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;
 
-//extFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
+//TextFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
 //derivare da una classe comune FileService!
 //Update: tuttavia visto che le linee di codice condivise non sono contigue non so se 
 //la presenza di esse giustificherebbe un refactoring del genere.
 
 public class TextFileService implements IService {
 
-		
+	private static final String includeRegEx = "#{3}.+#{3}";	
+	private static final String singleIncldueDelimiter = "###";
+	private static final String includeName = "include_dir";
+	
+	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+	
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException{
 
 		String uri = request.getUri();
 		
 		if ( uri.equalsIgnoreCase("/") ) {
-			uri = MemoServerConfigurator.getInstance().getValue("home_page");
+			uri = configurator.getValue("home_page");
 		}
 		
 		BufferedReader fileReader;
@@ -41,13 +46,23 @@ public class TextFileService implements IService {
 		
 		HttpMessage message = initializeMessage(clientSocket, uri);
 
+		copyLines(fileReader, message);
+		
+		fileReader.close();
+		message.closeHttpResponse();
+
+	}
+
+
+	private void copyLines(BufferedReader fileReader, HttpMessage message)
+			throws IOException {
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
-			if (fileLine.trim().matches("#{3}.+#{3}")) {
+			if (fileLine.trim().matches(includeRegEx)) {
 				
 				try {
-					String path = new StringTokenizer(fileLine.trim(),"###").nextToken();
-					path = "web/include" + path.trim();
+					String path = new StringTokenizer(fileLine.trim(),singleIncldueDelimiter).nextToken();
+					path = "web" + configurator.getValue(includeName) + path.trim();
 					message.getOut().flush();
 					Files.copy(new File(path).toPath(), message.getOutStream());
 					message.getOutStream().flush();
@@ -63,10 +78,6 @@ public class TextFileService implements IService {
 			message.getOut().write("\r\n");
 			fileLine = fileReader.readLine();
 		}
-		
-		fileReader.close();
-		message.closeHttpResponse();
-
 	}
 
 
@@ -88,13 +99,11 @@ public class TextFileService implements IService {
 
 	private HttpMessage initializeMessage(Socket clientSocket, String uri)
 			throws IOException {
-		String contentType = null;
-		
 		
 		String extension = uri.substring( uri.lastIndexOf("."), uri.length() );	
-		contentType = MemoServerConfigurator.getInstance().getContentType(extension);
+		String contentType = configurator.getContentType(extension);
 		contentType += "; charset=utf-8";
-		
+
 		HttpMessage message = new HttpMessage();
 		message.addHeader("Content-type", contentType);
 		 
