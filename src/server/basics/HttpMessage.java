@@ -17,7 +17,7 @@ import java.util.Set;
 public class HttpMessage {
 	
 	private static final String separator = ": ";
-	
+	private static final String enter ="\n";
 	private OutputStream outStream;
 	private OutputStreamWriter out;
 
@@ -35,26 +35,29 @@ public class HttpMessage {
 		outStream = clientSocket.getOutputStream();
 		out = new OutputStreamWriter(outStream, Charset.forName("UTF-8").newEncoder());
 		
-		out.write("HTTP/1.1 200 OK\n");
+		writeln("HTTP/1.1 200 OK");
 		
 		Set<String> headerNames = headers.keySet();
 		for (String name : headerNames) {
-			String line = name + headers.get(name) + "\n";
-			out.write(line);
+			String line = name + headers.get(name);
+			writeln(line);
 		}
 
 				
 		for (String singleCookie : cookies) {
-			out.write("Set-cookie: " + singleCookie + "\n");
+			writeln("Set-cookie" + separator + singleCookie);
 		}
 		
-		out.write("\n");
+		writeln("");
 		
 	}
 	
+	public void writeln(String line) throws IOException{
+		out.write(line + enter);
+	}
 	
 	public void closeHttpResponse() throws IOException{
-		out.write("\n");
+		writeln("");
 		out.close();
 	}
 	
@@ -77,5 +80,6 @@ public class HttpMessage {
 		this.cookies.add(cookie);
 	}
 
+	
 	
 }
