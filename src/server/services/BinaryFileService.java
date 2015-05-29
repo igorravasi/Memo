@@ -10,7 +10,7 @@ import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;
 
-//TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileServici, dovrebbero 
+//TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
 //derivate da una classe comuna FileService!
 
 public class BinaryFileService implements IService{
@@ -35,10 +35,11 @@ public class BinaryFileService implements IService{
 		String contentType = MemoServerConfigurator.getInstance().getContentType(extension);
 
 		HttpMessage message = new HttpMessage();
-		message.setContentLength(contentLength);
-		message.setContentType(contentType);
+		message.addHeader("Content-Length", contentLength);
+		message.addHeader("Content-Type", contentType);
 		message.sendResponseHeader(clientSocket);
-				
+		message.getOut().flush();		
+		
 		Files.copy(file.toPath(), message.getOutStream());
 		
 		message.closeHttpResponse();

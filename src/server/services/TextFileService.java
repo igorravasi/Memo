@@ -96,7 +96,7 @@ public class TextFileService implements IService {
 		contentType += "; charset=utf-8";
 		
 		HttpMessage message = new HttpMessage();
-		message.setContentType( contentType );
+		message.addHeader("Content-type", contentType);
 		 
 		message.sendResponseHeader( clientSocket );
 		return message;

@@ -7,7 +7,7 @@ public class HttpStringMessage extends HttpMessage{
 	
 	public void sendMessage(Socket clientSocket, String messageBody) throws IOException{
 		
-		setContentType("text/html; charset=utf-8");
+		addHeader("Content-Type", "text/html; charset=utf-8");
 		sendResponseHeader(clientSocket);
 		getOut().write(messageBody);
 		closeHttpResponse();

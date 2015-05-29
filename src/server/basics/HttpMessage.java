@@ -8,23 +8,26 @@ import java.nio.charset.Charset;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class HttpMessage {
 	
+	private static final String separator = ": ";
 	
-
 	private OutputStream outStream;
 	private OutputStreamWriter out;
-	private String contentLength = null;
-	private String contentType = null;
-	private List<String> cookies = null;
+
+	private Map<String, String> headers = new HashMap<String, String>();
+	private List<String> cookies = new LinkedList<String>();
 	
 	public HttpMessage() {
-		super();
 	
+		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
+		headers.put("Date", serverDate);
 	}
 
 	public void sendResponseHeader(Socket clientSocket) throws IOException{
@@ -32,24 +35,17 @@ public class HttpMessage {
 		outStream = clientSocket.getOutputStream();
 		out = new OutputStreamWriter(outStream, Charset.forName("UTF-8").newEncoder());
 		
-		String serverDate = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneId.of("GMT")));
-		
 		out.write("HTTP/1.1 200 OK\n");
-		out.write("Date: " + serverDate + "\n");
 		
-		//TODO: refactoring
-		if (contentType != null) {
-			out.write("Content-Type: " + contentType +"\n");
+		Set<String> headerNames = headers.keySet();
+		for (String name : headerNames) {
+			String line = name + headers.get(name) + "\n";
+			out.write(line);
 		}
-		if (contentLength != null) {
-			out.write("Content-Length: " + contentLength+"\n");
-		}
-		if (cookies != null) {
-			for (Iterator<String> iterator = cookies.iterator(); iterator.hasNext();) {
-				String singleCookie = (String) iterator.next();
-				out.write("Set-cookie: " + singleCookie + "\n");
-			}
-			
+
+				
+		for (String singleCookie : cookies) {
+			out.write("Set-cookie: " + singleCookie + "\n");
 		}
 		
 		out.write("\n");
@@ -71,22 +67,13 @@ public class HttpMessage {
 	}
 	
 	
-	
-	
-	public void setContentLength(String contentLength) {
-		this.contentLength = contentLength;
-	}
-
-	public void setContentType(String contentType) {
-		this.contentType = contentType;
+	public void addHeader(String headerName, String headerValue){
+		
+		headers.put(headerValue + separator, headerValue);
 	}
 	
 	public void setCookie (String cookie){
-		
-		if (this.cookies == null) {
-			this.cookies = new LinkedList<String>();
-		}
-		
+			
 		this.cookies.add(cookie);
 	}
 
