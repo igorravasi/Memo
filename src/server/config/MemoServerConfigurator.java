@@ -53,9 +53,8 @@ public class MemoServerConfigurator {
 				}
 				
 				line = reader.readLine();
-			}
-			
-			System.err.println("Reloaded: " + path);
+			}		
+
 			reader.close();
 			
 		}
@@ -73,7 +72,7 @@ public class MemoServerConfigurator {
 		
 		Long last = new File(path).lastModified();
 		Long difference = last - modifications.get(path);
-		System.err.println("last: " + last + "\n" + "difference: " + difference);
+		
 		if (difference > 0) {
 			modifications.put(path, last); 
 			return true;
@@ -86,7 +85,6 @@ public class MemoServerConfigurator {
 
 	public String getContentType(String extension){
 		if (hasBeenModified(contentTypesPath)) {
-			
 			reload(contentTypesPath, contentTypes);
 		}
 		return contentTypes.get(extension);
@@ -98,7 +96,6 @@ public class MemoServerConfigurator {
 			reload(valuesPath, values);
 		}
 
-		
 		return values.get(name);
 	}
 	
