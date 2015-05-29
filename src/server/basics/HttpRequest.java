@@ -90,11 +90,12 @@ public class HttpRequest {
 			while (tokenizer.hasMoreTokens()) {
 				String cookie = tokenizer.nextToken();
 				
-				StringTokenizer tokenizer2 = new StringTokenizer(cookie,"=");
-				String cookieName = tokenizer2.nextToken();
-				String cookieValue = tokenizer2.nextToken();
+				String cookieParts[] = cookie.split("=",2);
+				if (cookieParts.length == 2) {
+					cookieMap.put(cookieParts[0], cookieParts[1]);
+				}
 				
-				cookieMap.put(cookieName, cookieValue);
+				
 			}
 		}
 		

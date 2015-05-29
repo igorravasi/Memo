@@ -48,7 +48,7 @@ public class MemoServerConfigurator {
 			while (line != null) {
 				
 				String parts[] = line.split(delim, 2);
-				if (parts.length >= 2) {
+				if (parts.length == 2) {
 					mappa.put(parts[0], parts[1]);
 				}
 				
