@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 
 
-public class testKeyboardGenerator {
+public class KeyboardGenerator {
 
 	public static void main(String[] args)  {
 		
