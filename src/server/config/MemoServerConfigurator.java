@@ -13,7 +13,7 @@ public class MemoServerConfigurator {
 	private static final String dir = "config/";
 	private static final String valuesPath = dir + "values.cfg";
 	private static final String contentTypesPath = dir + "content-types.cfg";
-	
+	private static final String comments = "//";
 	private static final String delim = ":\t";
 	
 	private static MemoServerConfigurator  configurator = null;
@@ -38,6 +38,10 @@ public class MemoServerConfigurator {
 		return configurator;
 	}
 	
+	
+	//Leggo le linee, se iniziano con i caratteri di commento non le carico
+	//Se contengono un nome ed un valore, separati da un opportuno delimitarore delim
+	//le carico nella mappa passata come argomento.
 	private void reload(String path, Map<String, String> mappa){
 		
 		try {
@@ -47,9 +51,13 @@ public class MemoServerConfigurator {
 			
 			while (line != null) {
 				
-				String parts[] = line.split(delim, 2);
-				if (parts.length == 2) {
-					mappa.put(parts[0], parts[1]);
+				if ( !(line.startsWith(comments)) ) {
+					
+					String parts[] = line.split(delim, 2);
+					if (parts.length == 2) {
+						mappa.put(parts[0], parts[1]);
+					}
+		
 				}
 				
 				line = reader.readLine();
@@ -68,6 +76,8 @@ public class MemoServerConfigurator {
 		}
 	}
 	
+	
+	//Controllo se è cambiata la data di ultima modifica del file e la aggiorno
 	private boolean hasBeenModified(String path){
 		
 		Long last = new File(path).lastModified();
