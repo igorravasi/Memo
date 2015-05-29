@@ -38,8 +38,15 @@ public class ServerThread extends Thread implements Runnable{
 		
 			writeLog(request);
 			
-			handleRequest(request);
-			clientSocket.close();
+			try {
+				handleRequest(request);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} finally {
+				clientSocket.close();
+			}
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
