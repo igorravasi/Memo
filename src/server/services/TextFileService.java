@@ -22,9 +22,11 @@ import server.config.MemoServerConfigurator;
 
 public class TextFileService implements IService {
 
-	private static final String includeRegEx = "#{3}.+#{3}";	
-	private static final String singleIncldueDelimiter = "###";
+	private static final String includeRegexName = "include_regex";	
+	private static final String incldueDelimitersName = "include_delimiters";
 	private static final String includeName = "include_dir";
+	private static final String homePageName = "home_page";
+	private static final String errorPage = "error_page";
 	
 	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 	
@@ -34,14 +36,15 @@ public class TextFileService implements IService {
 		String uri = request.getUri();
 		
 		if ( uri.equalsIgnoreCase("/") ) {
-			uri = configurator.getValue("home_page");
+			uri = configurator.getValue(homePageName);
+			
 		}
 		
 		BufferedReader fileReader;
 		try {
 			fileReader = initializeBufferedFileReader(uri);
 		} catch (FileNotFoundException e1) {
-			fileReader = initializeBufferedFileReader("/Errore.html");
+			fileReader = initializeBufferedFileReader( configurator.getValue(errorPage) );
 		}
 		
 		HttpMessage message = initializeMessage(clientSocket, uri);
@@ -58,10 +61,10 @@ public class TextFileService implements IService {
 			throws IOException {
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
-			if (fileLine.trim().matches(includeRegEx)) {
+			if (fileLine.trim().matches(configurator.getValue(includeRegexName))) {
 				
 				try {
-					String path = new StringTokenizer(fileLine.trim(),singleIncldueDelimiter).nextToken();
+					String path = new StringTokenizer( fileLine.trim(), configurator.getValue(incldueDelimitersName) ).nextToken();
 					path = "web" + configurator.getValue(includeName) + path.trim();
 					message.getOut().flush();
 					Files.copy(new File(path).toPath(), message.getOutStream());
