@@ -13,6 +13,7 @@ public class HttpRequest {
 	private String uri;
 	
 	private Map<String, String> headers = new HashMap<String, String>();
+	private Map<String, String> cookies = new HashMap<String, String>();
 	private String content = null;
 	
 	
@@ -29,12 +30,13 @@ public class HttpRequest {
 		
 		//L'uri è nella prima riga, al secondo posto.
 		uri=lineElements[1];
-		
-		
+
 		while(line!=null && line.length() != 0){
-			//System.err.println(line);
+			
 			String[] headerElements = line.split(" ", 2);
-			headers.put(headerElements[0], headerElements[1]);
+			if (headerElements.length == 2) {
+				headers.put(headerElements[0], headerElements[1]);
+			}
 			
 			line = in.readLine();
 		}
@@ -67,6 +69,38 @@ public class HttpRequest {
 		return builder.toString();
 	}
 	
+
+	private void loadCookies(){
+		if (cookies.size() > 0) {
+			return;
+		}
+		
+		String cookiesReceived = headers.get("Cookie:");
+		
+		if (cookiesReceived != null) {
+			StringTokenizer tokenizer = new StringTokenizer(cookiesReceived, "; ");
+
+			while (tokenizer.hasMoreTokens()) {
+				String cookie = tokenizer.nextToken();
+				
+				String cookieParts[] = cookie.split("=",2);
+				if (cookieParts.length == 2) {
+					cookies.put(cookieParts[0], cookieParts[1]);
+				}
+				
+			}
+		
+		}
+		
+	}
+	
+	
+	public Map<String,String> getCookies(){
+		
+		loadCookies();
+		return cookies;
+	}
+	
 	public String getUri() {
 		return uri;
 	}
@@ -75,33 +109,5 @@ public class HttpRequest {
 		return content;
 	}
 	
-	public Map<String,String> getCookies(){
-		
-		String cookies = headers.get("Cookie:");
-			
-		
-		
-		Map<String, String> cookieMap = new HashMap<String, String>();
-		
-		
-		if (cookies != null) {
-			StringTokenizer tokenizer = new StringTokenizer(cookies, "; ");
-
-			while (tokenizer.hasMoreTokens()) {
-				String cookie = tokenizer.nextToken();
-				
-				String cookieParts[] = cookie.split("=",2);
-				if (cookieParts.length == 2) {
-					cookieMap.put(cookieParts[0], cookieParts[1]);
-				}
-				
-				
-			}
-		}
-		
-		
-		
-		return cookieMap;
-	}
 
 }
