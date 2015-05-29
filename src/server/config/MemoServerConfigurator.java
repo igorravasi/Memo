@@ -14,7 +14,7 @@ public class MemoServerConfigurator {
 	private static final String valuesPath = dir + "values.cfg";
 	private static final String contentTypesPath = dir + "content-types.cfg";
 	
-	private static final String delim = ":/t";
+	private static final String delim = ":\t";
 	
 	private static MemoServerConfigurator  configurator = null;
 	private Map<String, String> contentTypes = new HashMap<String, String>();
