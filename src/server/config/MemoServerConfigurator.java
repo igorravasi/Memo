@@ -83,30 +83,24 @@ public class MemoServerConfigurator {
 		
 	}
 	
-	private void reloadContentTypes(){
+
+	public String getContentType(String extension){
 		if (hasBeenModified(contentTypesPath)) {
+			
 			reload(contentTypesPath, contentTypes);
 		}
-		
-	}
-
-	private void reloadValues(){
-		
-		if (hasBeenModified(valuesPath)) {
-			
-			reload(valuesPath, values);
-		}
-		
-		
-	}
-	public String getContentType(String extension){
-		reloadContentTypes();
 		return contentTypes.get(extension);
 	}
 	
 	public String getValue(String name){
-		reloadValues();
+
+		if (hasBeenModified(valuesPath)) {
+			reload(valuesPath, values);
+		}
+
+		
 		return values.get(name);
 	}
+	
 
 }
