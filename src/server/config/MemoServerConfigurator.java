@@ -1,12 +1,12 @@
 package server.config;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 public class MemoServerConfigurator {
 
@@ -20,10 +20,13 @@ public class MemoServerConfigurator {
 	private Map<String, String> contentTypes = new HashMap<String, String>();
 	private Map<String, String> values = new HashMap<String, String>();
 	
+	private Map<String, Long> modifications = new HashMap<String, Long>();
 	
 	//Singleton: costruttore private
 	private MemoServerConfigurator(){
 		
+		modifications.put(valuesPath, 0L);
+		modifications.put(contentTypesPath, 0L);
 	}
 	
 	
@@ -43,17 +46,18 @@ public class MemoServerConfigurator {
 			String line = reader.readLine();
 			
 			while (line != null) {
-				StringTokenizer tokenizer = new StringTokenizer(line, delim);
 				
-				String key = tokenizer.nextToken();
-				String value = tokenizer.nextToken("");
-				
-				mappa.put(key, value);
+				String parts[] = line.split(delim, 2);
+				if (parts.length >= 2) {
+					mappa.put(parts[0], parts[1]);
+				}
 				
 				line = reader.readLine();
 			}
 			
+			System.err.println("Reloaded: " + path);
 			reader.close();
+			
 		}
 		
 		//Non faccio nulla per gestire l'eccezione, al di là del log, perchè la miglior cosa da fare è lasciare
@@ -65,16 +69,35 @@ public class MemoServerConfigurator {
 		}
 	}
 	
+	private boolean hasBeenModified(String path){
+		
+		Long last = new File(path).lastModified();
+		Long difference = last - modifications.get(path);
+		System.err.println("last: " + last + "\n" + "difference: " + difference);
+		if (difference > 0) {
+			modifications.put(path, last); 
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
 	private void reloadContentTypes(){
-		//TODO: check ultima modifica
-		reload(contentTypesPath, contentTypes);
+		if (hasBeenModified(contentTypesPath)) {
+			reload(contentTypesPath, contentTypes);
+		}
+		
 	}
 
 	private void reloadValues(){
 		
-		//TODO: check ultima modifica
+		if (hasBeenModified(valuesPath)) {
+			
+			reload(valuesPath, values);
+		}
 		
-		reload(valuesPath, values);
+		
 	}
 	public String getContentType(String extension){
 		reloadContentTypes();
