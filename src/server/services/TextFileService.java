@@ -27,9 +27,8 @@ public class TextFileService implements IService {
 
 		String uri = request.getUri();
 		
-		//TODO: uri = home settata dall'esterno
 		if ( uri.equalsIgnoreCase("/") ) {
-			uri = "/MyMemo.html";
+			uri = MemoServerConfigurator.getInstance().getValue("home_page");
 		}
 		
 		BufferedReader fileReader;
