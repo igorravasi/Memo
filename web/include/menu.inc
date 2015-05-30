@@ -13,7 +13,7 @@
 			  	<div class="navbar-collapse collapse">
 			    	<ul class="nav navbar-nav">
 			      		<li class="dropdown">
-			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gioca<span class="caret"></span></a>
+			      			<a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gioca<span class="caret"></span></a>
 			      			<ul class="dropdown-menu" role="menu">
 			          			<li><a href="PartitaSingle.html">Single player</a></li>
 			          			<li><a href="PartitaMulti.html">Multiplayer</a></li>
@@ -22,7 +22,7 @@
 			      		<li><a href="Contatti.html">Contatti</a></li>
 			      		
 						<li class="dropdown" style="float: right;">
-							 <a href="" class="dropdown-toggle" data-toggle="dropdown" ><span id="user_name">Login</span> <b class="caret"></b></a>
+							 <a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle" data-toggle="dropdown" ><span id="user_name">Login</span> <b class="caret"></b></a>
 							 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 							 	<li>
 							 		<div class="row">
