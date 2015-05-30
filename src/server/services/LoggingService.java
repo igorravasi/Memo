@@ -43,7 +43,7 @@ public class LoggingService implements IService{
 		String response = configurator.getValue(okResponseName);
 		
 		if (isLogout) {
-			
+			//Annullo i cookie di sessione
 			message.setCookie(userField + delete);
 			message.setCookie(sessionField + delete);
 			
