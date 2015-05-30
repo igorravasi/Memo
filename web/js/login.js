@@ -23,7 +23,20 @@ function submitLogin(button) {
 	
 	var logResponse = request("login", stringToSubmit);
 	
-	document.getElementById("login_message").innerHTML = getLogMessage(checkLogResponse(logResponse));
+	var messageResponse = getLogMessage(checkLogResponse(logResponse));
+	
+	var i = 0;
+	
+	var timerShake = window.setInterval(function(){
+		i++;
+		if (i>20) {
+			window.clearInterval(timerShake);
+		}
+		
+		document.getElementById("login_message").innerHTML = document.getElementById("login_message").innerHTML==" " ? messageResponse : " "; 
+		
+	},10);
+	
 }
 
 
