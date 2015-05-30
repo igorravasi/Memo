@@ -8,7 +8,7 @@ var timeoutTimer = null;
 var factorySeconds = 7;
 var timeoutMilliSeconds = 2*60*1000 - 2*1000;  //Sottraggo 2 secondi perchè per ritardi sulla linea e sui buffer di I/O il timer sul server potrebbe essere già scaduto
 var lastBox = 0;
-
+var isValidable = false;
 
 display("start_div",true);
 
@@ -55,7 +55,9 @@ function doTheRightThing(response) {
 
 
 function validate(){
-	
+	if (!isValidable) {
+		return;	
+	}
 	
 	display("controls",false);
 	writtenSequence = "";
@@ -69,6 +71,7 @@ function validate(){
 	writtenSequence = "S:" + writtenSequence;
 
 	var response = loadServerResponse(writtenSequence);
+	isValidable = false;
 	doTheRightThing(response);
 	
 }

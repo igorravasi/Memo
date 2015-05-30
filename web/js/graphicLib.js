@@ -1,4 +1,6 @@
 
+
+
 function display(elementId, boolDisplay){
 	var element = document.getElementById(elementId);
 	
@@ -16,7 +18,25 @@ function display(elementId, boolDisplay){
 		
 }
 
-
+document.onkeypress=function(e){
+	var e=window.event || e;
+	var keyunicode=e.charCode || e.keyCode;
+	//120,88 = x,X
+	
+	if (keyunicode == 120 || keyunicode == 88) {
+		var timerText = document.getElementById("countDown");
+		timerText.innerHTML = 1;
+		return false;
+	} else if (keyunicode == 13) {
+		//13 = Enter
+		
+		validate();
+		return false;
+	} else {
+		return true;
+	}
+}
+	
 
 
 function showSequence(sequence) {
@@ -38,6 +58,7 @@ function showSequence(sequence) {
 				window.clearInterval(intervalTimer);
 				var numberOfChars = utf_length( trim(sequence) );
 				readSequence(numberOfChars);
+				isValidable = true;
 				
 			}
 		} else {
