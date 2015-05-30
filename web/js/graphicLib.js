@@ -1,21 +1,20 @@
 
-
+var aMenuIsOpen = false;
 
 
 function display(elementId, boolDisplay){
-	
 	var element = document.getElementById(elementId);
 	
 	var toBeSet = boolDisplay ? "visibile" : "nascosto";
 	var toBeDeleted = !boolDisplay ? "visibile" : "nascosto";
 	
-	toggleClass(element, toBeSet, toBeDeleted);
+	replaceClass(element, toBeSet, toBeDeleted);
 		
 	
 }
 
 
-function toggleClass(element, toBeSet, toBeDeleted){
+function replaceClass(element, toBeSet, toBeDeleted){
 	
 	var elementClasses = element.className;
 	var regex = new RegExp("\s*"+toBeDeleted+"\s*");
@@ -27,7 +26,55 @@ function toggleClass(element, toBeSet, toBeDeleted){
 	
 }
 
+function dropDown(element){
 
+	clearAllMenus();
+	
+	var toBeSet = "open"
+	var toBeDeleted = "";
+	
+	replaceClass(element, toBeSet, toBeDeleted);
+	
+	aMenuIsOpen = true;
+	
+}
+
+function clearAllMenus(){
+
+	var dropdowns = document.getElementsByClassName("dropdown");
+	var toBeSet = "";
+	var toBeDeleted = "open";
+	
+	for (var i = 0; i < dropdowns.length; i++) {
+		
+		replaceClass(dropdowns[i], toBeSet, toBeDeleted);
+	}
+	
+	aMenuIsOpen = false;
+	
+}
+
+
+
+document.body.addEventListener("click", function(e) {
+	
+	var e=window.event || e;
+	var regexDropdown = "^dropdown$|^dropdown\\s+|\\s+dropdown$|\\s+dropdown\\s+";
+	
+	if (aMenuIsOpen) {
+		var element = e.target;
+		while (element != null) {
+			var className = element.className || "";
+			if (className.match(regexDropdown)) {
+				return;
+			}
+			element = element.parentNode;
+		}		
+		clearAllMenus();
+	}
+	
+	},
+	true);
 
 document.onkeypress=function(e){
 	var e=window.event || e;
