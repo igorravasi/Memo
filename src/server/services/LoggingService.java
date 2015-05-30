@@ -10,9 +10,14 @@ import java.util.Random;
 
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
+import server.config.MemoServerConfigurator;
 
 public class LoggingService implements IService{
-
+	
+	private static final String databaseFileName = "users_database";
+	private static final String okResponseName = "logging_ok_response";
+	private static final String badResponseName = "logging_bad_response";
+	
 	private static final String userField = "Utente";
 	private static final String sessionField = "Sessione";
 	private static final String passwordField = "Password";
@@ -20,14 +25,8 @@ public class LoggingService implements IService{
 	
 	private static final String logoutValue = "logout";
 	
-	private static final String databaseFile = "db/utenti.txt";
-	
-	private static final String okResponse = "Logged";
-	private static final String badResponse = "Error";
-	
-	
-	
-	
+	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+		
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request)
 			throws IOException {
@@ -42,7 +41,7 @@ public class LoggingService implements IService{
 		boolean isLogout = isLogout( contentFields.get(doField) );
 		boolean logged = login( contentFields.get(userField), contentFields.get(passwordField) );
 		
-		String response = okResponse;
+		String response = configurator.getValue(okResponseName);
 		
 		if (isLogout) {
 			String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -58,7 +57,7 @@ public class LoggingService implements IService{
 			
 		} else {
 			
-			response = badResponse;
+			response = configurator.getValue(badResponseName);
 			
 		}
 				
@@ -85,7 +84,7 @@ public class LoggingService implements IService{
 		}
 		
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(databaseFile));
+			BufferedReader reader = new BufferedReader(new FileReader( configurator.getValue(databaseFileName) ));
 			String expectedLine = user + " " + password;
 			
 			String line = reader.readLine();
