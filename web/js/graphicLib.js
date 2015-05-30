@@ -17,9 +17,9 @@ function display(elementId, boolDisplay){
 function replaceClass(element, toBeSet, toBeDeleted){
 	
 	var elementClasses = element.className;
-	var regex = new RegExp("\s*"+toBeDeleted+"\s*");
+	var regex = new RegExp("\\s*"+toBeDeleted+"\\s*");
 	elementClasses = elementClasses.replace(regex,"");
-	if (!elementClasses.match("\s*"+toBeSet+"\s*")) {
+	if (!elementClasses.match("\\s*"+toBeSet+"\\s*")) {
 		elementClasses += " " + toBeSet;
 	}
 	element.className = elementClasses;
