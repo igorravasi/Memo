@@ -29,7 +29,7 @@ public class HttpRequest {
 		boolean isPost = lineElements[0].equalsIgnoreCase("POST") ? true : false;
 		
 		//L'uri è nella prima riga, al secondo posto.
-		uri=lineElements[1];
+		uri = lineElements[1];
 
 		while(line!=null && line.length() != 0){
 			
@@ -71,9 +71,7 @@ public class HttpRequest {
 	
 
 	private void loadCookies(){
-		if (cookies.size() > 0) {
-			return;
-		}
+	
 		
 		String cookiesReceived = headers.get("Cookie:");
 		
@@ -97,7 +95,10 @@ public class HttpRequest {
 	
 	public Map<String,String> getCookies(){
 		
-		loadCookies();
+		if (cookies.size() == 0) {
+			//Carico i cookie solo alla prima chiamata di questo metodo
+			loadCookies();
+		}
 		return cookies;
 	}
 	
