@@ -36,16 +36,16 @@
 							 							<label class="sr-only" for="id_password">Password</label>
 							 							<input type="password" class="form-control" name="Password" id="id_password" placeholder="Password">
 							 						</div>
-							 					<div class="form-group" id="login_message">
-												
-												</div>
+							 					
 							 						<div class="form-group">
 							 							<button class="btn btn-success btn-block" onclick="submitLogin(this)" name="Do" value="login">Login</button>
 							 						</div>
 							 						<div class="form-group">
 							 							<button class="btn btn-success btn-block" onclick="submitLogin(this)" name="Do" value="logout">Logout</button>
 							 						</div>
-
+													<div class="form-group" id="login_message">
+												  
+													</div>
 							 				</form>
 							 			</div>
 							 		</div>
