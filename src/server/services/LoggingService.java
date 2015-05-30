@@ -13,6 +13,8 @@ import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
 
 public class LoggingService implements IService{
+
+	private static final String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	
 	private static final String databaseFileName = "users_database";
 	private static final String okResponseName = "logging_ok_response";
@@ -28,14 +30,11 @@ public class LoggingService implements IService{
 	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 		
 	@Override
-	public void sendHttpResponse(Socket clientSocket, HttpRequest request)
-			throws IOException {
+	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException {
 		
 		
 		Map<String, String> contentFields = readPostedContent(request);
-		if (contentFields == null) {
-			contentFields = new HashMap<String, String>();
-		}
+		
 		HttpStringMessage message = new HttpStringMessage();
 		
 		boolean isLogout = isLogout( contentFields.get(doField) );
@@ -44,13 +43,12 @@ public class LoggingService implements IService{
 		String response = configurator.getValue(okResponseName);
 		
 		if (isLogout) {
-			String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 			
 			message.setCookie(userField + delete);
 			message.setCookie(sessionField + delete);
 			
 		} else if ( logged ){
-			
+			//Invio i cookie di sessione
 			message.setCookie(userField + "=" + contentFields.get(userField) + "; path/");
 			long session = new Random().nextLong();
 			message.setCookie(sessionField + "=" + session + "; path=/");
@@ -67,6 +65,7 @@ public class LoggingService implements IService{
 
 	
 	private boolean isLogout(String command){
+		//Restituisce true se il comando è quello di logout
 		
 		if (command != null && command.equalsIgnoreCase(logoutValue)) {
 			return true;
@@ -78,7 +77,9 @@ public class LoggingService implements IService{
 	
 	
 	private boolean login(String user, String password){
+		//Ritorna true solo nel caso in cui si trova con successo la corrispondenza utente-password nel database
 		
+		//Viene dato per scontato che utente e password non contengono caratteri speciali del tipo spazio, andata a capo..
 		if (user == null || password == null) {
 			return false;
 		}
@@ -108,12 +109,15 @@ public class LoggingService implements IService{
 	}
 	
 	private Map<String, String> readPostedContent(HttpRequest request){
-		String postedLines[] = request.getContent().split("&");
+		
+		//Divido il contenuto postato in elementi (separati da &)
+		String singleContents[] = request.getContent().split("&");
 		Map<String,String> fields = new HashMap<String, String>(); 
 		
-		for (int i = 0; i < postedLines.length; i++) {
-			if (postedLines[i].matches("\\w+=\\w+")) {
-				String pair[] = postedLines[i].split("=");
+		//Divido ogni elemento in nome e valore (separati da = ) e lo inserisco nella mappa
+		for (int i = 0; i < singleContents.length; i++) {
+			if (singleContents[i].matches("\\w+=\\w+")) {
+				String pair[] = singleContents[i].split("=",2);
 				fields.put(pair[0], pair[1]);
 			}
 		}
