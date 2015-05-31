@@ -42,6 +42,7 @@ public class HttpRequest {
 		}
 		
 		
+		//Se la richiesta era di tipo POST devo caricare il contenuto POSTato
 		if (isPost) {
 			content = readContent(in);
 		}
@@ -61,7 +62,9 @@ public class HttpRequest {
 
 		StringBuilder builder = new StringBuilder();
 		
+		//Leggo carattere per carattere
 		for (int i = 0; i < contentLength; i++) {
+			
 			int c = in.read();
 			builder.append((char) c);
 		}
@@ -78,6 +81,7 @@ public class HttpRequest {
 		if (cookiesReceived != null) {
 			StringTokenizer tokenizer = new StringTokenizer(cookiesReceived, "; ");
 
+			//Per ogni stringa separata da ';' la provo a scindere in nome=valore e carico questi ultimi nella mappa dei cookies.
 			while (tokenizer.hasMoreTokens()) {
 				String cookie = tokenizer.nextToken();
 				
