@@ -31,13 +31,17 @@ public class HttpMessage {
 	}
 
 	public void sendResponseHeader(Socket clientSocket) throws IOException{
-		//Inizializzo gli stream
+		/**
+		 * Inizializzo gli stream
+		 */
 		outStream = clientSocket.getOutputStream();
 		out = new OutputStreamWriter(outStream, Charset.forName("UTF-8").newEncoder());
 		
 		writeln("HTTP/1.1 200 OK");
 		
-		//Scrivo uno ad uno gli header sullo stream e dopo i cookie da impostare
+		/**
+		 * Scrivo uno ad uno gli header sullo stream e dopo i cookie da impostare
+		 */
 		
 		Set<String> headerNames = headers.keySet();
 		for (String name : headerNames) {
@@ -63,12 +67,16 @@ public class HttpMessage {
 		out.close();
 	}
 	
-	//Ritorna l'OutputStream (binario)
+	/**
+	 * @return Ritorna l'OutputStream (binario)
+	 */
 	public OutputStream getOutStream() {
 		return outStream;
 	}
 	
-	//Ritorna l'OutputStreamWriter con codifica utf-8
+	/**
+	 * @return Ritorna l'OutputStreamWriter con codifica UTF-8
+	 */
 	public OutputStreamWriter getOut(){
 		return out;
 	}
