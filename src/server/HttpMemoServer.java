@@ -8,6 +8,10 @@ import java.util.Map;
 
 import server.services.IService;
 
+/**
+ * Implemento la possibilita' di collegarmi via http al server
+ *
+ */
 public class HttpMemoServer {
 
 	
@@ -23,6 +27,9 @@ public class HttpMemoServer {
 	}
 	
 	
+	/**
+	 * Creo socket per accettare la richiesta di collegamento al gioco
+	 */
 	public void launch() {
 
 		try {

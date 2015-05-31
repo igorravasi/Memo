@@ -7,8 +7,17 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 
 
+/**
+ * Creo la tastiera per poter inserire da browser la sequenza di emoji desiderata
+ *
+ */
 public class KeyboardGenerator {
 
+	/**
+	 * Visualizzo le emoji caricandole dal file keybord.inc
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)  {
 		
 		

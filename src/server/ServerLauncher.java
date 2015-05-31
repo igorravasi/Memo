@@ -6,6 +6,13 @@ import server.services.LoggingService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
 
+/**
+ *@category serverlauncher
+ *@package server
+ *Questa classe serve a far partire il server locale per poter giocare
+ *
+ */
+
 public class ServerLauncher {
 
 	public static String PORT_NUMBER_IDENTIFIER = "port_number";
