@@ -2,19 +2,14 @@
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
-			    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-			      		<span class="sr-only">Toggle navigation</span>
-			      		<span class="icon-bar"></span>
-			      		<span class="icon-bar"></span>
-			      		<span class="icon-bar"></span>
-			    	</button>
+			    	
 			    	<a class="navbar-brand" href="MyMemo.html">MyMemo</a>
 				
-			  	<div class="navbar-collapse collapse">
+			  	<div class="navbar-collapse">
 			    	<ul class="nav navbar-nav">
 			      		<li class="dropdown">
-			      			<a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gioca<span class="caret"></span></a>
-			      			<ul class="dropdown-menu" role="menu">
+			      			<a href="#" onclick="dropDown(this.parentNode)"  class="dropdown-toggle">Gioca<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
 			          			<li><a href="PartitaSingle.html">Single player</a></li>
 			          			<li><a href="PartitaMulti.html">Multiplayer</a></li>
 			        		</ul>		
@@ -22,7 +17,7 @@
 			      		<li><a href="Contatti.html">Contatti</a></li>
 			      		
 						<li class="dropdown" style="float: right;">
-							 <a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle" data-toggle="dropdown" ><span id="user_name">Login</span> <b class="caret"></b></a>
+							 <a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle"><span id="user_name">Login</span> <b class="caret"></b></a>
 							 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 							 	<li>
 							 		<div class="row">
