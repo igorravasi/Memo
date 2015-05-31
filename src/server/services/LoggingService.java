@@ -14,6 +14,7 @@ import server.config.MemoServerConfigurator;
 
 public class LoggingService implements IService{
 
+	//Per annullare un cookie si invalida il valore e si imposta l'expires al timestamp 0.
 	private static final String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	
 	private static final String databaseFileName = "users_database";
