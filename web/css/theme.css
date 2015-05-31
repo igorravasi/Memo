@@ -2699,7 +2699,7 @@ a.thumbnail.active {
 .slider_wrapper{
 	overflow: hidden;
 	position:relative;
-	height:280px;
+	height:auto;
 	top:auto;
 }
 #image_slider{
@@ -2709,7 +2709,6 @@ a.thumbnail.active {
 	list-style: none;
 	overflow: hidden;
 	float: left;
-	/*Chrom default padding for ul is 40px */
 	padding:0px;
 	margin:0px;
 }
@@ -2728,11 +2727,11 @@ a.thumbnail.active {
 	opacity: 0.9;
 }
 #prev{
-	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/prev.png') no-repeat center;
+	background: #000 url('../resources/prev.png') no-repeat center;
 	left: 0px;
 }
 #next{
-	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/next.png') no-repeat center;
+	background: #000 url('../resources/next.png') no-repeat center;
 	right: 0px;
 }
 #pager{
