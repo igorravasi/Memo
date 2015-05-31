@@ -16,7 +16,7 @@
 			      		<li><a href="Istruzioni.html">Info</a></li>
 			      		<li><a href="Contatti.html">Contatti</a></li>
 			      		
-						<li class="dropdown" style="float: right;">
+						<li class="dropdown">
 							 <a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle"><span id="user_name">Login</span> <b class="caret"></b></a>
 							 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 							 	<li>
