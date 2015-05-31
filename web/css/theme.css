@@ -1225,32 +1225,15 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
+
 tr.collapse.in {
   display: table-row;
 }
 tbody.collapse.in {
   display: table-row-group;
 }
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  -webkit-transition-timing-function: ease;
-       -o-transition-timing-function: ease;
-          transition-timing-function: ease;
-  -webkit-transition-duration: .35s;
-       -o-transition-duration: .35s;
-          transition-duration: .35s;
-  -webkit-transition-property: height, visibility;
-       -o-transition-property: height, visibility;
-          transition-property: height, visibility;
-}
+
+
 .caret {
   display: inline-block;
   width: 0;
@@ -1261,7 +1244,8 @@ tbody.collapse.in {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
-.dropup,
+
+
 .dropdown {
   position: relative;
 }
@@ -1371,13 +1355,14 @@ tbody.collapse.in {
   right: 0;
   left: auto;
 }
-.dropup .caret,
+
 .navbar-fixed-bottom .dropdown .caret {
   content: "";
   border-top: 0;
   border-bottom: 4px solid;
 }
-.dropup .dropdown-menu,
+
+
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
@@ -1489,9 +1474,8 @@ tbody.collapse.in {
   border-width: 5px 5px 0;
   border-bottom-width: 0;
 }
-.dropup .btn-lg .caret {
-  border-width: 0 5px 5px;
-}
+
+
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
