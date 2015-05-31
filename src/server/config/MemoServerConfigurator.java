@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe di configurazione del server
+ *
+ */
 public class MemoServerConfigurator {
 
 	private static final String dir = "config/";
@@ -22,7 +26,9 @@ public class MemoServerConfigurator {
 	
 	private Map<String, Long> modifications = new HashMap<String, Long>();
 	
-	//Singleton: costruttore private
+	/**
+	 * Singleton: costruttore private
+	 */
 	private MemoServerConfigurator(){
 		
 		modifications.put(valuesPath, 0L);
@@ -39,9 +45,14 @@ public class MemoServerConfigurator {
 	}
 	
 	
-	//Leggo le linee, se iniziano con i caratteri di commento non le carico
-	//Se contengono un nome ed un valore, separati da un opportuno delimitarore delim
-	//le carico nella mappa passata come argomento.
+
+	/**
+	 * Leggo le linee, se iniziano con i carattari di un commento non le carico.
+	 * Se invece contengono un nume ed un valore, separati da un opportuno delimitatore 'delim',
+	 * le carico nella mappa passata come argomento.
+	 * @param path
+	 * @param mappa
+	 */
 	private void reload(String path, Map<String, String> mappa){
 		
 		try {
@@ -67,8 +78,10 @@ public class MemoServerConfigurator {
 			
 		}
 		
-		//Non faccio nulla per gestire l'eccezione, al di là del log, perchè la miglior cosa da fare è lasciare
-		//i valori cosi come erano prima della chiamata 
+		/**
+		 * Non faccio nulla per gestire l'eccezione, tranne che il log, dato che la cosa migliore da fare e' lasciare i calori cosi com'erano prima della chiamata
+		 */
+
 		  catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -77,7 +90,12 @@ public class MemoServerConfigurator {
 	}
 	
 	
-	//Controllo se è cambiata la data di ultima modifica del file e la aggiorno
+	/**
+	 * verifico se la data di modifica se e' cambiata e l'aggiorno
+	 * 
+	 * @param path
+	 * @return se vero o falso
+	 */
 	private boolean hasBeenModified(String path){
 		
 		Long last = new File(path).lastModified();
@@ -92,6 +110,7 @@ public class MemoServerConfigurator {
 		
 	}
 	
+
 
 	public String getContentType(String extension){
 		if (hasBeenModified(contentTypesPath)) {

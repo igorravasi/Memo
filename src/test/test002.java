@@ -2,7 +2,9 @@ package test;
 
 import model.engine.MemoSequence;
 
-//Controllo emoticon.
+/**
+ * Controllo emoticon
+ */
 
 public class test002 {
 
@@ -13,7 +15,9 @@ public class test002 {
 		final String emo = "😃";
 		int lunghezzaAttesa =3 + 2*roundAggiuntivi;
 	
-		//SecondRound() aggiunge due elementi alla sequenza.
+		/**
+		 * SecondRound(): aggiunge due elementi alla sequenza.
+		 */
 		for (int i = 0; i < roundAggiuntivi; i++) {
 			myMemoSequence.secondRound();
 				

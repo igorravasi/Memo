@@ -2,9 +2,10 @@ package test;
 
 import model.engine.MemoSequence;
 
-//Verifico l'incremento di 2 elementi per ogni serie, 5 sequenze in questo caso.
-//Viene stampata myMemoSequence. Passo la struttura da MemoSequence.
-
+/**
+ *	Verifico l'incremento di due elementi per ogni serie, 5 sequenze in questo caso.
+ *	Viene stampata myMemoSequence. Passo la struttura da MemoSequence.
+*/
 public class test001 {
 
 	public static void main(String[] args) {
