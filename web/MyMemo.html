@@ -9,15 +9,20 @@
 
   	<body>
 		### /menu.inc ###
-  	
-  	<div id="sliderFrame">
-        <div id="slider">
-            <img src="resources/slider/mymemo.png" alt="MyMemo" />
-            <img src="resources/slider/screen_sp.png" alt="Screenshot del gioco" />
-            <img src="resources/slider/screen_sp1.png" alt="Screenshot del gioco" />
-        </div>
-    </div>
     
+    <div class="container">
+			<div class="slider_wrapper">
+				<ul id="image_slider">
+					<li><img src="resources/slider/mymemo.png"></li>
+					<li><img src="resources/slider/screen_sp.png"></li>
+					<li><img src="resources/slider/screen_sp1.png"></li>
+				</ul>					
+				<span class="nvgt" id="prev"></span>
+				<span class="nvgt" id="next"></span>		
+			</div>
+			<ul id="pager">
+			</ul>
+		</div>
 		
 		### /footer.inc ###  	
 	    ### /scripts.inc ###

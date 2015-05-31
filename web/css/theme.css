@@ -2694,111 +2694,71 @@ a.thumbnail.active {
   width: device-width;
 }
 
-
 /*INIZIO CLASSI STILE SLIDER*/
 
-#sliderFrame, #sliderFrame div {
-    box-sizing: content-box;
-}
-#sliderFrame 
-{
-    position:relative;
-    width:700px;
-    margin:0 auto; /*center-aligned*/
-}
-
-#slider, #slider div.sliderInner {
-    width:700px;height:306px;/* Must be the same size as the slider images */
-}
-
-#slider {
-	background:#fff url(loading.gif) no-repeat 50% 50%;
+.slider_wrapper{
+	overflow: hidden;
 	position:relative;
-	margin:0 auto; /*center-aligned*/
-    transform: translate3d(0,0,0);
-    box-shadow: 0px 1px 5px #999999;
+	height:280px;
+	top:auto;
 }
-#slider a.imgLink, #slider div.video {
-	z-index:2;
-	position:absolute;
-	top:0px;left:0px;border:0;padding:0;margin:0;
-	width:100%;height:100%;
-}
-#slider .video {
-	background:transparent url(video.png) no-repeat 50% 50%;
-}
-#slider div.mc-caption-bg, #slider div.mc-caption-bg2 {
-	position:absolute;
-	width:100%;
-	height:auto;
-	padding:10px 0;
-	left:0px;
-	bottom:0px;
-	z-index:3;
-	overflow:hidden;
-	font-size: 0;
-}
-#slider div.mc-caption-bg 
-{
-	background:Black;
-}
-#slider div.mc-caption-bg2 {
-    background:none;
-}
-#slider div.mc-caption {
-	font: bold 14px/20px Arial;
-	color:#EEE;
-	z-index:4;
-	text-align:center;
-    background:none;
-}
-#slider div.mc-caption a {
-	color:#FB0;
-}
-#slider div.mc-caption a:hover {
-	color:#DA0;
-}
+#image_slider{
 
-#slider div.navBulletsWrapper  {
-    top:320px;/* Its position is relative to the #slider */
-	text-align:center;
-	background:none;
+	position: relative;
+	height: auto;
+	list-style: none;
+	overflow: hidden;
+	float: left;
+	/*Chrom default padding for ul is 40px */
+	padding:0px;
+	margin:0px;
+}
+#image_slider li{
+	position: relative;
+	float: left;
+}
+.nvgt{
+	position:absolute;
+	top: 120px;
+	height: 50px;
+	width: 30px;
+	opacity: 0.6;
+}
+.nvgt:hover{
+	opacity: 0.9;
+}
+#prev{
+	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/prev.png') no-repeat center;
+	left: 0px;
+}
+#next{
+	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/next.png') no-repeat center;
+	right: 0px;
+}
+#pager{
+	/* firefox has different center method. this doesn't work for fire fox */
+	/* not in the center*/
+	padding:0px;
 	position:relative;
-	z-index:5;
+	height:50px;
+	margin:auto;
+	margin-top:10px;
 }
-
-#slider div.navBulletsWrapper div 
-{
-    width:11px; height:11px;
-    font-size:0;color:White;/*hide the index number in the bullet element*/
-    background:transparent url(../resources/bullet.png) no-repeat 0 0;
-    display:inline-block; zoom:1;
-    overflow:hidden;cursor:pointer;
-    margin:0 6px;/* set distance between each bullet*/
+#pager li{
+	padding: 0px;
+	margin:5px;
+	width:20px;
+	height:20px;
+	border:1px solid white;
+	color:white;
+	list-style: none;
+	opacity: 0.6;
+	float:left;
+	border-radius: 3px;
+	cursor: pointer;
 }
-
-#slider div.navBulletsWrapper div.active {background-position:0 -11px;}
-
-#slider div.loading 
-{
-    width:100%; height:100%;
-    background:transparent url(loading.gif) no-repeat 50% 50%;
-    filter: alpha(opacity=60);
-    opacity:0.6;
-    position:absolute;
-    left:0;
-    top:0; 
-    z-index:9;
+#pager li:hover{
+	opacity:0.9;
 }
-#slider img, #slider>b, #slider a>b {
-	position:absolute; border:none; display:none;
-}
-#slider div.sliderInner {
-	overflow:hidden; 
-	-webkit-transform: rotate(0.000001deg);/* fixed the Chrome not crop border-radius bug*/
-	position:absolute; top:0; left:0;
-}
-#slider>a, #slider video, #slider audio {display:none;}
-#slider div {-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
 
 /*FINE CLASSI STILE SLIDER*/
