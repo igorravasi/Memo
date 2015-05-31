@@ -15,11 +15,11 @@ import server.basics.HttpMessage;
 import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;
 
-//TextFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
-//derivare da una classe comune FileService!
-//Update: tuttavia visto che le linee di codice condivise non sono contigue non so se 
-//la presenza di esse giustificherebbe un refactoring del genere.
-
+/**	TextFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
+*	derivare da una classe comune FileService!
+*	Update: tuttavia visto che le linee di codice condivise non sono contigue non so se 
+*	la presenza di esse giustificherebbe un refactoring del genere.
+*/
 public class TextFileService implements IService {
 
 	private static final String includeRegexName = "include_regex";	
@@ -63,9 +63,10 @@ public class TextFileService implements IService {
 		String detectInclude = configurator.getValue(includeRegexName);
 		String includeBasePath = "web" + configurator.getValue(includeName);
 
-		//Leggo linea per linea, se la linea contiene il "codice" per l'include includo il file in questione.
-		//Altrimenti copio la linea sull'output.
-		
+		/**	
+		 * 	Leggo linea per linea, se la linea contiene il "codice" per l'include includo il file in questione.
+		 *	Altrimenti copio la linea sull'output.
+		*/
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
 			if (fileLine.trim().matches(detectInclude)) {

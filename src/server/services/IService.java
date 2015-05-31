@@ -5,6 +5,7 @@ import java.net.Socket;
 
 import server.basics.HttpRequest;
 
+
 public interface IService {
 
 	

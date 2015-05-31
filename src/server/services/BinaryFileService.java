@@ -11,7 +11,7 @@ import server.basics.HttpRequest;
 import server.config.MemoServerConfigurator;
 
 //TODO: TextFileService e BinaryFileService sono entrambi, nella logica, FileService, dovrebbero 
-//derivate da una classe comuna FileService!
+//derivate da una classe comune FileService!
 
 public class BinaryFileService implements IService{
 
@@ -34,14 +34,18 @@ public class BinaryFileService implements IService{
 		String extension = uri.substring(uri.lastIndexOf("."), uri.length());	
 		String contentType = MemoServerConfigurator.getInstance().getContentType(extension);
 
-		//Scrivo gli header e chiamo il flush() dell'OutputStreamWriter
+		/**
+		 * Scrivo gli header e chiamo il flush() dell'OutputStreamWriter
+		 */
 		HttpMessage message = new HttpMessage();
 		message.addHeader("Content-Length", contentLength);
 		message.addHeader("Content-Type", contentType);
 		message.sendResponseHeader(clientSocket);
 		message.getOut().flush();		
 
-		//Dopo al flush() posso scrivere tranquillamente direttamente sullo stream binario
+		/**
+		 * Dopo al flush() posso scrivere direttamente sullo stream binario
+		 */
 		Files.copy(file.toPath(), message.getOutStream());
 		
 		message.closeHttpResponse();

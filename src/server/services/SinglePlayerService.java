@@ -12,6 +12,10 @@ import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
 
+/**
+ * Inizializzo il gioco per il Single Player
+ *
+ */
 public class SinglePlayerService implements IService, Observer{
 
 	private static final String noGameIdName = "no_game_id";
@@ -86,7 +90,7 @@ public class SinglePlayerService implements IService, Observer{
 	}
 	
 	
-	//TODO: Questo metodo porta ad una responsabilità multipla?! Meglio estendere la map?
+	//TODO: Questo metodo porta ad una responsabilita' multipla?! Meglio estendere la map?
 	private Integer getFreeIndex(){
 
 	
