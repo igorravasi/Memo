@@ -57,15 +57,22 @@ public class TextFileService implements IService {
 	}
 
 
-	private void copyLines(BufferedReader fileReader, HttpMessage message)
-			throws IOException {
+	private void copyLines(BufferedReader fileReader, HttpMessage message) throws IOException {
+		
+		
+		String detectInclude = configurator.getValue(includeRegexName);
+		String includeBasePath = "web" + configurator.getValue(includeName);
+
+		//Leggo linea per linea, se la linea contiene il "codice" per l'include includo il file in questione.
+		//Altrimenti copio la linea sull'output.
+		
 		String fileLine = fileReader.readLine();
 		while( fileLine != null ){
-			if (fileLine.trim().matches(configurator.getValue(includeRegexName))) {
+			if (fileLine.trim().matches(detectInclude)) {
 				
 				try {
 					String path = new StringTokenizer( fileLine.trim(), configurator.getValue(incldueDelimitersName) ).nextToken();
-					path = "web" + configurator.getValue(includeName) + path.trim();
+					path = includeBasePath + path.trim();
 					message.getOut().flush();
 					Files.copy(new File(path).toPath(), message.getOutStream());
 					message.getOutStream().flush();
