@@ -4,6 +4,12 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Classe per gestire il gioco singolo.
+ * Inizializzo i valori 
+ * ex. imposto il timer di due minuti per inserire la sequenza
+ *
+ */
 public class SinglePlayerGame extends Observable{
 
 	private static final int LOOSER = -1;
@@ -33,13 +39,16 @@ public class SinglePlayerGame extends Observable{
 //		System.err.println(playId + " restarted @ " + (System.currentTimeMillis()/1000));
 		isAliveTimer.schedule(new TimerTask() {
 			
+			/* (non-Javadoc)
+			 * @see java.util.TimerTask#run()
+			 */
 			@Override
 			public void run() {
 //				System.err.println(playId + " ended @ " + (System.currentTimeMillis()/1000));
 				changed();
 				
 			}
-		}, ALIVE_TIMER); //Dopo due minuti di inattività notifica l'observer
+		}, ALIVE_TIMER); //Dopo due minuti di inattivita' notifica l'observer
 	}
 	
 	private int playerMoved(String playerSequence){
@@ -61,6 +70,11 @@ public class SinglePlayerGame extends Observable{
 		
 	}
 	
+	/**
+	 * Leggo la sequenza inserita dal giocatore
+	 * @param content
+	 * @return
+	 */
 	public String readRequest(String content){
 		
 		if (round == 0) {

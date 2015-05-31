@@ -5,17 +5,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * Creo la sequenza di gioco
+ *
+ */
 public class MemoSequence {
 
 	private Map<Integer, MemoElement> sequenza = new HashMap<Integer, MemoElement>();
 	private Integer counter = 0;
 	
+	/**
+	 * Inizio il gioco con una sequenza di tre emoji
+	 * 
+	 */
 	public MemoSequence() {
 		super();
 		addElements(3);
 	}
 	
 	
+	/**
+	 * Se la sequenza inserita e' corretta aggiungo due emoji alla nuova sequenza lasciando invariati i precedenti
+	 */
 	public void secondRound() {
 		addElements(2);
 	}

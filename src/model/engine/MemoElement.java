@@ -10,10 +10,11 @@ public class MemoElement {
 	byte leftBound = (byte) 0x81;
 	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
 
-//Valori per debug con numeri anzichè emoticon
-//	byte leftBound = (byte)0x30;
-//	byte[] emojBytes = {leftBound};
-	
+/**
+ * 	Valori per debug con numeri anziche' emoticon
+ * 	byte leftBound = (byte)0x30;
+ *	byte[] emojBytes = {leftBound};
+*/
  
 	
 	
