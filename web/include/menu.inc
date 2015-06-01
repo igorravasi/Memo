@@ -50,7 +50,7 @@
 						</ul>
 						<ul class="nav navbar-bar">
 							<div id="start_div" class="nascosto">
-								<li style="float:right"><button onclick="start();" id="start_button" class="btn btn-primary btn-lg" >Start </button></li>
+								<li style="float:right"><button onclick="start();" id="start_button" class="control-button" >Start </button></li>
 							</div>
 							
 						</ul>
