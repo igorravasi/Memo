@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 /**
- * Creo la sequenza di gioco
+ * Sequenza di gioco
  *
  */
 public class MemoSequence {
@@ -25,9 +25,9 @@ public class MemoSequence {
 	
 	
 	/**
-	 * Se la sequenza inserita e' corretta aggiungo due emoji alla nuova sequenza lasciando invariati i precedenti
+	 * Aggiunge due emoji alla nuova sequenza lasciando invariati i precedenti
 	 */
-	public void secondRound() {
+	public void nextRound() {
 		addElements(2);
 	}
 	

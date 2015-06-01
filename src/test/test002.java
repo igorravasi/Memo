@@ -19,7 +19,7 @@ public class test002 {
 		 * SecondRound(): aggiunge due elementi alla sequenza.
 		 */
 		for (int i = 0; i < roundAggiuntivi; i++) {
-			myMemoSequence.secondRound();
+			myMemoSequence.nextRound();
 				
 		}
 		

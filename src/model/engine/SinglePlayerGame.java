@@ -60,7 +60,7 @@ public class SinglePlayerGame extends Observable{
 			
 		if (actualSequence.equalsIgnoreCase(playerSequence)) {
 			round++;
-			sequence.secondRound();
+			sequence.nextRound();
 			return round;
 		}else {
 			

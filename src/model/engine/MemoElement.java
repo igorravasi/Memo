@@ -10,19 +10,6 @@ public class MemoElement {
 	byte leftBound = (byte) 0x81;
 	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
 
-/**
- * 	Valori per debug con numeri anziche' emoticon
- * 	byte leftBound = (byte)0x30;
- *	byte[] emojBytes = {leftBound};
-*/
- 
-	
-	
-//	public MemoElement(byte lastByte) {
-//		super();
-//		this.emojBytes[emojBytes.length -1] = lastByte;
-//		
-//	}
 
 	public MemoElement() {
 		super();
@@ -30,7 +17,6 @@ public class MemoElement {
 		
 	}
 
-	
 	
 	public String getEmoj() {
 		return new String(emojBytes, Charset.forName("UTF-8"));
