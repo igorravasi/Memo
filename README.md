@@ -11,7 +11,7 @@ JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 è necessario reimplemen
 
 	Client
 	
-Browser con supporto alle emoji (chrome non nativamente, safari, firefox, ...) e che le invii nel formato opportuno. (%HEXfirstbyte%second.....)	
+Browser con supporto alle emoji.
 
 @IgorRavasi @BiancaPavesi @MarcoAntonioGhiani @JacopoMTavaroli
 
