@@ -2,16 +2,35 @@
 
 Progetto di Laboratorio per il corso Fondamenti di Informatica II Gruppo.
 
+##Ruoli
+
+	Igor Ravasi 
+		Primario: Funzionalità server.
+		Secondario: SVN
+	
+	Marco Ghiani
+		Primario: ?
+		Secondario: Stili css etc.
+	
+	Bianca Pavesi
+		Primario ?
+		Secondario: Test
+
+	Jacopo Tavaroli
+		Primario ?
+		Secondario: Javadoc
+
 ##Requisiti: 
 	
-	Server
+###Server
 
 JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 è necessario reimplementare la data HTTP senza usare le librerie  di jre1.8).
 	
 
-	Client
+###Client
 	
 Browser con supporto alle emoji.
+
 
 @IgorRavasi @BiancaPavesi @MarcoAntonioGhiani @JacopoMTavaroli
 
