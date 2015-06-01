@@ -15,25 +15,9 @@ public class MemoElement {
 		emojBytes[emojBytes.length -1] = (byte) (leftBound + index);
 	}
 	
-	public MemoElement() {
-		randomizeLastByte();
-	}
-
 	
 	public String getEmoj() {
 		return new String(emojBytes, Charset.forName("UTF-8"));
 	}
-
-	
-	private void randomizeLastByte(){
-		Random randomizer = new Random();
-		randomizer.setSeed(randomizer.nextLong());
-		
-		emojBytes[emojBytes.length -1] = (byte) (leftBound + randomizer.nextInt(10));
-
-
-	}
-	
-
 	
 }
