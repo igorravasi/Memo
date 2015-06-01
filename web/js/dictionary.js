@@ -18,6 +18,9 @@ function getErrorMessage(error){
 	return head + error + tail;
 }
 
+
+
+
 function getGameOverMessage(round){
 	
 	if (round > 2) {
