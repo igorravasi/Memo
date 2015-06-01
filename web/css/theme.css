@@ -125,6 +125,15 @@ fieldset[disabled] .form-emoji {
 .destro{
   float:right;
 }
+
+
+.testoverde{
+	color:green;
+}
+
+.testorosso{
+	color:red;
+}
 .pannello{
 	width:50%;
 	height:30%;
