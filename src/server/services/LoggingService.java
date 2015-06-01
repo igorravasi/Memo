@@ -6,16 +6,13 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
+import server.services.extensions.SessionManager;
 
-/**
- * 
- *
- */
+
 public class LoggingService implements IService{
 
 	
@@ -34,6 +31,8 @@ public class LoggingService implements IService{
 	
 	private static final String logoutValue = "logout";
 	
+	
+	private SessionManager manager = new SessionManager();
 	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 		
 	@Override
@@ -60,8 +59,10 @@ public class LoggingService implements IService{
 			
 			 //Invio i cookie di sessione
 			 
-			message.setCookie(userField + "=" + contentFields.get(userField) + "; path/");
-			long session = new Random().nextLong();
+			String user = contentFields.get(userField);
+			Long session = manager.newSession(user);
+			
+			message.setCookie(userField + "=" + user + "; path/");
 			message.setCookie(sessionField + "=" + session + "; path=/");
 			
 		} else {

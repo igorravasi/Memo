@@ -1,18 +1,18 @@
 package server.services.extensions;
 
+import java.util.Random;
+
 public class SessionManager {
 
-	private static SessionManager manager = new SessionManager();
+
 	
-	private SessionManager(){
+	Random randomizer = new Random(new Random().nextLong());
+	
+	public Long newSession(String user){
 		
+		return randomizer.nextLong();
 	}
 	
-	public SessionManager getSessionManagerInstance(){
-		return manager;
-	}
-	
-	
-	
+
 	
 }
