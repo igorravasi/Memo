@@ -17,7 +17,7 @@ public class MemoElementFactory {
 		
 		if (element == null) {
 			
-			element = new MemoElement(); //MemoElement(key)
+			element = new MemoElement(key); 
 			flyweights.put(key, element);
 		}
 		

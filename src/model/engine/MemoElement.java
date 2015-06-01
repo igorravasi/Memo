@@ -11,10 +11,12 @@ public class MemoElement {
 	byte[] emojBytes = new byte[]{(byte)0xF0, (byte)0x9F, (byte)0x98, leftBound};
 
 
+	public MemoElement(Integer index){
+		emojBytes[emojBytes.length -1] = (byte) (leftBound + index);
+	}
+	
 	public MemoElement() {
-		super();
 		randomizeLastByte();
-		
 	}
 
 	
