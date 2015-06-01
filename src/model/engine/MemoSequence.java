@@ -14,13 +14,16 @@ public class MemoSequence {
 	private Map<Integer, MemoElement> sequenza = new HashMap<Integer, MemoElement>();
 	private Integer counter = 0;
 	
+	private final static int startingElements = 3;
+	private final static int nextElements = 2;
+	
 	/**
 	 * Inizio il gioco con una sequenza di tre emoji
 	 * 
 	 */
 	public MemoSequence() {
 		super();
-		addElements(3);
+		addElements(startingElements);
 	}
 	
 	
@@ -28,7 +31,7 @@ public class MemoSequence {
 	 * Aggiunge due emoji alla nuova sequenza lasciando invariati i precedenti
 	 */
 	public void nextRound() {
-		addElements(2);
+		addElements(nextElements);
 	}
 	
 	private void addElements(Integer numberOfElementsToAdd){
@@ -40,9 +43,16 @@ public class MemoSequence {
 		
 	}
 	
+	
 	public String getEscapedString(){
-			
-		byte[] bytes = toString().getBytes(Charset.forName("UTF-8"));
+		/*
+			La sequenza viene restituita in questo modo: 
+			Ogni carattere viene rappresentato byte per byte in esadecimale, ogni byte è preceduto dal simbolo %
+			Il motivo di questo è quello di poter ricevere dal client la sequenza formattata tranquillamente così,
+			cioè "url-encoded". (La trasmissione non-url-encoded delle emoji cambia da  browser a browser, soprattuto con emtodo GET)
+		*/
+		
+		byte[] bytes = this.toString().getBytes(Charset.forName("UTF-8"));
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < bytes.length; i++) {
@@ -51,7 +61,6 @@ public class MemoSequence {
 		}
 		
 		return sb.toString();
-		
 
 	}
 	
