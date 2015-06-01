@@ -25,14 +25,14 @@ public class HttpRequest {
 		String line = in.readLine();
 		String[] lineElements=line.split(" ");
 		
-		/**
-		 * Controllo se il metodo della richiesta e' POST
-		 */
+		
+		// Controllo se il metodo della richiesta e' POST
+		
 		boolean isPost = lineElements[0].equalsIgnoreCase("POST") ? true : false;
 		
-		/**
-		 * L'uri e' nella prima riga, al secondo posto.
-		 */
+		
+		// L'uri e' nella prima riga, al secondo posto.
+		
 		uri = lineElements[1];
 
 		while(line!=null && line.length() != 0){
@@ -46,9 +46,9 @@ public class HttpRequest {
 		}
 		
 		
-		/**
-		 * Se la richiesta era di tipo POST devo caricare il contenuto POSTato
-		 */
+		
+		//Se la richiesta era di tipo POST devo caricare il contenuto POSTato
+		
 		if (isPost) {
 			content = readContent(in);
 		}
@@ -64,13 +64,10 @@ public class HttpRequest {
 		} catch (NumberFormatException e) {
 			contentLength = 0;
 		}
+				
+		// Leggo carattere per carattere
 		
-
 		StringBuilder builder = new StringBuilder();
-		
-		/**
-		 * Leggo carattere per carattere
-		 */
 		for (int i = 0; i < contentLength; i++) {
 			
 			int c = in.read();
@@ -89,9 +86,8 @@ public class HttpRequest {
 		if (cookiesReceived != null) {
 			StringTokenizer tokenizer = new StringTokenizer(cookiesReceived, "; ");
 
-			/**
-			 * Per ogni stringa separata da ';' la provo a dividere in nome=valore e carico questi ultimi nella mappa dei cookies.
-			 */
+			// Per ogni stringa separata da ';' la provo a dividere in nome=valore e carico questi ultimi nella mappa dei cookies.
+			
 			while (tokenizer.hasMoreTokens()) {
 				String cookie = tokenizer.nextToken();
 				
@@ -109,12 +105,11 @@ public class HttpRequest {
 	
 	public Map<String,String> getCookies(){
 		
+		// Carico i cookie solo alla prima chiamata di questo metodo
 		if (cookies.size() == 0) {
-			/**
-			 * Carico i cookie solo alla prima chiamata di questo metodo
-			 */
 			loadCookies();
 		}
+		
 		return cookies;
 	}
 	
