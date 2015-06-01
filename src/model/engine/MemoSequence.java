@@ -11,11 +11,14 @@ import java.util.Map;
  */
 public class MemoSequence {
 
+	private final static int startingElements = 3;
+	private final static int nextElements = 2;
+	
+	private final static MemoElementFactory factory = new MemoElementFactory();
+	
 	private Map<Integer, MemoElement> sequenza = new HashMap<Integer, MemoElement>();
 	private Integer counter = 0;
 	
-	private final static int startingElements = 3;
-	private final static int nextElements = 2;
 	
 	/**
 	 * Inizio il gioco con una sequenza di tre emoji
@@ -37,7 +40,7 @@ public class MemoSequence {
 	private void addElements(Integer numberOfElementsToAdd){
 		
 		for (int i = 0; i < numberOfElementsToAdd; i++) {
-			sequenza.put(counter, new MemoElement());
+			sequenza.put(counter, factory.generateMemoElement());
 			counter++;
 		}
 		
