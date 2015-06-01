@@ -13,8 +13,8 @@ import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
 
 /**
- * Inizializzo il gioco per il Single Player
- *
+ * Gestore dei giochi Single Player: li inizializza ed indicizza, per poi inoltrargli le giocate dell'utente ed ottenere le risposte
+ * 
  */
 public class SinglePlayerService implements IService, Observer{
 
