@@ -9,7 +9,8 @@ import java.util.Map;
 import server.services.IService;
 
 /**
- * Implemento la possibilita' di collegarmi via http al server
+ * Server HTTP, che permette di associare un percorso ad una classe che implementa IService.
+ * Per ogni richiesta avvia un Thread che la gestisce.
  *
  */
 public class HttpMemoServer {

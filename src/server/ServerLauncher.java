@@ -9,7 +9,7 @@ import server.services.TextFileService;
 /**
  *@category serverlauncher
  *@package server
- *Questa classe serve a far partire il server locale per poter giocare
+ *Questa classe serve a far partire il server del gioco
  *
  */
 

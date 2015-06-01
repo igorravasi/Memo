@@ -14,10 +14,11 @@ import java.nio.charset.Charset;
 public class KeyboardGenerator {
 
 	/**
-	 * Visualizzo le emoji caricandole dal file keybord.inc
+	 * Carico nel file keyboard.inc l'html per la tastiera di emoticons. 
 	 * 
 	 * @param args
 	 */
+	
 	public static void main(String[] args)  {
 		
 		
