@@ -175,6 +175,11 @@ fieldset[disabled] .form-emoji {
 	color:red;
 }
 
+.message-body {
+  font-size: 36px;
+  font-family:"Courier";
+  font-weight: "bold";
+}
 
 h1 {
   margin: .67em 0;
@@ -619,7 +624,7 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -635,6 +640,7 @@ th {
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
+  font
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -1244,8 +1250,6 @@ tbody.collapse.in {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
-
-
 .dropdown {
   position: relative;
 }
@@ -1290,6 +1294,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   clear: both;
   font-weight: bold;
+  font-family:"Courier";
   line-height: 1.42857143;
   color: #333;
   white-space: nowrap;
@@ -2003,8 +2008,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
+  font-family: "Courier";
   line-height: 20px;
 }
 .navbar-brand:hover,
@@ -2059,7 +2065,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   line-height: 20px;
   font-weight: bold;
-  
+  font-size: 18;
+  font-family: "Courier";
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -2283,7 +2290,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #777;
-    background-color: #d9edf7; 
+    background-color: #d9edf7;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -2527,6 +2534,8 @@ a.thumbnail.active {
 }
 .panel-body {
   padding: 15px;
+  font-family:"Courier";
+  font-weight: bold;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -2558,7 +2567,7 @@ a.thumbnail.active {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   bottom: 0;
-  position: absolute;
+  position: fixed;
 }
 .panel > .table-responsive {
   margin-bottom: 0;
@@ -2571,6 +2580,7 @@ a.thumbnail.active {
   color: #31708f;
   background-color: #d9edf7;
   border-color: #bce8f1;
+  font-family:"Courier";
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #bce8f1;
