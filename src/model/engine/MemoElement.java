@@ -1,7 +1,6 @@
 package model.engine;
 
 import java.nio.charset.Charset;
-import java.util.Random;
 
 
 //TODO: Refactoring della classe, possibili design pattern che migliorerebbero l'architettura e le prestazioni: flyweight e prototype
