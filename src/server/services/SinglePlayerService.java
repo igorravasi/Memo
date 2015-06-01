@@ -13,6 +13,7 @@ import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
 
 /**
+ * IService che funge da:
  * Gestore dei giochi Single Player: li inizializza ed indicizza, per poi inoltrargli le giocate dell'utente ed ottenere le risposte
  * 
  */

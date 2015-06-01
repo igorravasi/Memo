@@ -18,9 +18,9 @@ import server.config.MemoServerConfigurator;
  */
 public class LoggingService implements IService{
 
-	/**
-	 * Per annullare un cookie si invalida il valore e si imposta l'expires al timestamp 0.
-	 */
+	
+	// Per annullare un cookie si invalida il valore e si imposta l'expires al timestamp 0.
+	
 	private static final String delete = "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	
 	private static final String databaseFileName = "users_database";
@@ -50,16 +50,16 @@ public class LoggingService implements IService{
 		String response = configurator.getValue(okResponseName);
 		
 		if (isLogout) {
-			/**
-			 * Annullo i cookie di sessione
-			 */
+			
+			 //Annullo i cookie di sessione
+			 
 			message.setCookie(userField + delete);
 			message.setCookie(sessionField + delete);
 			
 		} else if ( logged ){
-			/**
-			 * Invio i cookie di sessione
-			 */
+			
+			 //Invio i cookie di sessione
+			 
 			message.setCookie(userField + "=" + contentFields.get(userField) + "; path/");
 			long session = new Random().nextLong();
 			message.setCookie(sessionField + "=" + session + "; path=/");
@@ -76,9 +76,9 @@ public class LoggingService implements IService{
 
 	
 	private boolean isLogout(String command){
-		/**
-		 * Restituisce TRUE se il comando e' quello di logout
-		 */
+		
+		 //Restituisce TRUE se il comando e' quello di logout
+		 
 		
 		if (command != null && command.equalsIgnoreCase(logoutValue)) {
 			return true;
@@ -90,13 +90,10 @@ public class LoggingService implements IService{
 	
 	
 	private boolean login(String user, String password){
-		/**
-		 * Ritorna TRUE solo nel caso in cui si trova con successo la corrispondenza utente-password nel database
-		 */
 		
-		/**
-		 * Viene dato per scontato che utente e password non contengono caratteri speciali
-		 */
+		 //Ritorna TRUE solo nel caso in cui si trova con successo la corrispondenza utente-password nel database
+		 //Viene dato per scontato che utente e password non contengono caratteri speciali
+		 
 		if (user == null || password == null) {
 			return false;
 		}
@@ -127,15 +124,15 @@ public class LoggingService implements IService{
 	
 	private Map<String, String> readPostedContent(HttpRequest request){
 		
-		/**
-		 * Divido il contenuto postato in elementi (separati da '&')
-		 */
+		
+		//Divido il contenuto postato in elementi (separati da '&')
+		
 		String singleContents[] = request.getContent().split("&");
 		Map<String,String> fields = new HashMap<String, String>(); 
 		
-		/**
-		 * Divido ogni elemento in nome e valore (separati da = ) e lo inserisco nella mappa
-		 */
+		
+		 //Divido ogni elemento in nome e valore (separati da = ) e lo inserisco nella mappa
+		 
 		for (int i = 0; i < singleContents.length; i++) {
 			if (singleContents[i].matches("\\w+=\\w+")) {
 				String pair[] = singleContents[i].split("=",2);
