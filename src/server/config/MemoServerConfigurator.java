@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Classe di configurazione del server
+ * Gestore di valori dei parametri ("costanti" e ContentType) del server ed i suoi servizi, in modo da non dover riavviare il server quando questi ultimi cambiano.
  *
  */
 public class MemoServerConfigurator {
@@ -26,7 +26,7 @@ public class MemoServerConfigurator {
 	
 	private Map<String, Long> modifications = new HashMap<String, Long>();
 	
-	/**
+	/*
 	 * Singleton: costruttore private
 	 */
 	private MemoServerConfigurator(){
@@ -46,13 +46,6 @@ public class MemoServerConfigurator {
 	
 	
 
-	/**
-	 * Leggo le linee, se iniziano con i carattari di un commento non le carico.
-	 * Se invece contengono un nume ed un valore, separati da un opportuno delimitatore 'delim',
-	 * le carico nella mappa passata come argomento.
-	 * @param path
-	 * @param mappa
-	 */
 	private void reload(String path, Map<String, String> mappa){
 		
 		try {
@@ -78,9 +71,9 @@ public class MemoServerConfigurator {
 			
 		}
 		
-		/**
-		 * Non faccio nulla per gestire l'eccezione, tranne che il log, dato che la cosa migliore da fare e' lasciare i calori cosi com'erano prima della chiamata
-		 */
+		
+		 //Non faccio nulla per gestire l'eccezione, tranne che il log, dato che la cosa migliore da fare e' lasciare i calori cosi com'erano prima della chiamata
+		 
 
 		  catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -88,14 +81,8 @@ public class MemoServerConfigurator {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	/**
-	 * verifico se la data di modifica se e' cambiata e l'aggiorno
-	 * 
-	 * @param path
-	 * @return se vero o falso
-	 */
+
+
 	private boolean hasBeenModified(String path){
 		
 		Long last = new File(path).lastModified();
