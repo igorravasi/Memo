@@ -125,12 +125,9 @@ fieldset[disabled] .form-emoji {
 .destro{
   float:right;
 }
-
-
 .testoverde{
 	color:green;
 }
-
 .testorosso{
 	color:red;
 }
@@ -1413,7 +1410,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	top:auto;
 }
 #image_slider{
-
 	position: relative;
 	height: auto;
 	list-style: none;
@@ -1428,7 +1424,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .nvgt{
 	position:absolute;
-	top: 120px;
+	top: 160px;
 	height: 50px;
 	width: 30px;
 	opacity: 0.6;
@@ -1445,8 +1441,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	right: 0px;
 }
 #pager{
-	/* firefox has different center method. this doesn't work for fire fox */
-	/* not in the center*/
 	padding:0px;
 	position:relative;
 	height:50px;
