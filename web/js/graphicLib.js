@@ -76,23 +76,28 @@ document.body.addEventListener("click", function(e) {
 	},
 	true);
 
+
 document.onkeypress=function(e){
 	var e=window.event || e;
 	var keyunicode=e.charCode || e.keyCode;
-	//120,88 = x,X
-	
-	if (keyunicode == 120 || keyunicode == 88) {
-		var timerText = document.getElementById("countDown");
-		timerText.innerHTML = 1;
-		return false;
-	} else if (keyunicode == 13) {
-		//13 = Enter
 		
-		validate();
-		return false;
-	} else {
-		return true;
+	//Le scorciatoie valgono solo fuori dalle caselle di testo/altri inputs
+	if (!(e.target.tagName.toLowerCase() == "input")) {
+		
+		//Premuta la x o X
+		if (keyunicode == 120 || keyunicode == 88) {
+			var timerText = document.getElementById("countDown");
+			timerText.innerHTML = 1;
+			return false;
+		
+		//Premuto enter
+		} else if (keyunicode == 13) {
+
+			validate();
+			return false;
+		}
 	}
+	return true;
 }
 	
 
