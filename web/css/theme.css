@@ -150,6 +150,55 @@ fieldset[disabled] .form-emoji {
   font-weight: 1200;
   color: #000000;
 }
+.features{ 
+	padding: 0 25px; 
+	width: 33.3%; 
+	float: left; 
+	font-family: "Courier"; 
+}
+.features p{ 
+	text-align: left;
+	font-weight: 900; 
+	font-size: 15px;
+}
+.features h3{ 
+	font-size: 24px; 
+	margin: 0 0 10px; 
+	text-align: left; 
+}
+.features-details{ 
+	padding-left: 60px:
+}
+.features-icon{ 
+	display: block; 
+	padding: 11px; 
+	float: left; 
+	font-size: 18px; 
+	color: #fff; 
+	margin-right: 10px; 
+	font-weight: bold; 
+	height: 40px; 
+	line-height: 40px; 
+	width: 40px; 
+	background: #1089f0; 
+	border-radius: 99px; 
+	text-align: center; 
+}
+.heading{ 
+	width: 15%; 
+	height: 30px; 
+	padding: 2px; 
+	text-align: center; 
+	text-transform: uppercase; 
+	color: #1089f0; 
+	font-weight: normal; 
+	font-size: 18px; 
+	margin: 10px auto 25px auto; 
+	font-family:"Courier"; 
+	border-radius: 10px; 
+	border: solid; 
+	border-color: #1089f0; 
+}
 h1 {
   margin: .67em 0;
   font-size: 2em;
@@ -1470,13 +1519,3 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 
 /*FINE CLASSI STILE SLIDER*/
-
-
-.features { padding: 0 25px; width: 33.3%; float: left; font-family: "Courier"; }
-.features p { text-align: left; font-weight: 900; font-size: 15px;}
-.features h3 { font-size: 24px; margin: 0 0 10px; text-align: left; }
-.features-details { padding-left: 60px }
-
-.heading { width: 15%; height: 30px; padding: 2px; text-align: center; text-transform: uppercase; color: #1089f0; font-weight: normal; font-size: 18px; margin: 10px auto 25px auto; font-family:"Courier"; border-radius: 10px; border: solid; border-color: #1089f0; }
-
-.features-icon { display: block; padding: 11px; float: left; font-size: 18px; color: #fff; margin-right: 10px; font-weight: bold; height: 40px; line-height: 40px; width: 40px; background: #1089f0; border-radius: 99px; text-align: center; }
