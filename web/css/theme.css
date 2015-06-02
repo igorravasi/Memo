@@ -26,7 +26,9 @@ body {
 .bordered {
 	border: 3px;
 	border-color: #1089f0;
+	border-radius: 10px;
 	border-style: solid;
+	border-color: #1089f0
 }
 
 .border-radius {
@@ -197,11 +199,6 @@ body {
 	margin: 0 0 10px;
 	text-align: left;
 }
-
-.features-details {
-	padding-left: 60px:
-}
-
 .features-icon {
 	display: block;
 	padding: 11px;
@@ -230,7 +227,7 @@ body {
 	margin: 10px auto 25px auto;
 	font-family: "Courier";
 	border-radius: 10px;
-	border: solid;
+	border-style: solid;
 	border-color: #1089f0;
 }
 
@@ -1080,7 +1077,6 @@ tbody.collapse.in {
 	cursor: not-allowed;
 	background-color: transparent;
 	background-image: none;
-	filter: progid:DXImageTransform.Microsoft.graient(enabled= false);
 }
 
 .open>.dropdown-menu {
