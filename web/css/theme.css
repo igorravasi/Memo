@@ -973,9 +973,11 @@ tbody.collapse.in {
 }
 
 .control-button {
-	height: 45px;
+	height: 45;
 	width: 175px;
-	margin-top: 2px;
+	margin: auto;
+	border: 0;
+	padding-bottom: 5px;
 	background: #00b7ea;
 	color: #d9edf7;
 	font: 22px/50px Courier;
@@ -986,9 +988,7 @@ tbody.collapse.in {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	-webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+	
 	background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
 	/* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00b7ea),

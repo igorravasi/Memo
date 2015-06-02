@@ -10,7 +10,7 @@ var timeoutMilliSeconds = 2*60*1000 - 2*1000;  //Sottraggo 2 secondi perchè per
 var lastBox = 0;
 var isValidable = false;
 
-display("start_div",true);
+display("start_button",true);
 setShortcuts();
 
 

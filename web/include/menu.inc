@@ -49,10 +49,7 @@
 							</li>
 						</ul>
 						<ul class="nav navbar-bar">
-							<div id="start_div" class="nascosto">
-								<li style="float:right"><button onclick="start();" id="start_button" class="control-button" >Start </button></li>
-							</div>
-							
+								<li style="float:right"><button onclick="start();" id="start_button" class="control-button nascosto" >Start</button></li>
 						</ul>
 					</div>
 			  </div>
