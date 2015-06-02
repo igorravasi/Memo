@@ -23,7 +23,7 @@ body {
 }
 .bordered{
 	border: 3px;
-	border-color: black;
+	border-color: #1089f0;
 	border-style: solid;
 }
 .border-radius { 
@@ -1438,11 +1438,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	opacity: 0.9;
 }
 #prev{
-	background: #000 url('../resources/prev.png') no-repeat center;
+	background: #1089f0 url('../resources/prev.png') no-repeat center;
 	left: 0px;
 }
 #next{
-	background: #000 url('../resources/next.png') no-repeat center;
+	background: #1089f0 url('../resources/next.png') no-repeat center;
 	right: 0px;
 }
 #pager{
@@ -1457,8 +1457,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	margin:5px;
 	width:25px;
 	height:25px;
-	border:3px solid black;
-	color: black;
+	border:3px solid #1089f0;
+	color: #1089f0;
 	list-style: none;
 	opacity: 0.6;
 	float:left;
@@ -1477,6 +1477,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .features h3 { font-size: 24px; margin: 0 0 10px; text-align: left; }
 .features-details { padding-left: 60px }
 
-.heading { text-align: center; text-transform: uppercase; color: #666; font-weight: normal; font-size: 18px; margin: 10px 0 25px 0; font-family:"Courier"; }
+.heading { width: 15%; height: 30px; padding: 2px; text-align: center; text-transform: uppercase; color: #1089f0; font-weight: normal; font-size: 18px; margin: 10px auto 25px auto; font-family:"Courier"; border-radius: 10px; border: solid; border-color: #1089f0; }
 
 .features-icon { display: block; padding: 11px; float: left; font-size: 18px; color: #fff; margin-right: 10px; font-weight: bold; height: 40px; line-height: 40px; width: 40px; background: #1089f0; border-radius: 99px; text-align: center; }
