@@ -22,8 +22,13 @@ function submitLogin(button) {
 	
 	
 	var logResponse = request("login", stringToSubmit);
-	
-	document.getElementById("login_message").innerHTML = getLogMessage(checkLogResponse(logResponse));
+	var logged = checkLogResponse(logResponse);
+	document.getElementById("login_message").innerHTML = getLogMessage(logged);
+	if (logged) {
+		window.setTimeout(function(){
+			clearAllMenus();
+		},300);
+	}
 	
 	
 }
@@ -33,6 +38,7 @@ function checkLogResponse(response){
 	
 	if (response.contains("Logged")) {
 		writeLoginName();
+		
 		return true;
 	}
 	return false;
