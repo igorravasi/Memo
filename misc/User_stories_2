@@ -1,0 +1,27 @@
+User Stories: MyMemo. Versione di rilascio.
+
+Il concetto generale del gioco è di riuscire a scrivere correttamente una serie di Emoticon precedentemente mostrate all'utente dal computer
+per un breve tempo di 7 secondi.
+
+1 Come utente connesso ad una rete internet attraverso personal computer voglio poter accedere alla pagina web del gioco.
+2 Nella barra menu in alto nella pagina si vedono i pulsanti “MyMemo”, “Gioca”, “Info”, “Contatti” e “Login” che portano a pagine differenti tra loro.
+3 Premendo “MyMemo” si vede una sequenza di immagini rappresentative come il logo del gioco e una serie di scenari che si possono incontrare giocando le partite.
+  Le foto scorrono premendo la freccia destra o sinistra o i pulsanti numerati sotto alla finestra.
+4 Premendo il pulsante “Gioca” → “Single player” compare un ulteriore tasto “START” per fare in modo che appaia la serie di emoticon e la partita abbia inizio.
+5 Come utente che ha iniziato la partita voglio visualizzare le emoticon ed un count-down di 7 secondi dopo i quali compariranno le caselle bianche da completare
+  e la tastiera di emoticon. Il cursore si sposta automaticamente da una casella all'altra dopo l'inserimento della singola risposta; per modificarla è sufficiente
+  riposizionare il cursore nella casella e premere sulla emoticon che si ritiene corretta. 
+6 Nel caso in cui il tempo di inserimento superi i 2 minuti viene mostrato un messaggio di errore ed è necessario ricominciare la partita premendo “RESTART” oppure
+  si possono visitare altre pagine del sito senza continuare a giocare. Con “RESTART” la partita precedente viene persa e viene mostrato il primo round con il numero
+  minimo di emoticon da ricordare: 3.
+7 Per confermare la risposta bisogna premere il tasto “CONTROLLA”: se è corretta si passa al round successivo dove la serie viene incrementata di due elementi,
+  altrimenti si viene sconfitti. Bisogna cercare di superare il maggior numero di round per allenare la propria memoria.
+8 Per giocare nella modalità Multiplayer (Premendo il pulsante “Gioca” → “Multiplayer”) è necessario autenticarsi scrivendo Utente e Password negli spazi dedicati
+  dopo aver premuto “Login” per ottenere una corrispondenza con un avversario anch'esso online e pronto a giocare. Nella stessa finestra premendo “Logout” si abbandona
+  il proprio personaggio virtuale.
+9 Si nota che dopo aver scelto la modalità multiplayer compaiono due voci aggiuntive nella barra menu “Sfide” e “Notifiche”. 
+//TODO
+10 Durante i round multiplayer la serie da reinserire è uguale per entrambi gli avversari e la vincita di uno dipende dalla capacità mnemonica dell'altro.
+  L'errore di inserimento di un utente decreta la vincita dell'altro ed allo stesso modo la decisione di abbandonare una partita in corso. In ogni momento del gioco si può abbandonare la partita,
+  anche nella modalità Single Player.
+11 Premendo “Info” si leggono le istruzioni del gioco e con “Contatti” si accede ad alcune informazioni per contattare il gruppo di sviluppo del gioco: Nome, indirizzo E-Mail.
