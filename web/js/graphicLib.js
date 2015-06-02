@@ -6,7 +6,8 @@ setClickMonitorForMenus();
 
 
 function display(elementId, boolDisplay){
-	var element = document.getElementById(elementId);
+	
+	var element =  document.getElementById(elementId);
 	
 	var toBeSet = boolDisplay ? "visibile" : "nascosto";
 	var toBeDeleted = !boolDisplay ? "visibile" : "nascosto";

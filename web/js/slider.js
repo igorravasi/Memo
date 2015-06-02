@@ -11,7 +11,7 @@ var currentImage = 0;
 
 function init(){
 	ul = document.getElementById('image_slider');
-	display('image_slider',true);
+	display(ul.parentNode.id,true);
 	liItems = ul.children;
 	imageNumber = liItems.length;
 	imageWidth = liItems[0].children[0].clientWidth;
