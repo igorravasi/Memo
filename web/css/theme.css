@@ -19,6 +19,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
+  margin-bottom: 150px;
 }
 .bordered{
 	border: 3px;
@@ -1469,3 +1470,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 
 /*FINE CLASSI STILE SLIDER*/
+
+
+.features { padding: 0 25px; width: 33.3%; float: left; font-family: "Courier"; }
+.features p { text-align: left; font-weight: 900; font-size: 15px;}
+.features h3 { font-size: 24px; margin: 0 0 10px; text-align: left; }
+.features-details { padding-left: 60px }
+
+.heading { text-align: center; text-transform: uppercase; color: #666; font-weight: normal; font-size: 18px; margin: 10px 0 25px 0; font-family:"Courier"; }
+
+.features-icon { display: block; padding: 11px; float: left; font-size: 18px; color: #fff; margin-right: 10px; font-weight: bold; height: 40px; line-height: 40px; width: 40px; background: #1089f0; border-radius: 99px; text-align: center; }
