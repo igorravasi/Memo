@@ -1429,7 +1429,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .nvgt{
 	position:absolute;
-	top: 160px;
 	height: 50px;
 	width: 30px;
 	opacity: 0.6;
