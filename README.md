@@ -1,26 +1,26 @@
-# Memo
+# MyMemo
 
-Progetto di Laboratorio per il corso Fondamenti di Informatica II Gruppo.
+Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Università degli studi di Pavia
 
 ##Ruoli
 
-	Igor Ravasi 
-		Primario: FunzionalitÃ  server.
+###Igor Ravasi 
+		Primario: Funzionalità server.
 		Secondario: SVN
 	
-	Marco Ghiani
+###Marco Ghiani
 		Primario: Responsabile degli Standard e dei Design Pattern.
 		Secondario: Stili css etc.
 	
-	Bianca Pavesi
+###Bianca Pavesi
 		Primario ?
 		Secondario: Test
 
-	Jacopo Tavaroli
+###Jacopo Tavaroli
 		Primario ?
 		Secondario: Javadoc
 
-##Requisiti: 
+##Requisiti
 	
 ###Server
 
@@ -31,6 +31,8 @@ JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 ï¿½ necessario reimplem
 	
 Browser con supporto alle emoji.
 
+
+##Autori
 
 @IgorRavasi @BiancaPavesi @MarcoAntonioGhiani @JacopoMTavaroli
 
