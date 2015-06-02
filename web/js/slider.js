@@ -18,9 +18,7 @@ function init(){
 	ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
 	prev = document.getElementById("prev");
 	next = document.getElementById("next");
-	generatePager(imageNumber);
-	//.onclike = slide(-1) will be fired when onload;
-	
+	generatePager(imageNumber);	
 	prev.onclick = function(){slide(-1);};
 	next.onclick = function(){slide(1);};
 	prev.onclick = function(){ onClickPrev();};
