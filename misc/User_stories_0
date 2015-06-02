@@ -1,14 +1,14 @@
-Ex. User Stories
+User Stories: MyMemo. Versione alfa.
 
-Il concetto del gioco Ë di riuscire a riportare correttamente una serie di elementi mnemonici (cifre/lettere/colori... )mostrate all'utente dal computer per un tempo limitato prefissato. 
+Il concetto del gioco √® di riuscire a riportare correttamente una serie di elementi mnemonici (cifre/lettere/colori... )mostrate all'utente dal computer per un tempo limitato prefissato. 
 
-1 Come utente che si Ë collegato al sito internet del gioco voglio poter avviare il gioco in modo da iniziare una partita.
-2 Come utente che ha avviato il gioco voglio poter vedere un menu di avvio con un pulsante per iniziare a giocare.
-3 Come utente che ha avviato il gioco voglio poter individuare un pulsante per uscire dal gioco (reiniziarla o visualizzare altre pagine del sito).
-4 Come utente che sceglie di iniziare la partita voglio poter giocare vedendo e reinserendo la serie di cifre.
-5 Come utente che gioca il primo round (che mostra  una serie di 3 elementi) voglio poter tornare al pannello di avvio in caso di inserimento sbagliato o passare al round successivo se la serie Ë inserita correttamente.
-6 Come utente che gioca il secondo round (che aggiunge 2 elementi alla serie) = primo round
-... terzo round .... = primo round
-.
-.
-.
+1 Come utente connesso ad una rete internet attraverso personal computer voglio poter accedere alla pagina web che riporta il menu iniziale del gioco.
+2 Come utente che ha caricato la pagina web voglio poter visualizzare un menu di avvio con un pulsante per iniziare a giocare il round sotto la voce Gioca ‚Üí Single player.
+3 Come utente che ha avviato il gioco voglio individuare un pulsante per uscire dalla partita e reiniziarla o visualizzare altre pagine del sito riguardanti il progetto.
+4 Come utente che sceglie di iniziare la partita premendo il pulsante ‚ÄúGioca‚Äù voglio poter vedere la serie di cifre e cercare di reinserirla allenando la mia memoria.
+5 Come utente che gioca il primo round della partita (che mostra 3 elementi) voglio poter tornare al pannello di avvio in caso di inserimento sbagliato e quindi sconfitta o
+  passare al round successivo se la serie viene inserita correttamente.
+6 Come utente che ha accesso al secondo round della partita (che mostra una serie di 5 elementi, due aggiunti a quelli gi√† presenti nella serie da 3) voglio poter giocare round
+  successivi o terminare la partita.
+7 Come utente che visualizza un messaggio di errore devo essere a conoscenza del fatto che ci sono stati problemi di connessione e funzionamento del gioco.
+  Ne consegue la diretta chiusura.
