@@ -30,7 +30,7 @@ JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 � necessario reimplem
 ###Client
 	
 Browser con supporto alle emoji.
-
+Si sconsiglia tuttavia MSInternetExplorer
 
 ##Autori
 
