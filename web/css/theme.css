@@ -20,9 +20,14 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
 }
+.bordered{
+	border: 3px;
+	border-color: black;
+	border-style: solid;
+}
 .border-radius { 
  	border-radius: 10px; 
- 	border-color: #42fff6
+ 	border-color: #42fff6;
 }
 #emojikeyboard {
 	width: 70%;
@@ -1408,7 +1413,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	position:relative;
 	height:auto;
 	top:auto;
-	border: 5px;
 }
 #image_slider{
 	position: relative;
@@ -1451,14 +1455,14 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 #pager li{
 	padding: 0px;
 	margin:5px;
-	width:20px;
-	height:20px;
-	border:1px solid black;
-	color:black;
+	width:25px;
+	height:25px;
+	border:3px solid #00a5ff;
+	color: #00a5ff;
 	list-style: none;
 	opacity: 0.6;
 	float:left;
-	border-radius: 3px;
+	border-radius: 15px;
 	cursor: pointer;
 }
 #pager li:hover{
@@ -1466,4 +1470,3 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 
 /*FINE CLASSI STILE SLIDER*/
-
