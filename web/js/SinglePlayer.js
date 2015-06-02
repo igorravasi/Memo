@@ -11,6 +11,8 @@ var lastBox = 0;
 var isValidable = false;
 
 display("start_div",true);
+setShortcuts();
+
 
 function start(){
 	playId = request("singleplayer", null );

@@ -1,6 +1,9 @@
 
 var aMenuIsOpen = false;
 
+setClickMonitorForMenus();
+
+
 
 function display(elementId, boolDisplay){
 	var element = document.getElementById(elementId);
@@ -56,48 +59,54 @@ function clearAllMenus(){
 
 
 
-document.body.addEventListener("click", function(e) {
+function setClickMonitorForMenus(){
 	
-	var e=window.event || e;
-	var regexDropdown = "^dropdown$|^dropdown\\s+|\\s+dropdown$|\\s+dropdown\\s+";
-	
-	if (aMenuIsOpen) {
-		var element = e.target;
-		while (element != null) {
-			var className = element.className || "";
-			if (className.match(regexDropdown)) {
-				return;
-			}
-			element = element.parentNode;
-		}		
-		clearAllMenus();
-	}
-	
-	},
-	true);
-
-
-document.onkeypress=function(e){
-	var e=window.event || e;
-	var keyunicode=e.charCode || e.keyCode;
+	document.body.addEventListener("click", function(e) {
 		
-	//Le scorciatoie valgono solo fuori dalle caselle di testo/altri inputs
-	if (!(e.target.tagName.toLowerCase() == "input")) {
+		var e=window.event || e;
+		var regexDropdown = "^dropdown$|^dropdown\\s+|\\s+dropdown$|\\s+dropdown\\s+";
 		
-		//Premuta la x o X
-		if (keyunicode == 120 || keyunicode == 88) {
-			var timerText = document.getElementById("countDown");
-			timerText.innerHTML = 1;
-			return false;
-		
-		//Premuto enter
-		} else if (keyunicode == 13) {
-
-			validate();
-			return false;
+		if (aMenuIsOpen) {
+			var element = e.target;
+			while (element != null) {
+				var className = element.className || "";
+				if (className.match(regexDropdown)) {
+					return;
+				}
+				element = element.parentNode;
+			}		
+			clearAllMenus();
 		}
+		
+		},
+		true);
+	
+}
+
+
+function setShortcuts(){
+	document.onkeypress=function(e){
+		var e=window.event || e;
+		var keyunicode=e.charCode || e.keyCode;
+			
+		//Le scorciatoie valgono solo fuori dalle caselle di testo/altri inputs
+		if (!(e.target.tagName.toLowerCase() == "input")) {
+			
+			//Premuta la x o X
+			if (keyunicode == 120 || keyunicode == 88) {
+				var timerText = document.getElementById("countDown");
+				timerText.innerHTML = 1;
+				return false;
+			
+			//Premuto enter
+			} else if (keyunicode == 13) {
+
+				validate();
+				return false;
+			}
+		}
+		return true;
 	}
-	return true;
 }
 	
 
