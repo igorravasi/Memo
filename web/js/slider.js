@@ -9,13 +9,44 @@ var currentPostion = 0;
 var currentImage = 0;
 
 
-function init(){
-	ul = document.getElementById('image_slider');
-	display(ul.parentNode.id,true);
+function resizeSlider(){
+	
 	liItems = ul.children;
 	imageNumber = liItems.length;
+	for (var i = 0; i < imageNumber; i++) {
+		liItems[i].children[0].width=ul.parentNode.clientWidth;
+	}
+	
+	//Il timeoutè necessario, perchè clientHeight (come clientWidth) può non essere sincroinizzata con la realtà subito dopo
+	//a modifiche e in questo caso risulterebbe errato il posizionamento.
+	window.setTimeout(
+			function(){moveNavigator();}
+			, 50)
+
 	imageWidth = liItems[0].children[0].clientWidth;
 	ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
+}
+
+function moveNavigator(){
+	var sliderHeight = ul.parentNode.clientHeight;
+	
+	var navigators = document.getElementsByClassName("nvgt");
+	for (var i = 0; i < navigators.length; i++) {
+		navigators[i].style.top = parseInt( ( sliderHeight - navigators[i].clientHeight ) / 2) + 'px';
+	}
+	
+	
+}
+
+
+function init(){
+	
+	ul = document.getElementById('image_slider');
+	
+	display(ul.parentNode.id,true);
+	
+	resizeSlider();
+	
 	prev = document.getElementById("prev");
 	next = document.getElementById("next");
 	generatePager(imageNumber);	
@@ -101,4 +132,4 @@ function generatePager(imageNumber){
 	pagerDiv.style.width = parseInt((liWidth + liMargin * 2) * imageNumber) + 'px';
 }
 window.onload = init;
-
+window.onresize = resizeSlider;
