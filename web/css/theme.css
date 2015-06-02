@@ -22,7 +22,7 @@ body {
 }
 .bordered{
 	border: 3px;
-	border-color: black;
+	border-color: #00a5ff;
 	border-style: solid;
 }
 .border-radius { 
