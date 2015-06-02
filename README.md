@@ -13,8 +13,8 @@ Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Uni
 		Secondario: Stili css etc.
 	
 ###Bianca Pavesi
-		Primario ?
-		Secondario: Test
+		Primario Responsabile delle procedure di Testing automatico dei Componenti.
+		Secondario: Responsabile Storie Utente e Diagrammi Casi D'Uso e Sequenza.
 
 ###Jacopo Tavaroli
 		Primario ?
