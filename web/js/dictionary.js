@@ -45,7 +45,7 @@ function getLogMessage(bool){
 	var head = bool ? "<p class='testoverde'>" : "<p class='testorosso'>";
 	var tail = "</p>";
 	
-	var content = bool ? "Ok! Puoi chiudere questo riquadro." :  "Errore, riprova.";
+	var content = bool ? "Ok!" :  "Errore, riprova.";
 	
 	return head + content + tail;
 }
