@@ -15,7 +15,7 @@ public class MemoSequenceTest {
 		System.out.println(myMemoSequence);
 	
 		for (int i = 0; i < 5; i++) {
-			myMemoSequence.secondRound();
+			myMemoSequence.nextRound();
 			
 			System.out.println(myMemoSequence);
 
