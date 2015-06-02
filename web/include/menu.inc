@@ -17,7 +17,7 @@
 							<li><a href="Contatti.html">Contatti</a></li>
 							
 							<li class="dropdown">
-								 <a href="#" onclick="dropDown(this.parentNode)" class="dropdown-toggle"><span id="user_name">Login</span> <b class="caret"></b></a>
+								 <a href="#" onclick="dropDown(this.parentNode);document.getElementById('login_message').innerHTML=''" class="dropdown-toggle"><span id="user_name">Login</span> <b class="caret"></b></a>
 								 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 									<li>
 										<div class="row">
