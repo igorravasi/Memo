@@ -22,7 +22,7 @@ body {
 }
 .bordered{
 	border: 3px;
-	border-color: #00a5ff;
+	border-color: black;
 	border-style: solid;
 }
 .border-radius { 
@@ -954,7 +954,7 @@ tbody.collapse.in {
   font-weight: bold;
   font-family:"Courier";
   line-height: 1.42857143;
-  color: #00a5ff;
+  color: #1089f0;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -1246,7 +1246,7 @@ tbody.collapse.in {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #00a5ff;
+  color: #1089f0;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -1257,7 +1257,7 @@ tbody.collapse.in {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #00a5ff;
+  color: #1089f0;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -1457,8 +1457,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 	margin:5px;
 	width:25px;
 	height:25px;
-	border:3px solid #00a5ff;
-	color: #00a5ff;
+	border:3px solid black;
+	color: black;
 	list-style: none;
 	opacity: 0.6;
 	float:left;
