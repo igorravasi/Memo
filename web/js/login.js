@@ -36,7 +36,7 @@ function submitLogin(button) {
 
 function checkLogResponse(response){
 	
-	if (response.contains("Logged")) {
+	if (trim(response) == "Logged") {
 		writeLoginName();
 		
 		return true;
