@@ -1,11 +1,11 @@
 # MyMemo
 
-Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Università degli studi di Pavia
+Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Universitï¿½ degli studi di Pavia
 
 ##Ruoli
 
 ###Igor Ravasi 
-		Primario: Funzionalità server.
+		Primario: Funzionalitï¿½ server.
 		Secondario: SVN
 	
 ###Marco Ghiani
@@ -17,7 +17,7 @@ Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Uni
 		Secondario: Responsabile Storie Utente e Diagrammi Casi D'Uso e Sequenza.
 
 ###Jacopo Tavaroli
-		Primario ?
+		Primario : Analista dei Componenti
 		Secondario: Javadoc
 
 ##Requisiti
