@@ -5,8 +5,8 @@ Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Uni
 ##Ruoli
 
 ###Igor Ravasi 
-		Primario: Funzionalit� server.
-		Secondario: SVN
+		Primario: Responsabile della codifica delle funzionalità lato Server
+		Secondario: Responsabile del Repository SVN e del suo utilizzo
 	
 ###Marco Ghiani
 		Primario: Responsabile degli Standard e dei Design Pattern.
@@ -24,13 +24,12 @@ Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Uni
 	
 ###Server
 
-JRE 1.8 o superiore! (per abbassare i requisiti a JRE1.7 � necessario reimplementare la data HTTP senza usare le librerie  di jre1.8).
+JRE 1.8 minimo.
 	
 
 ###Client
 	
-Browser con supporto alle emoji.
-Si sconsiglia tuttavia MSInternetExplorer
+Browser con supporto alle emoji ESCLUSO internet Explorer.
 
 ##Autori
 
