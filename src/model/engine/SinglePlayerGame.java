@@ -36,7 +36,7 @@ public class SinglePlayerGame extends Observable{
 	private void keepAlive(){
 		isAliveTimer.cancel();
 		isAliveTimer = new Timer();
-//		System.err.println(playId + " restarted @ " + (System.currentTimeMillis()/1000));
+		
 		isAliveTimer.schedule(new TimerTask() {
 			
 			/* (non-Javadoc)
@@ -44,7 +44,7 @@ public class SinglePlayerGame extends Observable{
 			 */
 			@Override
 			public void run() {
-//				System.err.println(playId + " ended @ " + (System.currentTimeMillis()/1000));
+				
 				changed();
 				
 			}
@@ -73,7 +73,7 @@ public class SinglePlayerGame extends Observable{
 	/**
 	 * Leggo la sequenza inserita dal giocatore
 	 * @param content
-	 * @return sequenza inserita o errore nel leggerla
+	 * @return nuova sequenza  o risultato o errore
 	 */
 	public String readRequest(String content){
 		
