@@ -1,5 +1,8 @@
 package test;
 
+/**
+ * Verifico che le emoji visualizzate siano effettivamente quelle che voglio.
+ */
 public class testcodepoints {
 
 	public static void main(String[] args) {

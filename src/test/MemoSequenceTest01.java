@@ -2,7 +2,10 @@ package test;
 
 import model.engine.MemoSequence;
 
-//Controllo emoticon.
+/**
+ * Controllo emoticon.
+ * Verifico la lunghezza delle stringhe di emoji richiamate.
+ */
 
 public class MemoSequenceTest01 {
 

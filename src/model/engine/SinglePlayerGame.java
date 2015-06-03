@@ -73,7 +73,7 @@ public class SinglePlayerGame extends Observable{
 	/**
 	 * Leggo la sequenza inserita dal giocatore
 	 * @param content
-	 * @return
+	 * @return sequenza inserita o errore nel leggerla
 	 */
 	public String readRequest(String content){
 		

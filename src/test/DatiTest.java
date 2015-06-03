@@ -4,6 +4,9 @@ import java.net.MalformedURLException;
 import com.sun.org.apache.xerces.internal.util.URI;
 import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException;
 
+/**
+ * Verifico gli output della classe URI.
+ */
 public class DatiTest {
 	
 		public static void main(String[] argv) throws MalformedURIException, MalformedURLException{

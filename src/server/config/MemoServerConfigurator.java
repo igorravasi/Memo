@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Gestore di valori dei parametri ("costanti" e ContentType) del server ed i suoi servizi, in modo da non dover riavviare il server quando questi ultimi cambiano.
- *
+ * Gestore di valori dei parametri ("costanti" e ContentType) del server ed i suoi servizi,
+ * in modo da non dover riavviare il server quando questi ultimi cambiano.
  */
 public class MemoServerConfigurator {
 
