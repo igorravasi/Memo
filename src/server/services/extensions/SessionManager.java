@@ -3,21 +3,43 @@ package server.services.extensions;
 import java.util.Random;
 
 /**
- * Classe utilizzata per passare parametri utili alla gestione della sessione.
+ * Classe che gestisce le sessioni aperte e valide e permette a chi la utilizza
+ * di verificare se la coppia utente-sessione è corretta.
  * 
- * @return ritorna un valore float
  */
+
 public class SessionManager {
 
+	private class Session {
+		
+		private String user;
+		private Long sessionId;
+		public Session(Long sessionId, String user){
+			this.user = user;
+			this.sessionId = sessionId;
+		}
+		
+		public Long getSessionId(){
+			return sessionId;
+		}
+		
+		public String getUser(){
+			return user;
+		}
+	}
 
 	
 	Random randomizer = new Random(new Random().nextLong());
 	
+	
 	public Long newSession(String user){
 		
-		return randomizer.nextLong();
+		Session session = new Session(randomizer.nextLong(), user);
+		return session.getSessionId();
 	}
 	
+
+
 
 	
 }
