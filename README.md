@@ -1,6 +1,6 @@
 # MyMemo
 
-Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Universit� degli studi di Pavia
+Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Università degli studi di Pavia
 
 ##Ruoli
 
@@ -10,7 +10,7 @@ Progetto di Laboratorio di gruppo per il corso Fondamenti di Informatica II, Uni
 	
 ###Marco Ghiani
 		Primario: Responsabile degli Standard e dei Design Pattern.
-		Secondario: Stili css etc.
+		Secondario: Responsabile Stili e Contenuti Web.
 	
 ###Bianca Pavesi
 		Primario: Responsabile delle procedure di Testing automatico dei Componenti.
