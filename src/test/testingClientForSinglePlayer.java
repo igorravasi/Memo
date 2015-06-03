@@ -65,16 +65,18 @@ public class testingClientForSinglePlayer {
 		String received = send(playid, "");
 		
 		
+		//E' una sequenza solo se inizia per S:
 		if (!received.startsWith("S:")) {
 			System.err.println("errore");
 			return;
 		}
 		
-		
+		//Estrapolo la sequenza ricevuta
 		byte[] bytes = received.substring(2).getBytes(Charset.forName("UTF-8"));
 		
 		String outSequence = "S:";
 		
+		//E costruisco la sequenza da inviare, nel formato corretto, copiando la sequenza ricevuta 
 		for (int i = 0; i < bytes.length; i++) {
 			outSequence += "%" + String.format("%02X", bytes[i]);
 		}
@@ -85,12 +87,14 @@ public class testingClientForSinglePlayer {
 
 		if (!result.startsWith("S:")) {
 
-			//o errore o partita persa
+			//o errore o partita persa (questa if non dovrebbe essere soddisfatta se tutto va bene)
 			System.err.println(result);
 			return;
 		} 
 		
 		System.out.println("primo round ok");
+		
+		//Riestrapolo la sequenza e la copio, ma sbagliata appositamente
 		bytes = result.substring(2).getBytes(Charset.forName("UTF-8"));
 		
 		bytes[3] = (byte) 12;
@@ -103,8 +107,10 @@ public class testingClientForSinglePlayer {
 		result = send(playid, outSequence);
 		
 		if (result.startsWith("S:")) {
+			//Non deve succedere
 			System.out.println("passato");
 		} else if (result.startsWith("L:")) {
+			//deve succedere
 			System.err.println("perso");
 		}
 		
