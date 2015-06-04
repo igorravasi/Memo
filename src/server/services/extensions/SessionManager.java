@@ -1,5 +1,7 @@
 package server.services.extensions;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -12,11 +14,15 @@ public class SessionManager {
 
 	private class Session {
 		
+	
 //		private String user;
 		private Long sessionId;
+		
+		
 		public Session(Long sessionId, String user){
 //			this.user = user;
 			this.sessionId = sessionId;
+			
 		}
 		
 		public Long getSessionId(){
@@ -29,14 +35,17 @@ public class SessionManager {
 	}
 
 	
-	Random randomizer = new Random(new Random().nextLong());
-	
+	private Random randomizer = new Random(new Random().nextLong());
+	private Map<Long, Session> sessions = new HashMap<Long, Session>();
 	
 	public Long newSession(String user){
 		
 		Session session = new Session(randomizer.nextLong(), user);
-		return session.getSessionId();
+		Long id = session.getSessionId();
+		sessions.put(id, session);
+		return id;
 	}
+	
 	
 
 
