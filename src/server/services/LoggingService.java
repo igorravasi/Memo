@@ -48,12 +48,20 @@ public class LoggingService implements IService{
 		
 		String response = configurator.getValue(okResponseName);
 		
-		if (isLogout) {
+		if ( isLogout ) {
 			
-			 //Annullo i cookie di sessione
-			 
+			//Elimino la sessione
+			//TODO: verificare che la sessione sia valida (user-session) prima di cancellarla, magari è di un altro
+			try {
+				Long sessionId = Long.parseLong(request.getCookies().get("Sessione"));
+				manager.deleteSession(sessionId);
+			} catch (NumberFormatException e) {
+				response = configurator.getValue(badResponseName);
+			}
+			//Annullo i cookie di sessione
 			message.setCookie(userField + delete);
 			message.setCookie(sessionField + delete);
+			
 			
 		} else if ( logged ){
 			
