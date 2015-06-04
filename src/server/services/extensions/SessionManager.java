@@ -12,27 +12,6 @@ import java.util.Random;
 
 public class SessionManager {
 
-	private class Session {
-		
-	
-//		private String user;
-		private Long sessionId;
-		
-		
-		public Session(Long sessionId, String user){
-//			this.user = user;
-			this.sessionId = sessionId;
-			
-		}
-		
-		public Long getSessionId(){
-			return sessionId;
-		}
-		
-//		public String getUser(){
-//			return user;
-//		}
-	}
 
 	
 	private Random randomizer = new Random(new Random().nextLong());
@@ -44,6 +23,7 @@ public class SessionManager {
 		Long id = session.getSessionId();
 		sessions.put(id, session);
 		return id;
+		
 	}
 	
 	
