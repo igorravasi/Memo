@@ -18,7 +18,6 @@ public class SinglePlayerGame extends Observable{
 	
 	private MemoSequence sequence = new MemoSequence();
 	private Integer round = 0;
-//	private boolean status = true;
 	private Timer isAliveTimer = new Timer();
 	private Integer playId;
 	
@@ -29,7 +28,7 @@ public class SinglePlayerGame extends Observable{
 	public SinglePlayerGame(Integer playId) {
 		super();
 		this.playId = playId;
-//		System.err.println(playId + " started @ " + (System.currentTimeMillis()/1000));
+		
 		keepAlive();
 	}
 
