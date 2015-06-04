@@ -3,8 +3,10 @@ package server;
 import server.config.MemoServerConfigurator;
 import server.services.BinaryFileService;
 import server.services.LoggingService;
+import server.services.MultiPlayerService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
+import server.services.extensions.SessionManager;
 
 /**
  *@category serverlauncher
@@ -36,7 +38,10 @@ public class ServerLauncher {
 		
 		
 		server.addService("/singleplayer", new SinglePlayerService());
-		server.addService("/login", new LoggingService());
+		
+		SessionManager sessionManager = new SessionManager();
+		server.addService("/multiplayer", new MultiPlayerService(sessionManager));
+		server.addService("/login", new LoggingService(sessionManager));
 		
 		KeyboardGenerator.main(null);
 		

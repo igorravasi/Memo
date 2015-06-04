@@ -32,9 +32,16 @@ public class LoggingService implements IService{
 	private static final String logoutValue = "logout";
 	
 	
-	private SessionManager manager = new SessionManager();
+	private SessionManager sessionManager;
 	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 		
+	
+	
+	public LoggingService(SessionManager sessionManager) {
+		this.sessionManager = sessionManager;
+	}
+	
+	
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException {
 		
@@ -54,7 +61,7 @@ public class LoggingService implements IService{
 			//TODO: verificare che la sessione sia valida (user-session) prima di cancellarla, magari è di un altro
 			try {
 				Long sessionId = Long.parseLong(request.getCookies().get("Sessione"));
-				manager.deleteSession(sessionId);
+				sessionManager.deleteSession(sessionId);
 			} catch (NumberFormatException e) {
 				response = configurator.getValue(badResponseName);
 			}
@@ -68,7 +75,7 @@ public class LoggingService implements IService{
 			 //Invio i cookie di sessione
 			 
 			String user = contentFields.get(userField);
-			Long session = manager.newSession(user);
+			Long session = sessionManager.newSession(user);
 			
 			message.setCookie(userField + "=" + user + "; path/");
 			message.setCookie(sessionField + "=" + session + "; path=/");
