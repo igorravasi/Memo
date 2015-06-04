@@ -37,6 +37,20 @@ public class SessionManager implements Observer{
 	}
 	
 	
+	public boolean checkSession(Long sessionId, String user){
+		
+		boolean result = false;
+		if (sessions.containsKey(sessionId)) {
+			Session session = sessions.get(sessionId);
+			if (session.getUser().equals(user)) {
+				result = true;
+			}
+		}
+		
+		return result;
+		
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		
