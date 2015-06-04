@@ -4,9 +4,11 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import server.config.MemoServerConfigurator;
+
 public class Session extends Observable{
 	
-	
+	private static final String expiringTimeName = "session-expiring-time";
 //	private String user;
 	private Long sessionId;
 	private Timer expire = new Timer();
@@ -14,6 +16,14 @@ public class Session extends Observable{
 	public Session(Long sessionId, String user){
 //		this.user = user;
 		this.sessionId = sessionId;
+		
+		long expiringTime = 0;
+		
+		try {
+			expiringTime = Long.parseLong( MemoServerConfigurator.getInstance().getValue(expiringTimeName) );
+		} catch (NumberFormatException e) {
+		}
+		
 		this.expire.schedule(new TimerTask() {
 			
 			@Override
@@ -21,7 +31,7 @@ public class Session extends Observable{
 				setChanged();
 				notifyObservers();	
 			}
-		}, 1000*60*60);
+		}, expiringTime);
 		
 	}
 	
