@@ -2,6 +2,8 @@ package server.services.extensions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Random;
  * 
  */
 
-public class SessionManager {
+public class SessionManager implements Observer{
 
 
 	
@@ -21,8 +23,23 @@ public class SessionManager {
 		
 		Session session = new Session(randomizer.nextLong(), user);
 		Long id = session.getSessionId();
+		session.addObserver(this);
 		sessions.put(id, session);
 		return id;
+		
+	}
+
+	
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		Session session = (Session) o;
+		session.stopTimer();
+		Long id  = session.getSessionId();
+		if (sessions.containsKey(id)) {
+			sessions.remove(id);
+		}
 		
 	}
 	
