@@ -29,17 +29,19 @@ public class SessionManager implements Observer{
 		
 	}
 
+	public void deleteSession(Long sessionId){
+		if (sessions.containsKey(sessionId)) {
+			sessions.get(sessionId).stopTimer();
+			sessions.remove(sessionId);
+		}
+	}
 	
 	
 	@Override
 	public void update(Observable o, Object arg) {
 		
 		Session session = (Session) o;
-		session.stopTimer();
-		Long id  = session.getSessionId();
-		if (sessions.containsKey(id)) {
-			sessions.remove(id);
-		}
+		deleteSession(session.getSessionId());
 		
 	}
 	
