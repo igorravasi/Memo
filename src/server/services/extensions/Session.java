@@ -9,12 +9,12 @@ import server.config.MemoServerConfigurator;
 public class Session extends Observable{
 	
 	private static final String expiringTimeName = "session-expiring-time";
-//	private String user;
+	private String user;
 	private Long sessionId;
 	private Timer expire = new Timer();
 	
 	public Session(Long sessionId, String user){
-//		this.user = user;
+		this.user = user;
 		this.sessionId = sessionId;
 		
 		long expiringTime = 0;
@@ -42,7 +42,7 @@ public class Session extends Observable{
 	public void stopTimer(){
 		this.expire.cancel();
 	}
-//	public String getUser(){
-//		return user;
-//	}
+	public String getUser(){
+		return user;
+	}
 }
