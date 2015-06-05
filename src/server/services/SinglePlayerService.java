@@ -94,19 +94,23 @@ public class SinglePlayerService implements IService, Observer{
 	//TODO: Questo metodo porta ad una responsabilita' multipla?! Meglio estendere la map?
 	private Integer getFreeIndex(){
 
+		int startNumber;
 	
 		if (singleGames.size() <= Integer.MAX_VALUE) {
-			return singleGames.size();		
+			startNumber = singleGames.size();	
 			
 		} else {
 			
-			for (int i = 0; i < singleGames.size(); i++) {
-				if (singleGames.get(i) == null) {
-					return i;
-				}
-			}
+			startNumber = 0;
 
 		}
+		
+		for (int i = startNumber; i < Integer.MAX_VALUE; i++) {
+			if (singleGames.get(i) == null) {
+				return i;
+			}
+		}
+		
 	
 		return null;
 	}
