@@ -44,7 +44,7 @@ public class MultiPlayerGame extends Observable{
 			@Override
 			public void run() {
 				
-				//TODO: decretare il vincitore
+				//TODO: decretare il vincitore e mandare notifiche
 				changed();
 				
 			}
