@@ -35,7 +35,7 @@ public class SinglePlayerService implements IService, Observer{
 		String response;
 		
 		if (!uri.contains("singleplayer/")) {	
-			response = initializeGame(clientSocket);
+			response = initializeGame();
 		}else {
 			response = play(clientSocket, uri, request.getContent());
 		}
@@ -72,7 +72,7 @@ public class SinglePlayerService implements IService, Observer{
 	
 	
 	
-	private String initializeGame(Socket clientSocket) throws IOException{
+	private String initializeGame() throws IOException{
 		
 		Integer playId = getFreeIndex();
 		
