@@ -57,7 +57,7 @@ public class MultiPlayerGame extends Observable{
 		return true;
 	}
 	
-	public boolean isAGamer(String gamer){
+	private boolean isAGamer(String gamer){
 		for (int i = 0; i < gamers.length; i++) {
 			if (gamer.equals(gamers[i])) {
 				return true;
