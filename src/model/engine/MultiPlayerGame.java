@@ -106,6 +106,12 @@ public class MultiPlayerGame extends Observable{
 	
 
 	public String readRequest(String content, String user){
+		
+		if (!isAGamer(user)) {
+			//TODO: da configurator
+			return "E:User is not a gamer";
+		}
+		
 		int round = gamers.get(user);
 		
 		if (round == 0) {
@@ -113,20 +119,22 @@ public class MultiPlayerGame extends Observable{
 			round++;
 			gamers.put(user, round);
 			return SEQUENCE_ID + getSequence(user);
+		} else {
+			
+			if (content.indexOf(SEQUENCE_ID) >= 0) {
+				return "";
+				//return getTheResult(playerMoved(content));
+			} else {
+				return "E: Malformed request, Reload the page";
+			}
+			
 		}
 		
-		
-		return null;
 	}
 	
 //	public String readRequest(String content){
 //		
-//		if (round == 0) {
-//			keepAlive();
-//			round++;
-//			return "S:"+ getSequence();
-//		} else {
-//			
+
 //			if (content.indexOf(SEQUENCE_ID) >= 0) {
 //				
 //				return getTheResult(playerMoved(content));
