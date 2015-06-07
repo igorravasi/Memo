@@ -77,16 +77,9 @@ public class MemoSequence {
 			Ogni carattere viene rappresentato byte per byte in esadecimale, ogni byte è preceduto dal simbolo %
 			Il motivo di questo è quello di poter ricevere dal client la sequenza formattata tranquillamente così,
 			cioè "url-encoded". (La trasmissione non-url-encoded delle emoji cambia da  browser a browser, soprattuto con emtodo GET)
-		*/
-		Integer endOfSubstring;
-		try {
-			endOfSubstring = rounds.get(round);
-		} catch (Exception e) {
-			endOfSubstring = 0;
-		}
+		*/		
 		
-		
-		String consideredSequence = this.toString().substring(0, endOfSubstring);
+		String consideredSequence = this.toString(round);
 		byte[] bytes = consideredSequence.getBytes(Charset.forName("UTF-8"));
 		StringBuilder sb = new StringBuilder();
 		
@@ -99,6 +92,16 @@ public class MemoSequence {
 
 	}
 
+	public String toString(Integer round){
+		Integer endOfSubstring;
+		try {
+			endOfSubstring = rounds.get(round);
+		} catch (Exception e) {
+			endOfSubstring = 0;
+		}
+		return this.toString().substring(0, endOfSubstring);
+	}
+	
 	@Override
 	public String toString() {
 
