@@ -1,5 +1,7 @@
 package model.engine;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,11 +12,10 @@ public class MultiPlayerGame extends Observable{
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*20; //VENTI MINUTI PER GIOCARE LA PARTITA INTERA
 	private static final String SEQUENCE_ID ="S:";
-	
+	private static final int MAX_ROOM_SIZE = 2;
 	private MemoSequence sequence = new MemoSequence();
 	private Timer isAliveTimer = new Timer();
-	private Integer rounds[] = {0, 0};
-	private String gamers[] = {null, null};
+	private Map<String, Integer> gamers = new HashMap<String, Integer>();
 	
 	private Integer playId;
 	
@@ -48,22 +49,16 @@ public class MultiPlayerGame extends Observable{
 	
 	public boolean isStarted(){
 
-		for (int i = 0; i < gamers.length; i++) {
-			if (gamers[i] == null) {
-				return false;
-			}
+		if (gamers.size() < MAX_ROOM_SIZE) {
+			return false;
+		} else {
+			return true;
 		}
-		
-		return true;
 	}
 	
 	private boolean isAGamer(String gamer){
-		for (int i = 0; i < gamers.length; i++) {
-			if (gamer.equals(gamers[i])) {
-				return true;
-			}
-		}
-		return false;
+		return gamers.containsKey(gamer);
+		
 	}
 	
 	
