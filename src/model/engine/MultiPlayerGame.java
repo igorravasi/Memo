@@ -4,12 +4,7 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Classe per gestire il gioco singolo.
- * Inizializzo i valori 
- * ex. imposto il timer di due minuti per inserire la sequenza
- *
- */
+
 public class MultiPlayerGame extends Observable{
 
 	private static final int LOOSER = -1;
@@ -17,8 +12,8 @@ public class MultiPlayerGame extends Observable{
 	private static final String SEQUENCE_ID ="S:";
 	
 	private MemoSequence sequence = new MemoSequence();
-	private Integer round = 0;
 	private Timer isAliveTimer = new Timer();
+	private Integer rounds[] = {0, 0};
 	private String gamers[] = {null, null};
 	
 	private Integer playId;
@@ -40,7 +35,6 @@ public class MultiPlayerGame extends Observable{
 		
 		isAliveTimer.schedule(new TimerTask() {
 			
-			
 			@Override
 			public void run() {
 				
@@ -61,10 +55,18 @@ public class MultiPlayerGame extends Observable{
 		}
 		
 		return true;
-		
 	}
 	
-
+	public boolean isAGamer(String gamer){
+		for (int i = 0; i < gamers.length; i++) {
+			if (gamer.equals(gamers[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 //	private int playerMoved(String playerSequence){
 //		keepAlive();
 //		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID)+SEQUENCE_ID.length());
