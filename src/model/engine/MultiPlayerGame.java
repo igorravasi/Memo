@@ -1,9 +1,11 @@
 package model.engine;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Random;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,7 +25,7 @@ public class MultiPlayerGame extends Observable{
 	private MemoSequence sequence = new MemoSequence();
 	private Timer isAliveTimer = new Timer();
 	private Map<String, Integer> gamers = new HashMap<String, Integer>();
-
+	private Set<String> gamersOver = new HashSet<String>();
 	
 	private Integer playId;
 	
@@ -96,6 +98,17 @@ public class MultiPlayerGame extends Observable{
 			gamers.put(user, round);
 			return round;
 		} else {
+			if (gamersOver.size() == gamers.size()) {
+				
+				isAliveTimer.schedule(new TimerTask() {
+					
+					@Override
+					public void run() {
+						changed();
+						
+					}
+				}, 1000);
+			}
 			return LOOSER;
 		}
 	}
@@ -103,9 +116,9 @@ public class MultiPlayerGame extends Observable{
 	
 	public String readRequest(String content, String user){
 		
-		if (!isAGamer(user)) {
+		if (!isAGamer(user) || gamersOver.contains(user)) {
 			//TODO: da configurator
-			return "E: User is not a gamer";
+			return "E: User is not a valid gamer";
 		}
 		
 		int round = gamers.get(user);
@@ -132,6 +145,7 @@ public class MultiPlayerGame extends Observable{
 		
 		if (roundResult == LOOSER) {
 			//TODO: RIMUOVERE GIOCATORE dal gioco, lasciandone traccia
+			gamersOver.add(user);
 			return "L: "+ gamers.get(user);
 		} else {
 			return SEQUENCE_ID + getSequence(user);
