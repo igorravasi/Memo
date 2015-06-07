@@ -105,10 +105,24 @@ public class MultiPlayerService implements IService, Observer {
 		String content = request.getContent();
 		String user = request.getCookies().get("Utente");
 		
+		try {
+			playId = Integer.parseInt(uri.substring("/multiplayer".length()+1));
+		} catch (NumberFormatException e) {
+			playId = null;
+		}
 
-
-		return "";
 		
+		MultiPlayerGame game = games.get(playId);
+		String response = "";
+		
+		if (game != null) {
+			// Fa elaborare all'istanza corretta di MultiPlayerGame
+			//response = game.readRequest(content , user);
+		} else {
+			response = configurator.getValue(noGameIdName);
+		}
+		
+		return response;
 		
 	}
 
