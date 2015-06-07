@@ -63,13 +63,21 @@ public class MemoSequence {
 
 	}
 	
-	public String getEscapedString(int endOfSubstring){
+	public String getEscapedString(Integer round){
 		/*
 			La sequenza viene restituita in questo modo: 
 			Ogni carattere viene rappresentato byte per byte in esadecimale, ogni byte è preceduto dal simbolo %
 			Il motivo di questo è quello di poter ricevere dal client la sequenza formattata tranquillamente così,
 			cioè "url-encoded". (La trasmissione non-url-encoded delle emoji cambia da  browser a browser, soprattuto con emtodo GET)
 		*/
+		Integer endOfSubstring;
+		try {
+			endOfSubstring = rounds.get(round);
+		} catch (Exception e) {
+			endOfSubstring = 0;
+		}
+		
+		
 		String consideredSequence = this.toString().substring(0, endOfSubstring);
 		byte[] bytes = consideredSequence.getBytes(Charset.forName("UTF-8"));
 		StringBuilder sb = new StringBuilder();
