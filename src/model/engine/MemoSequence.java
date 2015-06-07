@@ -2,6 +2,8 @@ package model.engine;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -19,6 +21,7 @@ public class MemoSequence {
 	private Map<Integer, MemoElement> sequenza = new HashMap<Integer, MemoElement>();
 	private Integer counter = 0;
 	
+	private List<Integer> rounds = new LinkedList<Integer>();
 	
 	/**
 	 * Inizio il gioco con una sequenza di tre emoji
@@ -31,13 +34,16 @@ public class MemoSequence {
 	
 	
 	/**
-	 * Aggiunge due emoji alla nuova sequenza lasciando invariati i precedenti
+	 * Aggiunge elementi alla nuova sequenza lasciando invariati i precedenti
 	 */
 	public void nextRound() {
 		addElements(nextElements);
 	}
 	
+	
 	private void addElements(Integer numberOfElementsToAdd){
+		
+		rounds.add(numberOfElementsToAdd);
 		
 		for (int i = 0; i < numberOfElementsToAdd; i++) {
 			sequenza.put(counter, factory.generateMemoElement());
