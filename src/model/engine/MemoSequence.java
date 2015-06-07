@@ -37,6 +37,9 @@ public class MemoSequence {
 		return sequenza.size();
 	}
 	
+	public int roundsNumber(){
+		return (rounds.size());
+	}
 	/**
 	 * Aggiunge n elementi (n=default) alla nuova sequenza lasciando invariati i precedenti
 	 */
@@ -52,7 +55,7 @@ public class MemoSequence {
 	public void nextRound(Integer numberOfElementsToAdd) {
 		Integer previous = 0;
 		if (rounds.size() > 0) {
-			previous = rounds.get(rounds.size() - 1);
+			previous = rounds.get(roundsNumber() - 1);
 		}
 		
 		rounds.add(numberOfElementsToAdd + previous);
