@@ -31,7 +31,11 @@ public class MemoSequence {
 		super();
 		nextRound(startingElements);
 	}
+
 	
+	public int length(){
+		return sequenza.size();
+	}
 	
 	/**
 	 * Aggiunge n elementi (n=default) alla nuova sequenza lasciando invariati i precedenti
