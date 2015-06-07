@@ -133,7 +133,7 @@ public class MultiPlayerGame extends Observable{
 				return getTheResult(playerMoved(content, user), user);
 			} else {
 				return "E: Malformed request, Reload the page";
-			}
+			} 
 			
 		}
 		
@@ -147,6 +147,8 @@ public class MultiPlayerGame extends Observable{
 			//TODO: RIMUOVERE GIOCATORE dal gioco, lasciandone traccia
 			gamersOver.add(user);
 			return "L: "+ gamers.get(user);
+		} else if (gamers.get(user) >= roundResult) {
+			return "W: completed";
 		} else {
 			return SEQUENCE_ID + getSequence(user);
 		}
