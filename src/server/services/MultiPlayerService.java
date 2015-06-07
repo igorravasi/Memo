@@ -55,24 +55,30 @@ public class MultiPlayerService implements IService, Observer {
 			lastGame.addGamer(user);
 			return lastGame.getPlayId() +"";
 		} else {
-			return newGame();
+			Integer playId = newGame();
+			if (playId == null) {
+				return configurator.getValue(noGameIdAvailableName);
+			} else {
+				games.get(playId).addGamer(user);
+				return playId + "";
+			}
 		}
 
 	}
 	
 	
-	private String newGame() {
+	private Integer newGame() {
 		
 		Integer playId = getFreeIndex();
 		
 		if (playId == null) {
-			return configurator.getValue(noGameIdAvailableName);
+			return null;
 		} else {
 			MultiPlayerGame aSingleGame = new MultiPlayerGame(playId);
 			aSingleGame.addObserver(this);
 			games.put(playId, aSingleGame);
-			
-			return playId+"";
+			lastInitiliazedGame = playId;
+			return playId;
 		}
 		
 
