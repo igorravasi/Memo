@@ -75,6 +75,10 @@ public class MultiPlayerGame extends Observable{
 		}
 	}
 	
+	public void addGamer(String user){
+		this.gamers.put(user, 0);
+	}
+	
 	private boolean isAGamer(String gamer){
 		return gamers.containsKey(gamer);
 		
@@ -104,6 +108,12 @@ public class MultiPlayerGame extends Observable{
 	public String readRequest(String content, String user){
 		int round = gamers.get(user);
 		
+		if (round == 0) {
+			keepAlive();
+			round++;
+			gamers.put(user, round);
+			return SEQUENCE_ID + getSequence(user);
+		}
 		
 		
 		return null;
@@ -144,10 +154,12 @@ public class MultiPlayerGame extends Observable{
 		notifyObservers();
 	}
 	
-//	private String getSequence(){
-//		return sequence.toString();
-//	
-//	}
+	private String getSequence(String user){
+		Integer round;
+		round = gamers.get(user);
+		return sequence.toString();
+	
+	}
 //	
 //	private String getEscapedSequence(){
 //		return sequence.getEscapedString();
