@@ -131,19 +131,8 @@ public class MultiPlayerGame extends Observable{
 		}
 		
 	}
-	
-//	public String readRequest(String content){
-//		
 
-//			if (content.indexOf(SEQUENCE_ID) >= 0) {
-//				
-//				return getTheResult(playerMoved(content));
-//			} else {
-//				return "E: Malformed request, Reload the page";
-//			}	
-//		}
-//		
-//	}
+
 	
 //	private String getTheResult(int roundResult){
 //		
@@ -163,15 +152,15 @@ public class MultiPlayerGame extends Observable{
 	}
 	
 	private String getSequence(String user){
-		Integer round;
-		round = gamers.get(user);
-		return sequence.toString();
+		Integer round = gamers.get(user);
+		return sequence.toString(round);
 	
 	}
-//	
-//	private String getEscapedSequence(){
-//		return sequence.getEscapedString();
-//	}
+	
+	private String getEscapedSequence(String user){
+		Integer round = gamers.get(user);
+		return sequence.getEscapedString(round);
+	}
 
 
 }
