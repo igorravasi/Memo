@@ -105,7 +105,7 @@ public class MultiPlayerGame extends Observable{
 		
 		if (!isAGamer(user)) {
 			//TODO: da configurator
-			return "E:User is not a gamer";
+			return "E: User is not a gamer";
 		}
 		
 		int round = gamers.get(user);
