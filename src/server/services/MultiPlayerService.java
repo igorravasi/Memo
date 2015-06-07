@@ -123,8 +123,8 @@ public class MultiPlayerService implements IService, Observer {
 		String response = "";
 		
 		if (game != null) {
-			// Fa elaborare all'istanza corretta di MultiPlayerGame
-			//response = game.readRequest(content , user);
+			
+			response = game.readRequest(content , user);
 		} else {
 			response = configurator.getValue(noGameIdName);
 		}
