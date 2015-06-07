@@ -38,13 +38,10 @@ public class MultiPlayerService implements IService, Observer {
 		
 		if (!validRequest(request)) {
 			response = "E:Relog";
+		} else if ( !uri.contains("multiplayer/") ) {
+			response = initializeGame();		
 		} else {
-
-			if (!uri.contains("multiplayer/")) {
-				
-				response = initializeGame();
-				
-			}
+			
 		}
 
 		message.sendMessage(clientSocket, response);
@@ -52,14 +49,16 @@ public class MultiPlayerService implements IService, Observer {
 	}
 	
 	private String initializeGame(){
+	
 		MultiPlayerGame lastGame = games.get(lastInitiliazedGame);
 		if (lastGame != null && !lastGame.isStarted()) {
 			return lastGame.getPlayId() +"";
 		} else {
 			return newGame();
 		}
-		
+
 	}
+	
 	
 	private String newGame() {
 		
@@ -98,6 +97,8 @@ public class MultiPlayerService implements IService, Observer {
 		return null;
 	}
 
+
+	
 	
 	private boolean validRequest ( HttpRequest request ){
 		String user = request.getCookies().get("Utente");
