@@ -41,7 +41,7 @@ public class MultiPlayerService implements IService, Observer {
 		} else if ( !uri.contains("multiplayer/") ) {
 			response = initializeGame();		
 		} else {
-			
+			response = play(clientSocket, request);
 		}
 
 		message.sendMessage(clientSocket, response);
@@ -97,6 +97,20 @@ public class MultiPlayerService implements IService, Observer {
 		return null;
 	}
 
+	
+	private String play(Socket clientSocket, HttpRequest request) throws IOException{
+		
+		Integer playId;
+		String uri = request.getUri();
+		String content = request.getContent();
+		String user = request.getCookies().get("Utente");
+		
+
+
+		return "";
+		
+		
+	}
 
 	
 	
