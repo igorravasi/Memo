@@ -46,8 +46,12 @@ public class MemoSequence {
 	 * @param numberOfElementsToAdd
 	 */
 	public void nextRound(Integer numberOfElementsToAdd) {
+		Integer previous = 0;
+		if (rounds.size() > 0) {
+			previous = rounds.get(rounds.size() - 1);
+		}
 		
-		rounds.add(numberOfElementsToAdd);
+		rounds.add(numberOfElementsToAdd + previous);
 		
 		for (int i = 0; i < numberOfElementsToAdd; i++) {
 			sequenza.put(counter, factory.generateMemoElement());
