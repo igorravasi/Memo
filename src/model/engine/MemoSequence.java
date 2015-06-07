@@ -29,19 +29,23 @@ public class MemoSequence {
 	 */
 	public MemoSequence() {
 		super();
-		addElements(startingElements);
+		nextRound(startingElements);
 	}
 	
 	
 	/**
-	 * Aggiunge elementi alla nuova sequenza lasciando invariati i precedenti
+	 * Aggiunge n elementi (n=default) alla nuova sequenza lasciando invariati i precedenti
 	 */
 	public void nextRound() {
-		addElements(nextElements);
+		nextRound(nextElements);
 	}
-	
-	
-	private void addElements(Integer numberOfElementsToAdd){
+
+
+	/**
+	 * Aggiunge numberOfElementsToAdd elementi alla sequenza
+	 * @param numberOfElementsToAdd
+	 */
+	public void nextRound(Integer numberOfElementsToAdd) {
 		
 		rounds.add(numberOfElementsToAdd);
 		
@@ -51,7 +55,7 @@ public class MemoSequence {
 		}
 		
 	}
-	
+
 	
 	public String getEscapedString(){
 		
