@@ -18,7 +18,7 @@ public class MultiPlayerService implements IService, Observer {
 	private SessionManager sessionManager;
 	private static final String noGameIdName = "no_game_id";
 	private static final String noGameIdAvailableName = "no_game_id_available";
-	MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 	
 	private Map<Integer, MultiPlayerGame> games = new HashMap<Integer, MultiPlayerGame>();
 	private HttpStringMessage message = new HttpStringMessage();

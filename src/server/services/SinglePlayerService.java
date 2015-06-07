@@ -21,7 +21,7 @@ public class SinglePlayerService implements IService, Observer{
 
 	private static final String noGameIdName = "no_game_id";
 	private static final String noGameIdAvailableName = "no_game_id_available";
-	MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
+	private MemoServerConfigurator configurator = MemoServerConfigurator.getInstance();
 	
 	private Map<Integer, SinglePlayerGame> singleGames = new HashMap<Integer, SinglePlayerGame>();
 	private HttpStringMessage message = new HttpStringMessage();
