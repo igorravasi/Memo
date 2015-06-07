@@ -84,27 +84,23 @@ public class MultiPlayerGame extends Observable{
 		
 	}
 	
-	
-//	private int playerMoved(String playerSequence){
-//		keepAlive();
-//		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID)+SEQUENCE_ID.length());
-//		playerSequence = playerSequence.trim();
-//				
-//		String actualSequence = getEscapedSequence();
-//			
-//		if (actualSequence.equalsIgnoreCase(playerSequence)) {
-//			round++;
-//			sequence.nextRound();
-//			return round;
-//		}else {
-//			
-//			return LOOSER;
-//		}
-//		
-//		
-//	}
-	
+	private int playerMoved(String playerSequence, String user){
+		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID) + SEQUENCE_ID.length());
+		playerSequence = playerSequence.trim();
+		
+		String actualSequence = getEscapedSequence(user);
+		
+		if (actualSequence.equalsIgnoreCase(playerSequence)) {
+			int round = gamers.get(user);
+			round++;
+			gamers.put(user, round);
+			return round;
+		} else {
+			return LOOSER;
+		}
+	}
 
+	
 	public String readRequest(String content, String user){
 		
 		if (!isAGamer(user)) {
@@ -115,15 +111,13 @@ public class MultiPlayerGame extends Observable{
 		int round = gamers.get(user);
 		
 		if (round == 0) {
-			keepAlive();
 			round++;
 			gamers.put(user, round);
 			return SEQUENCE_ID + getSequence(user);
 		} else {
 			
 			if (content.indexOf(SEQUENCE_ID) >= 0) {
-				return "";
-				//return getTheResult(playerMoved(content));
+				return getTheResult(playerMoved(content, user), user);
 			} else {
 				return "E: Malformed request, Reload the page";
 			}
@@ -132,18 +126,18 @@ public class MultiPlayerGame extends Observable{
 		
 	}
 
-
 	
-//	private String getTheResult(int roundResult){
-//		
-//		if (roundResult == LOOSER) {
-//			changed();
-//			return "L: "+ round;
-//		} else {
-//			return SEQUENCE_ID + getSequence();
-//		}
-//			
-//	}
+
+	private String getTheResult(int roundResult, String user){
+		
+		if (roundResult == LOOSER) {
+			//TODO: RIMUOVERE GIOCATORE dal gioco, lasciandone traccia
+			return "L: "+ gamers.get(user);
+		} else {
+			return SEQUENCE_ID + getSequence(user);
+		}
+		
+	}
 
 
 	private void changed(){
