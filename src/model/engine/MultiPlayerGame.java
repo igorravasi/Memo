@@ -3,19 +3,27 @@ package model.engine;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class MultiPlayerGame extends Observable{
 
+	//TODO: valore da configurator
+	private static final int sequenceLength = 14;
+	
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*20; //VENTI MINUTI PER GIOCARE LA PARTITA INTERA
 	private static final String SEQUENCE_ID ="S:";
+	
+	//TODO: da configurator
 	private static final int MAX_ROOM_SIZE = 2;
+	
 	private MemoSequence sequence = new MemoSequence();
 	private Timer isAliveTimer = new Timer();
 	private Map<String, Integer> gamers = new HashMap<String, Integer>();
+
 	
 	private Integer playId;
 	
@@ -25,6 +33,17 @@ public class MultiPlayerGame extends Observable{
 
 	public MultiPlayerGame(Integer playId) {
 		super();
+
+		Random random = new Random();
+		random.setSeed(random.nextLong());
+		
+		int remaining = sequenceLength - sequence.length();
+		while (remaining > 0) {
+			int addNow = random.nextInt(4);
+			addNow = addNow < remaining ? addNow : remaining;
+			sequence.nextRound(addNow);
+		}
+		
 		this.playId = playId;
 		
 		keepAlive();
@@ -82,7 +101,14 @@ public class MultiPlayerGame extends Observable{
 //	}
 	
 
-
+	public String readRequest(String content, String user){
+		int round = gamers.get(user);
+		
+		
+		
+		return null;
+	}
+	
 //	public String readRequest(String content){
 //		
 //		if (round == 0) {
