@@ -7,7 +7,6 @@ import java.util.List;
 
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
-import server.config.MemoServerConfigurator;
 import server.services.extensions.MatchTracker;
 import server.services.extensions.SessionManager;
 
