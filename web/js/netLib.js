@@ -34,13 +34,3 @@ function request(theUrl, postContent){
 }
 
 
-function loadServerResponse( postContent ) {
-	 
-
-	var url = "singleplayer";
-	if ( playId!=null ) {
-		url += "/" + playId;
-	}
-	response = request(url, postContent);
-	return response;
-}

@@ -28,6 +28,18 @@ function start(){
 }
 
 
+function loadServerResponse( postContent ) {
+	 
+
+	var url = "singleplayer";
+	if ( playId!=null ) {
+		url += "/" + playId;
+	}
+	response = request(url, postContent);
+	return response;
+}
+
+
 function doTheRightThing(response) {
 
 	var command = response.substring(0,response.indexOf(":"));
