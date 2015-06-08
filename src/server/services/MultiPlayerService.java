@@ -51,23 +51,21 @@ public class MultiPlayerService implements IService, Observer {
 	private String initializeGame(String user){
 	
 		MultiPlayerGame lastGame = games.get(lastInitiliazedGame);
-		if (lastGame != null && !lastGame.isStarted()) {
-			lastGame.addGamer(user);
-			return lastGame.getPlayId() +"";
-		} else {
-			Integer playId = newGame();
-			if (playId == null) {
+		if (lastGame == null || lastGame.isStarted() ) {
+			lastGame = newGame();
+			if (lastGame == null) {
 				return configurator.getValue(noGameIdAvailableName);
-			} else {
-				games.get(playId).addGamer(user);
-				return playId + "";
 			}
-		}
+		} 
+		
+		
+		lastGame.addGamer(user);
+		return lastGame.getPlayId() +"";
 
 	}
 	
 	
-	private Integer newGame() {
+	private MultiPlayerGame newGame() {
 		
 		Integer playId = getFreeIndex();
 		
@@ -78,7 +76,7 @@ public class MultiPlayerService implements IService, Observer {
 			aSingleGame.addObserver(this);
 			games.put(playId, aSingleGame);
 			lastInitiliazedGame = playId;
-			return playId;
+			return aSingleGame;
 		}
 		
 
