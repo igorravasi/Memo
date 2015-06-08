@@ -1,8 +1,13 @@
 package server.services.extensions;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Notificator {
 
@@ -20,7 +25,7 @@ public class Notificator {
 	public void writeNotify(Iterator<String> users, String message){
 		
 		try {
-			FileWriter writer = new FileWriter(dbn);
+			FileWriter writer = new FileWriter(dbn, true);
 			while (users.hasNext()) {
 				String user = (String) users.next();
 				writer.write(user + "\t" + message + "\n");
@@ -33,4 +38,29 @@ public class Notificator {
 		}
 	}
 	
+	public Iterator<String> getNotifies(String user){
+		
+		List<String> notifies = new LinkedList<String>();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(dbn));
+			
+			String line = reader.readLine();
+			
+			while (line != null) {
+				
+				if (line.startsWith(user)) {
+					notifies.add(line.substring(line.indexOf("\t"+1)));
+				}
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return notifies.iterator();
+	}
 }
