@@ -15,7 +15,7 @@
 								</ul>		
 							<li><a href="Istruzioni.html">Info</a></li>
 							<li><a href="Contatti.html">Contatti</a></li>
-							
+
 							<li class="dropdown">
 								 <a href="#" onclick="dropDown(this.parentNode);document.getElementById('login_message').innerHTML=''" class="dropdown-toggle"><span id="user_name">Login</span> <b class="caret"></b></a>
 								 <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
@@ -38,6 +38,7 @@
 														<div class="form-group">
 															<button class="btn btn-success btn-block" onclick="submitLogin(this)" name="Do" value="logout">Logout</button>
 														</div>
+														
 														<div class="form-group" id="login_message">
 													  
 														</div>
@@ -51,6 +52,11 @@
 						<ul class="nav navbar-bar">
 								<li style="float:right"><button onclick="start();" id="start_button" class="control-button nascosto" >Start</button></li>
 						</ul>
+						<ul id ="multimenu" class="nav navbar-nav nascosto">
+
+							<li><a href="Sfide.html">Sfide</a></li>
+							<li><a href="Notifiche.html">Notifiche</a></li>
+						</ul>	
 					</div>
 			  </div>
 			</nav>
