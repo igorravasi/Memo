@@ -11,7 +11,6 @@ import model.engine.MultiPlayerGame;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
-import server.services.extensions.MatchTracker;
 import server.services.extensions.SessionManager;
 
 public class MultiPlayerService implements IService, Observer {
@@ -30,7 +29,7 @@ public class MultiPlayerService implements IService, Observer {
 	public MultiPlayerService(SessionManager sessionManager){
 
 		this.sessionManager = sessionManager;
-		MatchTracker.instance().setGames(games);
+		
 	}
 	@Override
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException {
