@@ -51,9 +51,9 @@ public class MultiPlayerService implements IService, Observer {
 	private String initializeGame(String user){
 	
 		MultiPlayerGame lastGame = games.get(lastInitiliazedGame);
-		if (lastGame == null || lastGame.isStarted() ) {
+		if (lastGame == null || lastGame.isStarted() || !lastGame.canPlay(user)) {
 			lastGame = newGame();
-			if (lastGame == null) {
+			if (lastGame == null ) {
 				return configurator.getValue(noGameIdAvailableName);
 			}
 		} 
