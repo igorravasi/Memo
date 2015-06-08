@@ -119,7 +119,7 @@ public class MultiPlayerGame extends Observable{
 		
 		if (!isAGamer(user) || gamersOver.contains(user)) {
 			//TODO: da configurator
-			return "E: User is not a valid gamer";
+			return "E: User is not a valid gamer (now)";
 		}
 		
 		int round = gamers.get(user);
