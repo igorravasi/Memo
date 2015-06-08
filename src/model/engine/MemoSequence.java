@@ -70,7 +70,7 @@ public class MemoSequence {
 	
 	public String getEscapedString(){
 		
-		return getEscapedString( null );
+		return getEscapedString( this.roundsNumber() );
 
 	}
 	
@@ -84,7 +84,7 @@ public class MemoSequence {
 		
 		String consideredSequence;
 		if (round == null) {
-			consideredSequence = this.toString();
+			consideredSequence = "";
 		} else {
 			consideredSequence = this.toString(round);
 		}
@@ -101,26 +101,28 @@ public class MemoSequence {
 
 	}
 
-	public String toString(Integer round){
-		Integer endOfSubstring;
-		try {
-			endOfSubstring = rounds.get(round);
-		} catch (Exception e) {
-			endOfSubstring = 0;
-		}
-		return this.toString().substring(0, endOfSubstring);
-	}
 	
-	@Override
-	public String toString() {
-
-		String tmpString = "";
+	public String toString( Integer round){
 		
-		for (int i = 0; i < counter; i++) {
+		Integer numberOfElements;
+		try {
+			numberOfElements = rounds.get(round - 1);
+		} catch (Exception e) {
+			numberOfElements = 0;
+		}
+		
+		String tmpString = "";
+		for (int i = 0; i < numberOfElements; i++) {
 			MemoElement tmpMemoElement = sequenza.get(i);
 			tmpString += tmpMemoElement.getEmoj();
 		}
 		
 		return tmpString;
+	}
+	
+	@Override
+	public String toString() {
+
+		return this.toString(this.roundsNumber());
 	}
 }
