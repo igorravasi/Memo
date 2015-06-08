@@ -87,6 +87,10 @@ public class MultiPlayerGame extends Observable{
 		
 	}
 	
+	public boolean canPlay(String user){
+		return !(gamers.containsKey(user) || gamersOver.contains(user));
+	}
+	
 	private int playerMoved(String playerSequence, String user){
 		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID) + SEQUENCE_ID.length());
 		playerSequence = playerSequence.trim();
