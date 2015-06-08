@@ -148,7 +148,7 @@ public class MultiPlayerGame extends Observable{
 			//TODO: RIMUOVERE GIOCATORE dal gioco, lasciandone traccia
 			gamersOver.add(user);
 			return "L: "+ gamers.get(user);
-		} else if (gamers.get(user) >= roundResult) {
+		} else if (roundResult == sequence.roundsNumber()) {
 			return "W: completed";
 		} else {
 			return SEQUENCE_ID + getSequence(user);
@@ -164,6 +164,8 @@ public class MultiPlayerGame extends Observable{
 	
 	private String getSequence(String user){
 		Integer round = gamers.get(user);
+		System.err.println(round);
+		System.err.println(sequence.toString(round));
 		return sequence.toString(round);
 	
 	}
