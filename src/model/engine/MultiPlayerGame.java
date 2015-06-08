@@ -82,7 +82,7 @@ public class MultiPlayerGame extends Observable{
 		this.gamers.put(user, 0);
 	}
 	
-	private boolean isAGamer(String gamer){
+	public boolean isAGamer(String gamer){
 		return gamers.containsKey(gamer);
 		
 	}
