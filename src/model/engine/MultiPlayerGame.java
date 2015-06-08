@@ -122,11 +122,10 @@ public class MultiPlayerGame extends Observable{
 			return "E: User is not a valid gamer (now)";
 		}
 		
-		int round = gamers.get(user);
 		
-		if (round == 0) {
-			round++;
-			gamers.put(user, round);
+		
+		if (gamers.get(user) == 0) {
+			gamers.put(user, 1);
 			return SEQUENCE_ID + getSequence(user);
 		} else {
 			
@@ -164,8 +163,6 @@ public class MultiPlayerGame extends Observable{
 	
 	private String getSequence(String user){
 		Integer round = gamers.get(user);
-		System.err.println(round);
-		System.err.println(sequence.toString(round));
 		return sequence.toString(round);
 	
 	}
