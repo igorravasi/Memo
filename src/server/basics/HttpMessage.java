@@ -58,7 +58,12 @@ public class HttpMessage {
 	}
 	
 	public void writeln(String line) throws IOException{
-		out.write(line + enter);
+		if (line.length() > 0) {
+			out.write(line + enter);
+		} else {
+			out.write(enter);
+		}
+		
 	}
 	
 	public void closeHttpResponse() throws IOException{
