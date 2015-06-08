@@ -41,7 +41,7 @@ public class MultiPlayerGame extends Observable{
 		
 		int remaining = sequenceLength - sequence.length();
 		while (remaining > 0) {
-			int addNow = random.nextInt(4);
+			int addNow = random.nextInt(3) + 1;
 			addNow = addNow < remaining ? addNow : remaining;
 			sequence.nextRound(addNow);
 			remaining -= addNow;
