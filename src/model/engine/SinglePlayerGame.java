@@ -56,8 +56,9 @@ public class SinglePlayerGame extends Observable{
 		playerSequence = playerSequence.trim();
 				
 		String actualSequence = getEscapedSequence();
-			
+		
 		if (actualSequence.equalsIgnoreCase(playerSequence)) {
+			System.err.println("gotit");
 			round++;
 			sequence.nextRound();
 			return round;

@@ -70,7 +70,7 @@ public class MemoSequence {
 	
 	public String getEscapedString(){
 		
-		return getEscapedString(this.toString().length());
+		return getEscapedString( null );
 
 	}
 	
@@ -82,7 +82,13 @@ public class MemoSequence {
 			cioè "url-encoded". (La trasmissione non-url-encoded delle emoji cambia da  browser a browser, soprattuto con emtodo GET)
 		*/		
 		
-		String consideredSequence = this.toString(round);
+		String consideredSequence;
+		if (round == null) {
+			consideredSequence = this.toString();
+		} else {
+			consideredSequence = this.toString(round);
+		}
+		
 		byte[] bytes = consideredSequence.getBytes(Charset.forName("UTF-8"));
 		StringBuilder sb = new StringBuilder();
 		
