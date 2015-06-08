@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import model.engine.MultiPlayerGame;
+import model.engine.SinglePlayerGame;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
@@ -154,8 +155,11 @@ public class MultiPlayerService implements IService, Observer {
 	}
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+	
+		Integer playId = ( (MultiPlayerGame) o).getPlayId();
+		games.remove(playId);
 		
+		//TODO: alert gamers
 	}
 	
 
