@@ -11,6 +11,7 @@ import model.engine.MultiPlayerGame;
 import server.basics.HttpRequest;
 import server.basics.HttpStringMessage;
 import server.config.MemoServerConfigurator;
+import server.services.extensions.Notificator;
 import server.services.extensions.SessionManager;
 
 public class MultiPlayerService implements IService, Observer {
@@ -124,10 +125,13 @@ public class MultiPlayerService implements IService, Observer {
 		if (game != null) {
 			
 			response = game.readRequest(content , user);
+			if (game.ended()) {
+				game.changed();
+			}
 		} else {
 			response = configurator.getValue(noGameIdName);
 		}
-		
+			
 		return response;
 		
 	}
@@ -154,7 +158,10 @@ public class MultiPlayerService implements IService, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 	
-		Integer playId = ( (MultiPlayerGame) o).getPlayId();
+		MultiPlayerGame game = ( (MultiPlayerGame) o);
+		Notificator.it().writeNotify(game.getUsers(), game.getfinalResult());
+		
+		Integer playId = game.getPlayId();
 		games.remove(playId);
 		
 		//TODO: alert gamers
