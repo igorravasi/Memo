@@ -44,6 +44,7 @@ public class MultiPlayerGame extends Observable{
 			int addNow = random.nextInt(4);
 			addNow = addNow < remaining ? addNow : remaining;
 			sequence.nextRound(addNow);
+			remaining -= addNow;
 		}
 		
 		this.playId = playId;
