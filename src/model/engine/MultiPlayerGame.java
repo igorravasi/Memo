@@ -146,6 +146,7 @@ public class MultiPlayerGame extends Observable{
 			gamersOver.add(user);
 			return "L: "+ gamers.get(user);
 		} else if (roundResult > sequence.roundsNumber()) {
+			gamersOver.add(user);
 			return "W: completed";
 		} else {
 			return SEQUENCE_ID + getSequence(user);
@@ -160,6 +161,7 @@ public class MultiPlayerGame extends Observable{
 	}
 	
 	public boolean ended(){
+		
 		if (gamers.size() == gamersOver.size()) {
 			return true;
 		}
@@ -197,7 +199,7 @@ public class MultiPlayerGame extends Observable{
 		winners = winners.trim();
 		
 		
-		return reachedRound + "\n" + winners;
+		return reachedRound + "\t" + winners;
 		
 	}
 
