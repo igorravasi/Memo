@@ -39,6 +39,27 @@ function getGameOverMessage(round){
 	}
 }
 
+function getGameCompleted(message){
+	return "<h3>Hai completato l'intero match, campione! Attendi che tutti i giocatori termino la sfida per sapere se sei stato il migliore in assoluto.</h3>";
+}
+function getMultiGameOverMessage(round){
+	
+	if (round > 2) {
+		var head = "<h3>Congratulazioni! hai superato ";
+		var tail = " round. Non appena tutti i giocatori termineranno il match riceverai i risultati!</h3>";
+		
+		return head + (round.trim() -1) + tail;
+		
+	} else if (round == 2) {
+		
+		return "<h3>1 round superato.... La tua memoria non &egrave; delle peggiori, ma neanche delle migliori! Forse prima di sfidare altri giocatori è meglio se ti alleni in modalità Single Player</h3>";
+		
+	} else if (round == 1){
+		
+		return "<h3>Hai perso al primo colpo. Sembra che per te sia necessario allenare la memoria utilizzando la modalità Single Player!</h3>";
+	}
+}
+
 
 function getLogMessage(bool){
 	
