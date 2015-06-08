@@ -4,7 +4,7 @@
 
 var playId = null;
 var intervalTimer;
-var timeoutTimer = null;
+
 var factorySeconds = 7;
 
 var lastBox = 0;
@@ -18,7 +18,7 @@ function start(){
 	playId = request("multiplayer", null );
 	
 	display("controls",false);
-	document.getElementById("start_button").innerHTML="Restart";
+	document.getElementById("start_button").innerHTML="Nuova sfida";
 	document.getElementById("sequence_container").innerHTML = getSequenceHTML();
 	display("message",false);
 	
@@ -27,21 +27,26 @@ function start(){
 	doTheRightThing( loadServerResponse( null ));
 }
 
+function loadServerResponse( postContent ) {
+	 
+
+	var url = "multiplayer";
+	if ( playId!=null ) {
+		url += "/" + playId;
+	}
+	response = request(url, postContent);
+	return response;
+}
+
 
 function doTheRightThing(response) {
 
 	var command = response.substring(0,response.indexOf(":"));
 	var message = response.substring(response.indexOf(":")+1);
 	
-	if (timeoutTimer != null) {
-		window.clearInterval(timeoutTimer);
-	}
 	
 	switch (command) {
 	case "S":
-		timeoutTimer = setInterval(function (){
-			writeAMessage(getErrorMessage("Tempo scaduto"));
-		}, timeoutMilliSeconds);
 		showSequence(message);
 		
 		break;
