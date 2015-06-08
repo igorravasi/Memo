@@ -1,5 +1,3 @@
-//1. set ul width 
-//2. image when click prev/next button
 var ul;
 var liItems;
 var imageNumber;
@@ -7,6 +5,7 @@ var imageWidth;
 var prev, next;
 var currentPostion = 0;
 var currentImage = 0;
+var interval= 6000; //impostare durata presentazione singola slide
 
 
 function resizeSlider(){
@@ -33,6 +32,7 @@ function moveNavigator(){
 	var navigators = document.getElementsByClassName("nvgt");
 	for (var i = 0; i < navigators.length; i++) {
 		navigators[i].style.top = parseInt( ( sliderHeight - navigators[i].clientHeight ) / 2) + 'px';
+		setTimeout()
 	}
 	
 	
@@ -54,6 +54,7 @@ function init(){
 	next.onclick = function(){slide(1);};
 	prev.onclick = function(){ onClickPrev();};
 	next.onclick = function(){ onClickNext();};
+	setTimeout('onClickNext()', interval);
 }
 
 function animate(opts){
@@ -108,6 +109,7 @@ function onClickNext(){
 	else{
 		slideTo(currentImage + 1);
 	}		
+	setTimeout('onClickNext()', interval);
 }
 
 function generatePager(imageNumber){	
