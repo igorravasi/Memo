@@ -2,6 +2,7 @@ package model.engine;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Random;
@@ -174,6 +175,30 @@ public class MultiPlayerGame extends Observable{
 	private String getEscapedSequence(String user){
 		Integer round = gamers.get(user);
 		return sequence.getEscapedString(round);
+	}
+	public String getfinalResult(){
+		
+		Integer reachedRound = 0;
+		
+		for (Iterator<String> iterator = gamers.keySet().iterator(); iterator.hasNext();) {
+			String user = (String) iterator.next();
+			if (gamers.get(user) > reachedRound) {
+				reachedRound = gamers.get(user);	
+			}
+		}
+		
+		String winners = "";
+		for (Iterator<String> iterator = gamers.keySet().iterator(); iterator.hasNext();) {
+			String user = (String) iterator.next();
+			if (gamers.get(user) == reachedRound) {
+				winners += user + " ";
+			}
+		}
+		winners = winners.trim();
+		
+		
+		return reachedRound + "\n" + winners;
+		
 	}
 
 
