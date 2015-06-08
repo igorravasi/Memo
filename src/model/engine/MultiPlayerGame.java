@@ -14,7 +14,7 @@ import java.util.TimerTask;
 public class MultiPlayerGame extends Observable{
 
 	//TODO: valore da configurator
-	private static final int sequenceLength = 10;
+	private static final int sequenceLength = 4;
 	
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*20; //VENTI MINUTI PER GIOCARE LA PARTITA INTERA
@@ -104,21 +104,14 @@ public class MultiPlayerGame extends Observable{
 			gamers.put(user, round);
 			return round;
 		} else {
-			if (gamersOver.size() == gamers.size()) {
-				
-				isAliveTimer.schedule(new TimerTask() {
-					
-					@Override
-					public void run() {
-						changed();
-						
-					}
-				}, 1000);
-			}
+			
 			return LOOSER;
 		}
 	}
 
+	public Iterator<String> getUsers(){
+		return gamers.keySet().iterator();
+	}
 	
 	public String readRequest(String content, String user){
 		
@@ -161,9 +154,16 @@ public class MultiPlayerGame extends Observable{
 	}
 
 
-	private void changed(){
+	public void changed(){
 		setChanged();
 		notifyObservers();
+	}
+	
+	public boolean ended(){
+		if (gamers.size() == gamersOver.size()) {
+			return true;
+		}
+		return false;
 	}
 	
 	private String getSequence(String user){
