@@ -11,7 +11,9 @@ var lastBox = 0;
 var isValidable = false;
 
 display("start_button",true);
+display("multimenu",true);
 setShortcuts();
+
 
 
 function start(){
