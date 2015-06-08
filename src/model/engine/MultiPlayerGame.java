@@ -13,7 +13,7 @@ import java.util.TimerTask;
 public class MultiPlayerGame extends Observable{
 
 	//TODO: valore da configurator
-	private static final int sequenceLength = 14;
+	private static final int sequenceLength = 10;
 	
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*20; //VENTI MINUTI PER GIOCARE LA PARTITA INTERA
@@ -151,7 +151,7 @@ public class MultiPlayerGame extends Observable{
 			//TODO: RIMUOVERE GIOCATORE dal gioco, lasciandone traccia
 			gamersOver.add(user);
 			return "L: "+ gamers.get(user);
-		} else if (roundResult == sequence.roundsNumber()) {
+		} else if (roundResult > sequence.roundsNumber()) {
 			return "W: completed";
 		} else {
 			return SEQUENCE_ID + getSequence(user);
