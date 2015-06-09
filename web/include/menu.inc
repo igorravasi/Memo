@@ -49,14 +49,14 @@
 								 </ul>
 							</li>
 						</ul>
+						<ul id ="multimenu" class="nav navbar-nav nascosto">
+
+							<li><a href="Notifiche.html">Notifiche</a></li>
+						</ul>	
 						<ul class="nav navbar-bar">
 								<li style="float:right"><button onclick="start();" id="start_button" class="control-button nascosto" >Start</button></li>
 						</ul>
-						<ul id ="multimenu" class="nav navbar-nav nascosto">
 
-							<li><a href="Sfide.html">Sfide</a></li>
-							<li><a href="Notifiche.html">Notifiche</a></li>
-						</ul>	
 					</div>
 			  </div>
 			</nav>
