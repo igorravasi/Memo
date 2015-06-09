@@ -29,7 +29,7 @@ public class Notificator {
 			while (users.hasNext()) {
 				String user = (String) users.next();
 				writer.write(user + "\t" + message + "\n");
-				System.err.println(user + "\t" + message + "\n");
+				
 			}
 			writer.close();
 		} catch (IOException e) {
