@@ -159,12 +159,15 @@ public class MultiPlayerService implements IService, Observer {
 	public void update(Observable o, Object arg) {
 	
 		MultiPlayerGame game = ( (MultiPlayerGame) o);
-		Notificator.it().writeNotify(game.getUsers(), game.getfinalResult());
+		if (game.isStarted()) {
 		
-		Integer playId = game.getPlayId();
-		games.remove(playId);
-		
-		//TODO: alert gamers
+			Notificator.it().writeNotify(game.getUsers(), game.getfinalResult());
+			
+			Integer playId = game.getPlayId();
+			games.remove(playId);
+			
+		}
+
 	}
 	
 
