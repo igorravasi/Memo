@@ -27,7 +27,7 @@ public class NotificationService implements IService{
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException {
 		
 
-		String response = "N:";
+		String response = "";
 		
 		if (!validRequest(request)) {
 			response = "E:Relog";
@@ -38,7 +38,7 @@ public class NotificationService implements IService{
 				String n = (String) it.next();
 				sb.append(n + "\n");
 			}
-			response = "" + sb.toString();
+			response = "N:" + sb.toString();
 		}
 
 		message.sendMessage(clientSocket, response);

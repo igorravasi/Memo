@@ -1,4 +1,4 @@
-developer	1433842014524	3	marti	2-developer 3-marti
-marti	1433842014524	3	marti	2-developer 3-marti
-developer	1433842568198	3	marti	2-developer 3-marti
-marti	1433842568198	3	marti	2-developer 3-marti
+developer	Tue Jun 09 13:51:54 CEST 2015	2	developer	developer-->2 marti-->1
+marti	Tue Jun 09 13:51:54 CEST 2015	2	developer	developer-->2 marti-->1
+developer	Tue Jun 09 13:53:40 CEST 2015	3	developer	developer-->3 marti-->2
+marti	Tue Jun 09 13:53:40 CEST 2015	3	developer	developer-->3 marti-->2

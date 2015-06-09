@@ -1,5 +1,6 @@
 package model.engine;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -201,11 +202,12 @@ public class MultiPlayerGame extends Observable{
 		String players = "";
 		for (Iterator<String> iterator = gamers.keySet().iterator(); iterator.hasNext();) {
 			String user = (String) iterator.next();
-			players += gamers.get(user) + "-" + user + " ";
+			players += user + "-->" + gamers.get(user) + " ";
 		}
 		players = players.trim();
 		
-		return System.currentTimeMillis() + "\t" + reachedRound + "\t" + winners + "\t" + players;
+		
+		return new Date().toString() + "\t" + reachedRound + "\t" + winners + "\t" + players;
 		
 	}
 
