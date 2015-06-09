@@ -159,7 +159,7 @@ public class MultiPlayerService implements IService, Observer {
 	public void update(Observable o, Object arg) {
 	
 		MultiPlayerGame game = ( (MultiPlayerGame) o);
-		if (game.isStarted()) {
+		if (game.isStarted() || game.isEnded()) {
 		
 			Notificator.it().writeNotify(game.getUsers(), game.getfinalResult());
 			

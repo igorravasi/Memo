@@ -15,12 +15,13 @@ import java.util.TimerTask;
 public class MultiPlayerGame extends Observable{
 
 	//TODO: valore da configurator
-	private static final int sequenceLength = 4;
+	private static final int sequenceLength = 6;
 	
 	private static final int LOOSER = -1;
 	private static final int ALIVE_TIMER = 1000*60*10; //DIECI MINUTI PER GIOCARE LA PARTITA INTERA
 	private static final String SEQUENCE_ID ="S:";
 	
+	private boolean ended = false;
 	//TODO: da configurator
 	private static final int MAX_ROOM_SIZE = 2;
 	
@@ -63,7 +64,8 @@ public class MultiPlayerGame extends Observable{
 			@Override
 			public void run() {
 				
-				//TODO: decretare il vincitore e mandare notifiche
+				setEnded();
+				
 				changed();
 				
 			}
@@ -93,6 +95,13 @@ public class MultiPlayerGame extends Observable{
 		return !(gamers.containsKey(user) || gamersOver.contains(user));
 	}
 	
+	
+	public boolean isEnded(){
+		return ended;
+	}
+	public void setEnded(){
+		this.ended = true;
+	}
 	private int playerMoved(String playerSequence, String user){
 		playerSequence = playerSequence.substring(playerSequence.indexOf(SEQUENCE_ID) + SEQUENCE_ID.length());
 		playerSequence = playerSequence.trim();

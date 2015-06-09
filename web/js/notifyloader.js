@@ -28,7 +28,10 @@ function doTheRightThing(response) {
 		break;
 	case "E":
 	default:
-		//writeAMessage(getErrorMessage(message));
+		
+		document.getElementById("message").innerHTML = getErrorMessage(message); 
+		display("message",true);
+		display("tabella",false);
 		break;
 	}
 	
@@ -83,8 +86,8 @@ function writeTable(text){
 		
 	}
 	
-	
-	
+	display("tabella",true);
+	display("message",false);
 }
 
 function twoDigits(value) {
