@@ -17,7 +17,7 @@ public class MultiPlayerGame extends Observable{
 	private static final int sequenceLength = 4;
 	
 	private static final int LOOSER = -1;
-	private static final int ALIVE_TIMER = 1000*60*20; //VENTI MINUTI PER GIOCARE LA PARTITA INTERA
+	private static final int ALIVE_TIMER = 1000*60*10; //DIECI MINUTI PER GIOCARE LA PARTITA INTERA
 	private static final String SEQUENCE_ID ="S:";
 	
 	//TODO: da configurator
@@ -198,8 +198,14 @@ public class MultiPlayerGame extends Observable{
 		}
 		winners = winners.trim();
 		
+		String players = "";
+		for (Iterator<String> iterator = gamers.keySet().iterator(); iterator.hasNext();) {
+			String user = (String) iterator.next();
+			players += gamers.get(user) + "-" + user + " ";
+		}
+		players = players.trim();
 		
-		return reachedRound + "\t" + winners;
+		return reachedRound + "\t" + winners + "\t" + players;
 		
 	}
 
