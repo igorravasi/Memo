@@ -4,6 +4,7 @@ import server.config.MemoServerConfigurator;
 import server.services.BinaryFileService;
 import server.services.LoggingService;
 import server.services.MultiPlayerService;
+import server.services.NotificationService;
 import server.services.SinglePlayerService;
 import server.services.TextFileService;
 import server.services.extensions.SessionManager;
@@ -42,6 +43,8 @@ public class ServerLauncher {
 		SessionManager sessionManager = new SessionManager();
 		server.addService("/multiplayer", new MultiPlayerService(sessionManager));
 		server.addService("/login", new LoggingService(sessionManager));
+		
+		server.addService("/Notifiche.html", new NotificationService(sessionManager));
 		
 		KeyboardGenerator.main(null);
 		
