@@ -32,7 +32,6 @@ function moveNavigator(){
 	var navigators = document.getElementsByClassName("nvgt");
 	for (var i = 0; i < navigators.length; i++) {
 		navigators[i].style.top = parseInt( ( sliderHeight - navigators[i].clientHeight ) / 2) + 'px';
-		setTimeout()
 	}
 	
 	
