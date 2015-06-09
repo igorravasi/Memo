@@ -44,7 +44,7 @@ public class ServerLauncher {
 		server.addService("/multiplayer", new MultiPlayerService(sessionManager));
 		server.addService("/login", new LoggingService(sessionManager));
 		
-		server.addService("/Notifiche.html", new NotificationService(sessionManager));
+		server.addService("/notifiche", new NotificationService(sessionManager));
 		
 		KeyboardGenerator.main(null);
 		
