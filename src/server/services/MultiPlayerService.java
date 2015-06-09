@@ -3,6 +3,7 @@ package server.services;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -23,7 +24,7 @@ public class MultiPlayerService implements IService, Observer {
 	
 	private Map<Integer, MultiPlayerGame> games = new HashMap<Integer, MultiPlayerGame>();
 	private HttpStringMessage message = new HttpStringMessage();
-	private Integer lastInitiliazedGame = 0;
+	//private Integer lastInitiliazedGame = 0;
 	
 	
 	
@@ -52,7 +53,16 @@ public class MultiPlayerService implements IService, Observer {
 	
 	private String initializeGame(String user){
 	
-		MultiPlayerGame lastGame = games.get(lastInitiliazedGame);
+		//MultiPlayerGame lastGame = games.get(lastInitiliazedGame);
+		MultiPlayerGame lastGame = null;
+		Iterator<Integer> it = games.keySet().iterator();
+		while (it.hasNext()) {
+			Integer id = (Integer) it.next();
+			if (!games.get(id).isStarted() && games.get(id).canPlay(user)) {
+				lastGame = games.get(id);
+				break;
+			}
+		}
 		if (lastGame == null || lastGame.isStarted() || !lastGame.canPlay(user)) {
 			lastGame = newGame();
 			if (lastGame == null ) {
@@ -77,7 +87,7 @@ public class MultiPlayerService implements IService, Observer {
 			MultiPlayerGame aSingleGame = new MultiPlayerGame(playId);
 			aSingleGame.addObserver(this);
 			games.put(playId, aSingleGame);
-			lastInitiliazedGame = playId;
+			//lastInitiliazedGame = playId;
 			return aSingleGame;
 		}
 		

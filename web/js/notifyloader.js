@@ -51,7 +51,7 @@ function writeTable(text){
 	remaining = remaining.substring(text.indexOf("\n") + 1);
 	
 	while (otherRow == true) {
-		var row = "<tr>";
+		
 				
 		var maxPoint;
 		var winners;
@@ -66,9 +66,18 @@ function writeTable(text){
 		
 		winners = line.substring(0, line.indexOf("\t"));
 		line = trim(line.substring(line.indexOf("\t") + 1));
+		var row = "<tr>";
+		var user = getCookie("Utente");
+		
+		if ((winners + " ").indexOf(user +" ")>= 0) {
+			row = "<tr class='verde'>";
+		}
+		
 		winners = replaceAll(" ","<br/>",winners);
 		
 		board = replaceAll(" ", "<br/>", line);
+		
+		
 		
 		row += "<td>" + date + "</td>";
 		row += "<td>" + maxPoint + "</td>";
