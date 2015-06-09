@@ -205,7 +205,7 @@ public class MultiPlayerGame extends Observable{
 		}
 		players = players.trim();
 		
-		return reachedRound + "\t" + winners + "\t" + players;
+		return System.currentTimeMillis() + "\t" + reachedRound + "\t" + winners + "\t" + players;
 		
 	}
 
