@@ -45,13 +45,11 @@ public class Notificator {
 			BufferedReader reader = new BufferedReader(new FileReader(dbn));
 			
 			String line = reader.readLine();
-			int i = 0;
+			
 			while (line != null) {
-				System.err.println(line);
-				i++;
+				
 				if (line.trim().startsWith(user)) {
 					
-					System.err.println(i);
 					String notify = line.substring(user.length() + 1);
 					notifies.add(notify);
 					
