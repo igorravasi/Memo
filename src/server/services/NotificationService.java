@@ -27,7 +27,7 @@ public class NotificationService implements IService{
 	public void sendHttpResponse(Socket clientSocket, HttpRequest request) throws IOException {
 		
 
-		String response = "";
+		String response = "N:";
 		
 		if (!validRequest(request)) {
 			response = "E:Relog";
@@ -36,9 +36,9 @@ public class NotificationService implements IService{
 			Iterator<String> it = Notificator.it().getNotifies(request.getCookies().get("Utente"));
 			while (it.hasNext()) {
 				String n = (String) it.next();
-				sb.append(n);
+				sb.append(n + "\n");
 			}
-			response = sb.toString();
+			response = "" + sb.toString();
 		}
 
 		message.sendMessage(clientSocket, response);
